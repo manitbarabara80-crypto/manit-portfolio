@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manitbarabara80-crypto.github.io/manit-portfolio/sitemap.xml
