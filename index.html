@@ -122,8 +122,7 @@ button:hover,a:hover{opacity:.94}
 
 .story-card{margin-top:18px}.story-card p{white-space:pre-line;line-height:1.9}.customizer #storyInput{min-height:190px}
 
-/* Owner-only customization gate: normal visitors never see editor controls. */
-body:not(.owner-unlocked) #headerCustomize,
+/* The owner entry button stays visible on phones and desktops. Visitors may open the sign-in dialog, but only the authenticated owner can unlock the editor or make server-side changes. */
 body:not(.owner-unlocked) #customizeToggle{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
 body:not(.owner-unlocked) #customizer{display:none!important;visibility:hidden!important;pointer-events:none!important}
 .owner-login-overlay{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:22px;background:rgba(5,3,12,.86);backdrop-filter:blur(18px)}
@@ -186,7 +185,7 @@ body:not(.owner-unlocked) #customizer{display:none!important;visibility:hidden!i
 <button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <button class="btn primary customize-toggle" id="customizeToggle" aria-expanded="false">⚙ Customize</button>
 <aside class="customizer" id="customizer" aria-label="Portfolio customization panel">
-<div class="customizer-head"><div><h2>Customize your full portfolio</h2><p class="hint">Edit or upload your details below. Changes update the portfolio live. When you finish, close this editor to preview the complete website.</p></div><button class="small-btn" id="ownerLockHeader" type="button" aria-label="Lock owner mode">🔒 Lock owner mode</button><button class="small-btn" id="closeCustomizer" type="button" aria-label="Close customization and preview portfolio">✕ Close editor / Preview site</button></div><div class="customizer-guide"><strong>How it works:</strong> Upload your profile photo or project screenshots, fill in your details, and the portfolio preview updates automatically. Your changes are saved in this browser on this computer.</div>
+<div class="customizer-head"><div><h2>Customize your full portfolio</h2><p class="hint">Edit or upload your details below. Changes update the portfolio live. When you finish, close this editor to preview the complete website.</p></div><button class="small-btn" id="ownerLockHeader" type="button" aria-label="Lock owner mode">🔒 Lock owner mode</button><button class="small-btn" id="closeCustomizer" type="button" aria-label="Close customization and preview portfolio">✕ Close editor / Preview site</button></div><div class="customizer-guide"><strong>How it works:</strong> You can use this editor on your phone or computer. Upload your profile photo or project screenshots, fill in your details, and the preview updates automatically. Sign in as the owner to save portfolio settings securely to the server for visitors to see.</div>
 <details class="owner-security-settings">
   <summary>Owner account security and cloud sync</summary>
   <p class="notice">Your login is verified by Supabase. Portfolio settings are saved to the server so the public website can display your latest changes. Use a unique password.</p>
