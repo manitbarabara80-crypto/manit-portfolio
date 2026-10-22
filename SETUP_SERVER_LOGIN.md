@@ -10,20 +10,19 @@ The Supabase project and database/storage security policies are already configur
 - Expected Pages URL: https://manitbarabara80-crypto.github.io/manit-portfolio/
 - Owner email: manitbarabara80@gmail.com
 
-## One required manual step: create the owner login
-For account safety, create your own private password inside Supabase instead of putting it in the website code or chat.
+## Owner login and signup status
+The owner Auth account for `manitbarabara80@gmail.com` was found as email-confirmed in Supabase on 2026-10-22. The owner also reported that public sign-ups are OFF. Do not create a second owner account.
 
-1. Open https://supabase.com/dashboard/project/rufqfsrkvkgkssctqkte/auth/users
-2. Click **Add user** / **Create new user**.
-3. Enter `manitbarabara80@gmail.com` and create a strong password that only you know.
-4. Confirm the account if the dashboard provides that choice.
-5. In **Authentication** settings, turn off public sign-ups if that option is enabled. No public registration form is used by this portfolio.
+- Owner account: https://supabase.com/dashboard/project/rufqfsrkvkgkssctqkte/auth/users
+- Signup settings: https://supabase.com/dashboard/project/rufqfsrkvkgkssctqkte/auth/providers
+
+Turning off public sign-ups prevents new accounts from registering; it does **not** prevent public visitors from viewing this portfolio. Use the owner email and the private password you set in Supabase to customize it. Never put the password in website code or chat.
 
 ## How to open Customize
 1. Visit https://manitbarabara80-crypto.github.io/manit-portfolio/
 2. On a computer press **Ctrl + Shift + M**. On a phone, tap the MANIT logo five times quickly.
-3. Sign in with the owner email and the password you just created.
-4. Make a test change and confirm the status says **Saved on the server**.
+3. Sign in with the owner email and the private password you set in Supabase.
+4. The first owner sign-in synchronizes and normalizes saved settings from the earlier editor. Make a test change and confirm the status says **Saved on the server**.
 5. To finish, press **Lock owner mode**.
 
 ## Files committed to GitHub
