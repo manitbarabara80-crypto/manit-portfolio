@@ -35,4 +35,4 @@ Turning off public sign-ups prevents new accounts from registering; it does **no
 - This project uses the Supabase publishable key in the browser with Row Level Security enabled. That key is designed for public browser use.
 - Never expose a Supabase secret key or `service_role` key in website code or GitHub.
 - Visitors can read the public portfolio content. Only a signed-in session for `manitbarabara80@gmail.com` is permitted to write portfolio settings or upload/change/delete portfolio assets through the configured database/storage policies. Social icons without a personal URL stay inactive instead of linking to a generic platform home page.
-- The website is not fully ready for owner login until the owner Auth account is created and the live page is tested.
+- The owner account and server-side write policies are configured. The live GitHub Pages rendering and an end-to-end browser sign-in still need a manual test.
