@@ -292,8 +292,13 @@ $('ownerLoginForm').addEventListener('submit',async e=>{
     if(!data.user || !data.user.email || data.user.email.toLowerCase()!==OWNER_EMAIL){await supabaseClient.auth.signOut();throw new Error('Access denied: this account is not the owner.');}
     ownerUser=data.user;
     const result=await loadRemoteSettings();
-    if(result && result.error){setCloudStatus('Login succeeded, but reading portfolio settings failed: '+result.error.message,true);}
-    else if(result && !result.found){await saveSettingsToServer();}
+    if(result && result.error){
+      setCloudStatus('Login succeeded, but reading portfolio settings failed: '+result.error.message,true);
+    }else{
+      // Saving once after owner sign-in upgrades legacy project/photo fields and ensures
+      // that the public page receives the canonical settings from the server.
+      await saveSettingsToServer();
+    }
     unlockOwnerMode();
   }catch(err){ownerUser=null;setLoginStatus(err.message||'Sign-in failed. Check your email and password.');}
   finally{button.disabled=false;button.textContent='Sign in to Customize';}
