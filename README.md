@@ -21,6 +21,15 @@ HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL
 - **South Omo Cultural Website** — an in-progress concept highlighting Bodi (Me’en), Mursi, Dime, and Bacha communities. A public demo link will be added when it is ready.
 - **Developer Portfolio Website** — this responsive portfolio, with project details, social links, and owner-only customization. [Open the source repository](https://github.com/manitbarabara80-crypto/manit-portfolio).
 
+## Search engines
+
+The repository includes a public `robots.txt` and `sitemap.xml` to help search engines discover the live portfolio.
+
+- [Robots instructions](https://manitbarabara80-crypto.github.io/manit-portfolio/robots.txt)
+- [XML sitemap](https://manitbarabara80-crypto.github.io/manit-portfolio/sitemap.xml)
+
+These help with discovery but do not guarantee search ranking or indexing. The owner can verify the site and request crawling through [Google Search Console](https://search.google.com/search-console/).
+
 ## Explore
 
 - [Open my portfolio](https://manitbarabara80-crypto.github.io/manit-portfolio/)
