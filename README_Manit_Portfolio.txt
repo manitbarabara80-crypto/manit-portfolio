@@ -59,6 +59,8 @@ through a server and does not store submissions.
 
 Current status
 --------------
-The server project, portfolio settings table, owner-only policies and browser configuration
-are in place. The owner Auth account must still be created in the Supabase dashboard, and the
-live GitHub Pages URL must be tested. See SETUP_SERVER_LOGIN.md.
+The server project, portfolio settings table, owner-only policies, and browser configuration
+are in place. The owner Auth account was confirmed as email-verified on 2026-10-22, and the owner
+reported that public sign-ups are OFF. The front-end code was updated to normalize settings from
+the earlier editor and avoid duplicate project cards. The live GitHub Pages page and real sign-in
+flow still need a final browser test. See SETUP_SERVER_LOGIN.md.
