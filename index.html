@@ -122,7 +122,8 @@ button:hover,a:hover{opacity:.94}
 
 .story-card{margin-top:18px}.story-card p{white-space:pre-line;line-height:1.9}.customizer #storyInput{min-height:190px}
 
-/* The owner entry button stays visible on phones and desktops. Visitors may open the sign-in dialog, but only the authenticated owner can unlock the editor or make server-side changes. */
+/* Hide every customization control from visitors. On mobile, only the owner knows the hidden entry gesture: tap MANIT five times quickly, then sign in. The editor appears only after the server confirms the owner account. */
+body:not(.owner-unlocked) #headerCustomize,
 body:not(.owner-unlocked) #customizeToggle{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
 body:not(.owner-unlocked) #customizer{display:none!important;visibility:hidden!important;pointer-events:none!important}
 .owner-login-overlay{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:22px;background:rgba(5,3,12,.86);backdrop-filter:blur(18px)}
