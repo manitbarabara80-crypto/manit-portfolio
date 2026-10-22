@@ -24,17 +24,15 @@ Supabase project: Manit Portfolio Login
 Dashboard: https://supabase.com/dashboard/project/rufqfsrkvkgkssctqkte
 Owner email: manitbarabara80@gmail.com
 
-Before first login, create the owner account at:
-https://supabase.com/dashboard/project/rufqfsrkvkgkssctqkte/auth/users
-Click Add user / Create new user and choose a strong private password.
-Do not post your password in chat or put it in any file. Disable public user sign-ups in
-Supabase Authentication settings if enabled.
+The owner account already exists and the email was confirmed in Supabase on 2026-10-22.
+Do not create a duplicate. Use the private password you set in Supabase; never post it in chat or put
+it in a file. Public user sign-ups were reported OFF.
 
 Open Customize
 --------------
 1. Visit the live website.
 2. On a computer press Ctrl + Shift + M; on a phone tap the MANIT logo five times quickly.
-3. Sign in using the owner email and password created in Supabase.
+3. Sign in using the owner email and the private password you set in Supabase.
 4. Wait for the status to say the changes were saved to the server.
 5. Use Lock owner mode when done.
 
@@ -48,9 +46,10 @@ or browser configuration.
 
 Profile and project customization
 ---------------------------------
-The editor supports profile photo, story, color themes, animated background, social URLs,
-skills, achievements, languages, and adding/editing/deleting projects with screenshots,
-description, technology stack, live demo and GitHub links.
+The editor supports profile photo, story, color themes, animated background, social URLs, public email,
+phone and WhatsApp numbers, skills, achievements, languages, and adding/editing/deleting projects with
+screenshots, description, technology stack, live demo and GitHub links. Social icons without personal
+profile URLs remain inactive instead of pointing at a generic social site.
 
 Contact form
 ------------
