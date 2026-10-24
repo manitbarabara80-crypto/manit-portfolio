@@ -451,6 +451,9 @@ function normalizePortfolioSettings(raw){
       const duplicatesSite123=project.demo&&normalized.some(existing=>existing.demo===project.demo&&(/site123/i.test(project.name)||/site123/i.test(existing.name)));
       if(!duplicatesSite123)normalized.push(project);
     });
+    if(!normalized.some(project=>project.name.toLowerCase().includes('omo valley tourism'))){
+      normalized.unshift({...defaultProjects[0]});
+    }
     next.projects=normalized;
   }else next.projects=defaultProjects.map(p=>({...p}));
   next.achievements=Array.isArray(source.achievements)?source.achievements:[];
