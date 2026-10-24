@@ -17,7 +17,7 @@ HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL
 
 ## Selected projects
 
-- **Omo Valley Tourism Website** — tourism concept introducing visitors to places and cultural stories in South Omo. [Visit the published SITE123 website](https://6ad4b59689107.site123.me/).
+- **Manita Omo Valley Tourism Ethiopia** — full-featured South Omo tourism platform with cultural storytelling, tours, tribes, guides, bookings, collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard. [Open the live demo on this computer](http://localhost/manitaomovalley/index.html).
 - **South Omo Cultural Website** — an in-progress concept highlighting Bodi (Me’en), Mursi, Dime, and Bacha communities. A public demo link will be added when it is ready.
 - **Developer Portfolio Website** — this responsive portfolio, with project details, social links, and owner-only customization. [Open the source repository](https://github.com/manitbarabara80-crypto/manit-portfolio).
 
