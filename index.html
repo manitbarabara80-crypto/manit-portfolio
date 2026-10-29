@@ -202,6 +202,11 @@ body:not(.owner-unlocked) #customizer{display:none!important;visibility:hidden!i
 .owner-login-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}.owner-login-actions button{flex:1;min-width:120px}.owner-login-status{min-height:1.4em;margin:11px 0 0!important;color:#fca5a5!important}.owner-security-settings{border:1px solid var(--line);border-radius:13px;padding:14px;margin:16px auto 20px;max-width:1080px;background:var(--panel)}.owner-security-settings summary{font-weight:750;cursor:pointer}.owner-security-settings label{display:block!important}.owner-security-settings .edit-actions{margin-top:14px}.owner-security-settings .notice{max-width:none}
 
 
+/* Phone-friendly manager login: visible to everyone, editing remains owner-authenticated. */
+.manager-login-button{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:42px;padding:9px 12px;font-size:.84rem;position:relative;z-index:60}
+body.owner-unlocked #managerLoginButton{display:none!important}
+@media(max-width:780px){.nav-inner{gap:7px}.manager-login-button{font-size:.74rem;padding:7px 8px;min-height:38px}.header-customize{margin-left:auto}}
+@media(max-width:380px){.manager-login-button{font-size:.66rem;padding:6px}.brand{font-size:.8rem}}
 /* Mobile reliability: keep every section readable even if an animation script fails. */
 html,body{width:100%;max-width:100%;overflow-x:hidden}
 img,video,canvas,svg{max-width:100%}
@@ -240,7 +245,7 @@ img,video,canvas,svg{max-width:100%}
 <header class="nav"><div class="wrap nav-inner">
 <a class="brand" id="brand" href="#home">MANIT<span>.</span></a>
 <nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contribute">What I offer</a><a href="#education">Education</a><a href="#growth">Growth</a><a href="#interests">Interests</a><a href="#social-accounts">Socials</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
-<button class="btn primary header-customize" id="headerCustomize" type="button" onclick="window.togglePortfolioCustomizer && window.togglePortfolioCustomizer()">⚙ Customize</button><button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+<button class="btn secondary manager-login-button" id="managerLoginButton" type="button" onclick="window.openPortfolioManagerLogin && window.openPortfolioManagerLogin()">🔐 Manager Login</button><button class="btn primary header-customize" id="headerCustomize" type="button" onclick="window.togglePortfolioCustomizer && window.togglePortfolioCustomizer()">⚙ Customize</button><button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
 </div></header>
 <main id="main-content">
 <section class="hero wrap" id="home">
@@ -369,6 +374,7 @@ function showOwnerLogin(){
   setTimeout(()=>$('ownerEmailInput').focus(),40);
 }
 function hideOwnerLogin(){ $('ownerLoginOverlay').hidden=true; setLoginStatus(''); }
+window.openPortfolioManagerLogin=function(){showOwnerLogin();};
 function unlockOwnerMode(){
   if(!ownerUser || !ownerUser.email || ownerUser.email.toLowerCase()!==OWNER_EMAIL){showOwnerLogin();return;}
   document.body.classList.add('owner-unlocked');hideOwnerLogin();
