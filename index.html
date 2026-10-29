@@ -1062,6 +1062,23 @@ initializeServerPortfolio();
 <!-- Independent owner-login fallback: works even if the main portfolio script has an unrelated runtime error. -->
 <script>
 (function(){
+  // Fail-safe: a JavaScript or network error must not leave the public portfolio invisible.
+  function restoreVisiblePortfolio(){
+    try{
+      document.documentElement.style.setProperty('visibility','visible','important');
+      document.body.style.setProperty('visibility','visible','important');
+      document.body.style.removeProperty('overflow');
+      document.querySelectorAll('.reveal').forEach(function(el){
+        el.style.setProperty('opacity','1','important');
+        el.style.setProperty('transform','none','important');
+        el.classList.add('revealed');
+      });
+      var main=document.getElementById('main-content');
+      if(main){main.style.setProperty('visibility','visible','important');main.style.setProperty('opacity','1','important');}
+    }catch(ignore){}
+  }
+  window.addEventListener('error',function(){restoreVisiblePortfolio();});
+  window.addEventListener('unhandledrejection',function(){restoreVisiblePortfolio();});
   function openOwnerLoginFallback(){
     var overlay=document.getElementById('ownerLoginOverlay');
     if(!overlay){alert('Owner login panel is missing from this page. Please reload the website.');return;}
