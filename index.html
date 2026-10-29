@@ -770,10 +770,24 @@ async function initializeServerPortfolio(){
     const session=data&&data.session;
     if(session && session.user && session.user.email && session.user.email.toLowerCase()===OWNER_EMAIL)ownerUser=session.user;
     else if(session)await supabaseClient.auth.signOut();
-    supabaseClient.auth.onAuthStateChange((_event,sessionNow)=>{
+    supabaseClient.auth.onAuthStateChange((event,sessionNow)=>{
       const user=sessionNow&&sessionNow.user;
-      ownerUser=(user&&user.email&&user.email.toLowerCase()===OWNER_EMAIL)?user:null;
-      if(!ownerUser)document.body.classList.remove('owner-unlocked');
+      if(user&&user.email&&user.email.toLowerCase()===OWNER_EMAIL){
+        ownerUser=user;
+        // Restore the owner UI when Supabase confirms the saved owner session.
+        document.body.classList.add('owner-unlocked');
+        const panel=$('customizer');
+        if(panel)panel.classList.remove('open');
+        if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','false');
+        if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','false');
+      }else if(event==='SIGNED_OUT'){
+        ownerUser=null;
+        document.body.classList.remove('owner-unlocked');
+        const panel=$('customizer');
+        if(panel)panel.classList.remove('open');
+      }
+      // Ignore a transient null INITIAL_SESSION callback; it must not hide the
+      // editor immediately after a successful sign-in.
     });
     await loadRemoteSettings();
   }catch(err){setCloudStatus('Server connection failed: '+(err.message||'Unknown error'),true);}
