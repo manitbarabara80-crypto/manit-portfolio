@@ -454,7 +454,24 @@ function unlockOwnerMode(){
     panel.style.removeProperty('z-index');
   }
   document.body.style.overflow='';
-  if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','false');
+  if($('customizeToggle')){
+    const toggle=$('customizeToggle');
+    toggle.setAttribute('aria-expanded','false');
+    // Force the owner entry button to be visible even if an older CSS rule hides it.
+    toggle.hidden=false;
+    toggle.removeAttribute('hidden');
+    ['display','visibility','opacity','pointer-events','position','z-index','right','bottom','left','top','width','height','transform','clip-path'].forEach(p=>toggle.style.removeProperty(p));
+    toggle.style.setProperty('display','inline-flex','important');
+    toggle.style.setProperty('visibility','visible','important');
+    toggle.style.setProperty('opacity','1','important');
+    toggle.style.setProperty('pointer-events','auto','important');
+    toggle.style.setProperty('position','fixed','important');
+    toggle.style.setProperty('right','16px','important');
+    toggle.style.setProperty('bottom','16px','important');
+    toggle.style.setProperty('left','auto','important');
+    toggle.style.setProperty('top','auto','important');
+    toggle.style.setProperty('z-index','2147483646','important');
+  }
   if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','false');
   setCloudStatus('Owner signed in. Your portfolio is visible. Click Customize to edit your details.');
 }
