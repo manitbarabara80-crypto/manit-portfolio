@@ -484,10 +484,28 @@ $('changeOwnerPassword').addEventListener('click',async()=>{
   try{const {error}=await supabaseClient.auth.updateUser({password:newPass});if(error)throw error;$('newOwnerPassword').value='';$('confirmOwnerPassword').value='';status.textContent='Password changed on the authentication server.';}
   catch(err){status.textContent='Password update failed: '+(err.message||'try again.');}
 });
-// Secret entry: Ctrl+Shift+M on desktop or tap MANIT five times on mobile.
+// Private owner entry: Ctrl+Shift+M on desktop or tap MANIT / the hero name three times on mobile.
 let ownerLogoTapCount=0, ownerLogoTapTimer=null;
-function handleSecretOwnerTap(e){if(e&&e.preventDefault)e.preventDefault();ownerLogoTapCount++;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=setTimeout(()=>{ownerLogoTapCount=0;ownerLogoTapTimer=null;},4000);if(ownerLogoTapCount>=5){ownerLogoTapCount=0;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=null;showOwnerLogin();}}
-$('brand').addEventListener('click',handleSecretOwnerTap);$('heroName').addEventListener('click',handleSecretOwnerTap);$('brand').style.cursor='pointer';$('heroName').style.cursor='pointer';$('brand').title='Tap five times quickly to open owner sign-in';$('heroName').title='Tap five times quickly to open owner sign-in';
+function handleSecretOwnerTap(e){
+  if(e&&e.preventDefault)e.preventDefault();
+  ownerLogoTapCount++;
+  if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);
+  ownerLogoTapTimer=setTimeout(()=>{ownerLogoTapCount=0;ownerLogoTapTimer=null;},3000);
+  if(ownerLogoTapCount>=3){
+    ownerLogoTapCount=0;
+    if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);
+    ownerLogoTapTimer=null;
+    showOwnerLogin();
+  }
+}
+$('brand').addEventListener('click',handleSecretOwnerTap);
+$('heroName').addEventListener('click',handleSecretOwnerTap);
+$('brand').style.cursor='pointer';
+$('heroName').style.cursor='pointer';
+$('brand').title='Tap three times quickly to open owner sign-in';
+$('heroName').title='Tap three times quickly to open owner sign-in';
+$('brand').setAttribute('aria-label','Manit Barabara Tebligu home — tap three times for owner sign-in');
+
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='m'){e.preventDefault();showOwnerLogin();}if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
 
 const themes={purple:{accent:'#a855f7',accent2:'#7c3aed'},blue:{accent:'#38bdf8',accent2:'#2563eb'},green:{accent:'#34d399',accent2:'#059669'},pink:{accent:'#f472b6',accent2:'#db2777'},gold:{accent:'#fbbf24',accent2:'#b45309'},cyan:{accent:'#22d3ee',accent2:'#0891b2'}};
