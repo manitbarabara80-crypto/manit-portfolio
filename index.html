@@ -383,7 +383,7 @@ img,video,canvas,svg{max-width:100%}
 <label for="profilePosition">Photo vertical position <span id="profilePositionValue">35%</span></label><input id="profilePosition" type="range" min="0" max="100" step="1" value="35">
 <div class="edit-actions"><button class="small-btn" id="resetProfilePhoto" type="button">Remove profile photo</button><button class="small-btn" id="resetProfileControls" type="button">Reset circle controls</button></div>
 <p class="notice">Use these sliders to size the circular frame, zoom into the photo, and move the face up or down. Your settings save automatically and sync to the server when owner sign-in is active.</p>
-<label for="socialPlatform">Social profile to update</label><select id="socialPlatform"><option>WhatsApp</option><option>Facebook</option><option>Telegram</option><option>TikTok</option><option>YouTube</option><option>LinkedIn</option><option>GitHub</option></select>
+<div class="section-divider" style="border-top:1px solid var(--line);margin:16px 0 8px;padding-top:12px;font-weight:800">Edit text anywhere on the page</div><p class="notice">Use this mode to edit headings, paragraphs, section labels, and footer text directly on the page. Click Finish to save your changes.</p><div class="edit-actions"><button class="small-btn" id="toggleInlineTextEdit" type="button">✎ Edit page text</button><button class="small-btn" id="clearTextOverrides" type="button">Reset edited page text</button></div><p class="notice" id="inlineTextEditStatus" role="status" aria-live="polite"></p><label for="socialPlatform">Social profile to update</label><select id="socialPlatform"><option>WhatsApp</option><option>Facebook</option><option>Telegram</option><option>TikTok</option><option>YouTube</option><option>LinkedIn</option><option>GitHub</option></select>
 <label for="socialUrl">Profile URL</label><input class="edit-input" type="url" id="socialUrl" placeholder="https://...">
 <div class="section-divider" style="border-top:1px solid var(--line);margin:16px 0 8px;padding-top:12px;font-weight:800">Contact details</div>
 <label for="emailInput">Public email address</label><input class="edit-input" type="email" id="emailInput" autocomplete="email" placeholder="you@example.com">
@@ -583,7 +583,64 @@ function toInternationalPhone(value,fallback=''){
   if(digits.startsWith('9'))return '+251'+digits;
   return '+'+digits;
 }
-let settings={...defaults,socials:{},skills:[],projects:defaultProjects.map(p=>({...p})),achievements:[],languages:[]};
+let settings={...defaults,socials:{},skills:[],projects:defaultProjects.map(p=>({...p})),achievements:[],languages:[],textOverrides:{}};
+// Manager-only inline text editing. Stable DOM-path keys allow text changes to survive reloads.
+let inlineTextEditActive=false;
+function managerTextTargets(){
+  const selector='main h1,main h2,main h3,main p,main .eyebrow,main .project-label,main .process-step .number,footer .footer-inner > span,footer .footer-links a';
+  return Array.from(document.querySelectorAll(selector)).filter(el=>
+    !el.closest('#customizer') && !el.closest('#ownerLoginOverlay') &&
+    el.children.length===0 && (el.textContent||'').trim().length>0 &&
+    !el.matches('script,style,button,input,textarea,select')
+  );
+}
+function managerTextKey(el){
+  if(el.id)return 'id:'+el.id;
+  const parts=[];
+  let node=el;
+  while(node&&node!==document.body){
+    let part=node.tagName.toLowerCase();
+    if(node.parentElement){
+      const same=Array.from(node.parentElement.children).filter(s=>s.tagName===node.tagName);
+      part+=':'+ (same.indexOf(node)+1);
+    }
+    parts.unshift(part);node=node.parentElement;
+  }
+  return parts.join('/');
+}
+function applyManagerTextOverrides(){
+  const overrides=settings.textOverrides&&typeof settings.textOverrides==='object'?settings.textOverrides:{};
+  managerTextTargets().forEach(el=>{
+    const key=managerTextKey(el);
+    if(Object.prototype.hasOwnProperty.call(overrides,key))el.textContent=String(overrides[key]);
+  });
+}
+function setInlineTextEdit(active){
+  if(!document.body.classList.contains('owner-unlocked')){showOwnerLogin();return;}
+  inlineTextEditActive=Boolean(active);
+  const targets=managerTextTargets();
+  targets.forEach(el=>{
+    if(inlineTextEditActive){
+      el.contentEditable='true';el.spellcheck=true;
+      el.style.outline='1px dashed var(--accent)';
+      el.style.outlineOffset='3px';
+      el.title='Manager edit: click and type';
+    }else{
+      el.removeAttribute('contenteditable');el.style.removeProperty('outline');el.style.removeProperty('outline-offset');el.removeAttribute('title');
+    }
+  });
+  const button=$('toggleInlineTextEdit');
+  if(button)button.textContent=inlineTextEditActive?'✓ Finish and save text':'✎ Edit page text';
+  const status=$('inlineTextEditStatus');
+  if(status)status.textContent=inlineTextEditActive?'Text editing is on. Click any outlined heading, paragraph, label, or footer text to edit it.':'';
+  if(!inlineTextEditActive){
+    const overrides={...(settings.textOverrides||{})};
+    targets.forEach(el=>{const key=managerTextKey(el);const text=String(el.textContent||'').trim();if(text)overrides[key]=text;});
+    settings.textOverrides=overrides;
+    save();
+    if(status)status.textContent='Page text saved. If you are signed in, it will sync to the public website.';
+  }
+}
 function safeExternalUrl(value){
   try{const parsed=new URL(String(value||'').trim());return parsed.protocol==='https:'?parsed.href:'';}catch(e){return '';}
 }
@@ -777,7 +834,7 @@ async function loadRemoteSettings(){
     const oldPhoto=typeof parsed.photo==='string'?parsed.photo:'';
     const candidatePhoto=data.profile_photo_url||oldPhoto||'';
     profilePhotoUrl=/^(https:\/\/|data:image\/)/i.test(candidatePhoto)?candidatePhoto:'';
-    applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();
+    applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();applyManagerTextOverrides();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();
     if(profilePhotoUrl){$('profileImage').src=profilePhotoUrl;$('portrait').classList.add('has-photo');try{localStorage.setItem('manitPortfolioPhoto',profilePhotoUrl);}catch(e){}}
     else{$('profileImage').removeAttribute('src');$('portrait').classList.remove('has-photo');try{localStorage.removeItem('manitPortfolioPhoto')}catch(e){}}
     try{localStorage.setItem('manitPortfolioSettings',JSON.stringify(settings));if(settings.backgroundImage)localStorage.setItem('manitPortfolioBackground',settings.backgroundImage);else localStorage.removeItem('manitPortfolioBackground');}catch(e){}
@@ -819,7 +876,7 @@ async function initializeServerPortfolio(){
   }catch(err){setCloudStatus('Server connection failed: '+(err.message||'Unknown error'),true);}
 }
 
-function load(){try{const saved=localStorage.getItem('manitPortfolioSettings');if(saved)settings=normalizePortfolioSettings(JSON.parse(saved));}catch(e){}applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();}
+function load(){try{const saved=localStorage.getItem('manitPortfolioSettings');if(saved)settings=normalizePortfolioSettings(JSON.parse(saved));}catch(e){}applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();applyManagerTextOverrides();}
 $('menu').addEventListener('click',()=>{const nav=$('navlinks'),open=nav.classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));});
 $('navlinks').querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');}));
 window.togglePortfolioCustomizer=()=>{if(!document.body.classList.contains('owner-unlocked')){showOwnerLogin();return;}const panel=$('customizer');const open=!panel.classList.contains('open');if(!open){lockOwnerMode();return;}panel.classList.add('open');$('customizeToggle').setAttribute('aria-expanded','true');$('headerCustomize').setAttribute('aria-expanded','true');panel.scrollTop=0;document.body.style.overflow='hidden';panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});};
@@ -845,6 +902,13 @@ $('emailInput').addEventListener('input',()=>{settings.email=$('emailInput').val
 $('phoneInput').addEventListener('input',()=>{settings.phone=$('phoneInput').value.trim();settings.phoneInternational=toInternationalPhone(settings.phone,'');if(!settings.whatsappNumber)settings.whatsappNumber=String(settings.phoneInternational||'').replace(/\D/g,'');applyContactDetails();save();});
 $('secondaryPhoneInput').addEventListener('input',()=>{settings.secondaryPhone=$('secondaryPhoneInput').value.trim();settings.secondaryPhoneInternational=toInternationalPhone(settings.secondaryPhone,'');applyContactDetails();save();});
 $('whatsappNumberInput').addEventListener('input',()=>{settings.whatsappNumber=$('whatsappNumberInput').value.replace(/\D/g,'');applyContactDetails();save();});
+$('toggleInlineTextEdit').addEventListener('click',()=>setInlineTextEdit(!inlineTextEditActive));
+$('clearTextOverrides').addEventListener('click',()=>{
+  if(!confirm('Reset all inline-edited page text to the original website wording?'))return;
+  settings.textOverrides={};save();
+  // Reload original HTML text without losing other customization settings.
+  window.location.reload();
+});
 $('socialPlatform').addEventListener('change',()=>{const platform=$('socialPlatform').value;const builtIn={GitHub:'https://github.com/manitbarabara80-crypto',WhatsApp:'https://wa.me/251902266498',Facebook:'',Telegram:'',TikTok:'',YouTube:'',LinkedIn:''};$('socialUrl').value=settings.socials[platform]||builtIn[platform]||'';});
 $('socialPlatform').dispatchEvent(new Event('change'));
 $('saveSocial').addEventListener('click',()=>{const platform=$('socialPlatform').value,url=$('socialUrl').value.trim();if(!url){alert('Enter a profile URL first.');return;}try{const parsed=new URL(url);if(parsed.protocol!=='https:')throw new Error('https required');}catch(e){alert('Enter a complete profile URL beginning with https://');return;}settings.socials[platform]=url;renderExtras();save();alert(platform+' link updated.');});
