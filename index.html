@@ -816,6 +816,37 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('customizer').cla
 load();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
 initializeServerPortfolio();
 </script>
+
+<!-- Final owner customizer visibility fix -->
+<style id="ownerCustomizerVisibilityFix">
+  #customizer.open{
+    display:block!important; visibility:visible!important; opacity:1!important;
+    position:fixed!important; z-index:2147483000!important;
+    right:12px!important; bottom:12px!important;
+    width:min(680px,calc(100vw - 24px))!important;
+    max-width:calc(100vw - 24px)!important;
+    max-height:calc(100dvh - 24px)!important;
+    overflow-x:hidden!important; overflow-y:auto!important;
+    color:var(--text,#fff)!important; background:var(--panel,#171323)!important;
+    padding:18px!important; box-sizing:border-box!important;
+  }
+  body.owner-unlocked #customizer.open,
+  body.owner-unlocked #customizer.open *{
+    visibility:visible;
+  }
+  #customizer.open > *{position:relative;z-index:auto;}
+  #customizer.open .customizer-head{display:flex!important;visibility:visible!important;opacity:1!important;}
+  #customizer.open label,#customizer.open h2,#customizer.open h3,
+  #customizer.open p,#customizer.open summary,#customizer.open strong,
+  #customizer.open .section-divider{color:var(--text,#fff);}
+  #customizer.open input,#customizer.open textarea,#customizer.open select,
+  #customizer.open button{max-width:100%;box-sizing:border-box;}
+  @media(max-width:600px){
+    #customizer.open{right:8px!important;bottom:8px!important;width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;max-height:calc(100dvh - 16px)!important;padding:12px!important;}
+    #customizer.open .customizer-head{flex-wrap:wrap!important;gap:8px!important;}
+  }
+</style>
+
 <!-- Independent owner-login fallback: works even if the main portfolio script has an unrelated runtime error. -->
 <script>
 (function(){
