@@ -21,9 +21,10 @@ Turning off public sign-ups prevents new accounts from registering; it does **no
 ## How to open Customize
 1. Visit https://manitbarabara80-crypto.github.io/manit-portfolio/
 2. On a computer press **Ctrl + Shift + M**. On a phone, tap the MANIT logo or your hero name three times quickly.
-3. Sign in with the owner email and the private password you set in Supabase.
-4. The first owner sign-in synchronizes and normalizes saved settings from the earlier editor. Make a test change and confirm the status says **Saved on the server**.
-5. To finish, press **Lock owner mode**.
+3. Sign in with owner email `manitbarabara80@gmail.com` and the private password for that Supabase Auth account. The password is never stored in website source code.
+4. If you do not know the password, press **Forgot password?** in the sign-in panel. Check the Gmail inbox and Spam folder for the reset email. The Supabase Auth email provider and the site URL must be configured for reset emails to arrive and redirect correctly.
+5. The first owner sign-in synchronizes saved settings from the earlier editor. Make a test change and confirm the status says **Saved on the server**.
+6. To finish, press **Lock owner mode**.
 
 ## Files committed to GitHub
 - `index.html` — portfolio plus Supabase authenticated owner editor
@@ -35,4 +36,4 @@ Turning off public sign-ups prevents new accounts from registering; it does **no
 - This project uses the Supabase publishable key in the browser with Row Level Security enabled. That key is designed for public browser use.
 - Never expose a Supabase secret key or `service_role` key in website code or GitHub.
 - Visitors can read the public portfolio content. Only a signed-in session for `manitbarabara80@gmail.com` is permitted to write portfolio settings or upload/change/delete portfolio assets through the configured database/storage policies. Social icons without a personal URL stay inactive instead of linking to a generic platform home page.
-- The owner account and server-side write policies are configured. The live GitHub Pages rendering and an end-to-end browser sign-in still need a manual test.
+- The owner account and server-side write policies were previously configured. The website now includes a password-reset request button and improved upload handling. The live GitHub Pages rendering, reset-email delivery, and end-to-end browser sign-in still need a manual test.
