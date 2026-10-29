@@ -343,7 +343,7 @@ img,video,canvas,svg{max-width:100%}
       <input id="ownerEmailInput" type="email" autocomplete="username" required value="manitbarabara80@gmail.com" placeholder="Owner email address">
       <label for="ownerPasswordInput">Password</label>
       <input id="ownerPasswordInput" type="password" autocomplete="current-password" required placeholder="Enter your Supabase password">
-      <div class="owner-login-actions"><button class="btn primary" id="ownerSignInButton" type="submit">Sign in to Customize</button><button class="btn secondary" id="cancelOwnerLogin" type="button">Cancel</button></div>
+      <div class="owner-login-actions"><button class="btn primary" id="ownerSignInButton" type="submit">Sign in to Customize</button><button class="btn secondary" id="forgotOwnerPassword" type="button">Forgot password?</button><button class="btn secondary" id="cancelOwnerLogin" type="button">Cancel</button></div>
       <p id="ownerLoginStatus" class="owner-login-status" role="status" aria-live="polite"></p>
       <p class="notice">First-time setup is in <strong>SETUP_SERVER_LOGIN.md</strong>. Never place a Supabase secret or service-role key in this website.</p>
     </form>
@@ -469,8 +469,21 @@ $('ownerLoginForm').addEventListener('submit',async e=>{
       await saveSettingsToServer();
     }
     unlockOwnerMode();
-  }catch(err){ownerUser=null;setLoginStatus(err.message||'Sign-in failed. Check your email and password.');}
+  }catch(err){ownerUser=null;const message=String(err&&err.message||'');setLoginStatus(/invalid login credentials/i.test(message)?'Email or password is incorrect. Check the owner email and use Forgot password if needed.':(message||'Sign-in failed. Check your email and password.'));}
   finally{button.disabled=false;button.textContent='Sign in to Customize';}
+});
+$('forgotOwnerPassword').addEventListener('click',async()=>{
+  if(!supabaseClient){setLoginStatus('Server login is not configured. Please check the website setup.');return;}
+  const email=$('ownerEmailInput').value.trim().toLowerCase();
+  if(email!==OWNER_EMAIL){setLoginStatus('Enter the registered owner email: '+OWNER_EMAIL);return;}
+  const button=$('forgotOwnerPassword');button.disabled=true;button.textContent='Sending reset email…';setLoginStatus('');
+  try{
+    const redirectTo=window.location.origin+window.location.pathname;
+    const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo});
+    if(error)throw error;
+    setLoginStatus('Password reset email requested. Check the inbox and Spam folder for '+email+'. If no email arrives, check Supabase Auth email settings.',false);
+  }catch(err){setLoginStatus('Could not request password reset: '+(err.message||'Check Supabase Auth email settings.'));}
+  finally{button.disabled=false;button.textContent='Forgot password?';}
 });
 $('cancelOwnerLogin').addEventListener('click',hideOwnerLogin);
 $('ownerLoginOverlay').addEventListener('click',e=>{if(e.target===$('ownerLoginOverlay'))hideOwnerLogin();});
@@ -692,7 +705,7 @@ async function saveSettingsToServer(){
         project.image=await uploadDataImage('projects/'+slug+'-'+i+'.jpg',project.image);
       }
     }
-    if(settings.siteEdits&&settings.siteEdits.images){for(const [key,value] of Object.entries(settings.siteEdits.images)){if(/^data:image\\//i.test(value||'')){const slug=String(key).replace(/[^a-z0-9]+/gi,'-').slice(0,80)||'site-image';settings.siteEdits.images[key]=await uploadDataImage('site-edits/'+slug+'.jpg',value);}}}
+    if(settings.siteEdits&&settings.siteEdits.images){for(const [key,value] of Object.entries(settings.siteEdits.images)){if(/^data:image\//i.test(value||'')){const slug=String(key).replace(/[^a-z0-9]+/gi,'-').slice(0,80)||'site-image';settings.siteEdits.images[key]=await uploadDataImage('site-edits/'+slug+'.jpg',value);}}}
     const savedPhoto=(()=>{try{return localStorage.getItem('manitPortfolioPhoto')||'';}catch(e){return '';}})();
     if(/^data:image\//i.test(savedPhoto)){
       profilePhotoUrl=await uploadDataImage('profile/profile.jpg',savedPhoto);
