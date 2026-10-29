@@ -243,9 +243,9 @@ img,video,canvas,svg{max-width:100%}
 <div id="backgroundImageLayer" aria-hidden="true"></div><canvas id="backgroundMotion" aria-hidden="true"></canvas>
 <a class="skip-link" href="#main-content">Skip to content</a><div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header class="nav"><div class="wrap nav-inner">
-<a class="brand" id="brand" href="#home">MANIT<span>.</span></a>
+<a class="brand" id="brand" href="#home" aria-label="Manit Barabara Tebligu home">MANIT<span>.</span></a>
 <nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contribute">What I offer</a><a href="#education">Education</a><a href="#growth">Growth</a><a href="#interests">Interests</a><a href="#social-accounts">Socials</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
-<button class="btn secondary manager-login-button" id="managerLoginButton" type="button" onclick="window.openPortfolioManagerLogin && window.openPortfolioManagerLogin()">🔐 Manager Login</button><button class="btn primary header-customize" id="headerCustomize" type="button" onclick="window.togglePortfolioCustomizer && window.togglePortfolioCustomizer()">⚙ Customize</button><button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+<button class="btn secondary manager-login-button" id="managerLoginButton" type="button" aria-hidden="true" tabindex="-1" onclick="window.openPortfolioManagerLogin && window.openPortfolioManagerLogin()">🔐 Manager Login</button><button class="btn primary header-customize" id="headerCustomize" type="button" onclick="window.togglePortfolioCustomizer && window.togglePortfolioCustomizer()">⚙ Customize</button><button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
 </div></header>
 <main id="main-content">
 <section class="hero wrap" id="home">
@@ -423,7 +423,7 @@ $('changeOwnerPassword').addEventListener('click',async()=>{
 });
 // Secret entry: Ctrl+Shift+M on desktop or tap MANIT five times on mobile.
 let ownerLogoTapCount=0, ownerLogoTapTimer=null;
-$('brand').addEventListener('click',e=>{ownerLogoTapCount++;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=setTimeout(()=>ownerLogoTapCount=0,1800);if(ownerLogoTapCount>=5){e.preventDefault();ownerLogoTapCount=0;showOwnerLogin();}});
+function handleSecretOwnerTap(e){ownerLogoTapCount++;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=setTimeout(()=>ownerLogoTapCount=0,2200);if(ownerLogoTapCount>=5){e.preventDefault();ownerLogoTapCount=0;showOwnerLogin();}} $('brand').addEventListener('click',handleSecretOwnerTap);$('heroName').addEventListener('click',handleSecretOwnerTap);$('heroName').style.cursor='pointer';$('heroName').title='';
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='m'){e.preventDefault();showOwnerLogin();}if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
 
 const themes={purple:{accent:'#a855f7',accent2:'#7c3aed'},blue:{accent:'#38bdf8',accent2:'#2563eb'},green:{accent:'#34d399',accent2:'#059669'},pink:{accent:'#f472b6',accent2:'#db2777'},gold:{accent:'#fbbf24',accent2:'#b45309'},cyan:{accent:'#22d3ee',accent2:'#0891b2'}};
