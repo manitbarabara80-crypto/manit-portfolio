@@ -1000,6 +1000,25 @@ initializeServerPortfolio();
   }
 </style>
 
+<!-- Owner-only Customize button recovery: keep the editor entry visible after successful sign-in. -->
+<style id="ownerCustomizeButtonRecovery">
+  body.owner-unlocked #customizeToggle {
+    display:inline-flex!important; position:fixed!important;
+    right:18px!important; bottom:18px!important; left:auto!important; top:auto!important;
+    z-index:2147483646!important; visibility:visible!important; opacity:1!important;
+    pointer-events:auto!important; transform:none!important;
+    width:auto!important; height:auto!important; clip:auto!important; clip-path:none!important;
+  }
+  body.owner-unlocked #headerCustomize {
+    display:inline-flex!important; visibility:visible!important; opacity:1!important;
+    pointer-events:auto!important;
+  }
+  @media(max-width:760px) {
+    body.owner-unlocked #headerCustomize { display:none!important; }
+    body.owner-unlocked #customizeToggle { right:14px!important; bottom:14px!important; }
+  }
+</style>
+
 <!-- Independent owner-login fallback: works even if the main portfolio script has an unrelated runtime error. -->
 <script>
 (function(){
