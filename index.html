@@ -724,7 +724,7 @@ async function loadRemoteSettings(){
     const oldPhoto=typeof parsed.photo==='string'?parsed.photo:'';
     const candidatePhoto=data.profile_photo_url||oldPhoto||'';
     profilePhotoUrl=/^(https:\/\/|data:image\/)/i.test(candidatePhoto)?candidatePhoto:'';
-    applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();
+    applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();
     if(profilePhotoUrl){$('profileImage').src=profilePhotoUrl;$('portrait').classList.add('has-photo');try{localStorage.setItem('manitPortfolioPhoto',profilePhotoUrl);}catch(e){}}
     else{$('profileImage').removeAttribute('src');$('portrait').classList.remove('has-photo');try{localStorage.removeItem('manitPortfolioPhoto')}catch(e){}}
     try{localStorage.setItem('manitPortfolioSettings',JSON.stringify(settings));if(settings.backgroundImage)localStorage.setItem('manitPortfolioBackground',settings.backgroundImage);else localStorage.removeItem('manitPortfolioBackground');}catch(e){}
@@ -814,7 +814,7 @@ const progress=$('scrollProgress');const updateProgress=()=>{const max=document.
 const backTop=$('backTop');window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>550),{passive:true});backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');if(document.body.classList.contains('owner-unlocked'))lockOwnerMode();}});
-load();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
+load();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
 initializeServerPortfolio();
 </script>
 
