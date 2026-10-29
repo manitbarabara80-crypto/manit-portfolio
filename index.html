@@ -816,4 +816,42 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('customizer').cla
 load();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
 initializeServerPortfolio();
 </script>
+<!-- Independent owner-login fallback: works even if the main portfolio script has an unrelated runtime error. -->
+<script>
+(function(){
+  function openOwnerLoginFallback(){
+    var overlay=document.getElementById('ownerLoginOverlay');
+    if(!overlay){alert('Owner login panel is missing from this page. Please reload the website.');return;}
+    overlay.hidden=false;
+    overlay.removeAttribute('hidden');
+    overlay.style.setProperty('display','grid','important');
+    overlay.style.setProperty('visibility','visible','important');
+    overlay.style.setProperty('opacity','1','important');
+    overlay.style.setProperty('position','fixed','important');
+    overlay.style.setProperty('inset','0','important');
+    overlay.style.setProperty('z-index','2147483647','important');
+    document.body.style.overflow='hidden';
+    var status=document.getElementById('ownerLoginStatus');
+    if(status)status.textContent='';
+    var password=document.getElementById('ownerPasswordInput');
+    if(password)password.value='';
+    var email=document.getElementById('ownerEmailInput');
+    if(email)setTimeout(function(){email.focus();},50);
+  }
+  document.addEventListener('click',function(event){
+    var footer=event.target.closest && event.target.closest('#ownerLoginFooterLink');
+    if(footer){event.preventDefault();event.stopImmediatePropagation();openOwnerLoginFallback();return;}
+    var brand=event.target.closest && event.target.closest('#brand, #heroName');
+    if(brand){
+      window.__ownerTapFallback=(window.__ownerTapFallback||0)+1;
+      clearTimeout(window.__ownerTapFallbackTimer);
+      window.__ownerTapFallbackTimer=setTimeout(function(){window.__ownerTapFallback=0;},3000);
+      if(window.__ownerTapFallback>=3){event.preventDefault();window.__ownerTapFallback=0;openOwnerLoginFallback();}
+    }
+  },true);
+  document.addEventListener('keydown',function(event){
+    if(event.ctrlKey&&event.shiftKey&&event.key.toLowerCase()==='m'){event.preventDefault();openOwnerLoginFallback();}
+  },true);
+})();
+</script>
 </body></html>
