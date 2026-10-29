@@ -240,6 +240,12 @@ img,video,canvas,svg{max-width:100%}
 
 /* Keep the manager entry hidden; owner access is opened by five taps on the name. */
 .manager-login-button,#managerLoginButton{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
+/* Critical mobile fix: a broad body-child rule must never turn these fixed panels into in-flow elements. */
+#ownerLoginOverlay{position:fixed!important;inset:0!important;z-index:5000!important;}
+#ownerLoginOverlay:not([hidden]){display:grid!important;place-items:center!important;}
+#customizer{position:fixed!important;right:16px!important;bottom:78px!important;z-index:29!important;}
+#customizer.open{display:block!important;}
+@media(max-width:600px){#customizer{right:8px!important;bottom:8px!important;width:calc(100vw - 16px)!important;max-height:88dvh!important;padding:14px!important;}#ownerLoginOverlay{padding:14px!important;overflow-y:auto!important;} .owner-login-card{max-height:92dvh;overflow-y:auto;width:100%;}}
 </style>
 </head>
 <body>
@@ -426,7 +432,8 @@ $('changeOwnerPassword').addEventListener('click',async()=>{
 });
 // Secret entry: Ctrl+Shift+M on desktop or tap MANIT five times on mobile.
 let ownerLogoTapCount=0, ownerLogoTapTimer=null;
-function handleSecretOwnerTap(e){ownerLogoTapCount++;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=setTimeout(()=>ownerLogoTapCount=0,2200);if(ownerLogoTapCount>=5){e.preventDefault();ownerLogoTapCount=0;showOwnerLogin();}} $('brand').addEventListener('click',handleSecretOwnerTap);$('heroName').addEventListener('click',handleSecretOwnerTap);$('heroName').style.cursor='pointer';$('heroName').title='';
+function handleSecretOwnerTap(e){if(e&&e.preventDefault)e.preventDefault();ownerLogoTapCount++;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=setTimeout(()=>{ownerLogoTapCount=0;ownerLogoTapTimer=null;},4000);if(ownerLogoTapCount>=5){ownerLogoTapCount=0;if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);ownerLogoTapTimer=null;showOwnerLogin();}}
+$('brand').addEventListener('click',handleSecretOwnerTap);$('heroName').addEventListener('click',handleSecretOwnerTap);$('brand').style.cursor='pointer';$('heroName').style.cursor='pointer';$('brand').title='Tap five times quickly to open owner sign-in';$('heroName').title='Tap five times quickly to open owner sign-in';
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='m'){e.preventDefault();showOwnerLogin();}if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
 
 const themes={purple:{accent:'#a855f7',accent2:'#7c3aed'},blue:{accent:'#38bdf8',accent2:'#2563eb'},green:{accent:'#34d399',accent2:'#059669'},pink:{accent:'#f472b6',accent2:'#db2777'},gold:{accent:'#fbbf24',accent2:'#b45309'},cyan:{accent:'#22d3ee',accent2:'#0891b2'}};
