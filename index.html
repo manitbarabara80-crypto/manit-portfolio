@@ -440,9 +440,25 @@ function hideOwnerLogin(){ $('ownerLoginOverlay').hidden=true; setLoginStatus(''
 window.openPortfolioManagerLogin=function(){showOwnerLogin();};
 function unlockOwnerMode(){
   if(!ownerUser || !ownerUser.email || ownerUser.email.toLowerCase()!==OWNER_EMAIL){showOwnerLogin();return;}
-  document.body.classList.add('owner-unlocked');hideOwnerLogin();
+  document.body.classList.add('owner-unlocked');
+  hideOwnerLogin();
   const panel=$('customizer');
-  if(!panel.classList.contains('open')){panel.classList.add('open');$('customizeToggle').setAttribute('aria-expanded','true');$('headerCustomize').setAttribute('aria-expanded','true');panel.scrollTop=0;document.body.style.overflow='hidden';panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});}
+  if(panel){
+    panel.classList.add('open');
+    panel.hidden=false;
+    panel.style.setProperty('display','block','important');
+    panel.style.setProperty('visibility','visible','important');
+    panel.style.setProperty('opacity','1','important');
+    panel.style.setProperty('pointer-events','auto','important');
+    panel.style.setProperty('z-index','2147483000','important');
+    panel.scrollTop=0;
+    document.body.style.overflow='hidden';
+    panel.setAttribute('tabindex','-1');
+  }
+  if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','true');
+  if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','true');
+  if(panel)panel.focus({preventScroll:true});
+  setCloudStatus('Owner signed in. Customize your portfolio below. Changes will sync to the server.');
 }
 async function lockOwnerMode(signOut=true){
   document.body.classList.remove('owner-unlocked');$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';hideOwnerLogin();
@@ -919,6 +935,26 @@ initializeServerPortfolio();
   window.applySavedPortfolioVisualEdits=applySaved;
 })();
 </script>
+
+<!-- Owner editor visibility and scroll safety fix -->
+<style>
+  body.owner-unlocked #customizer.open{
+    display:block!important;visibility:visible!important;opacity:1!important;
+    pointer-events:auto!important;position:fixed!important;z-index:2147483000!important;
+    inset:12px 12px 12px auto!important;width:min(760px,calc(100vw - 24px))!important;
+    max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 24px)!important;
+    overflow-x:hidden!important;overflow-y:auto!important;box-sizing:border-box!important;
+    background:var(--panel,#171323)!important;color:var(--text,#fff)!important;
+  }
+  body.owner-unlocked #customizer.open *{visibility:visible!important;pointer-events:auto;}
+  body.owner-unlocked #customizer.open input,
+  body.owner-unlocked #customizer.open textarea,
+  body.owner-unlocked #customizer.open select,
+  body.owner-unlocked #customizer.open button{max-width:100%;box-sizing:border-box;}
+  @media(max-width:600px){
+    body.owner-unlocked #customizer.open{inset:8px!important;width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;max-height:calc(100dvh - 16px)!important;padding:12px!important;}
+  }
+</style>
 
 <!-- Final owner customizer visibility fix -->
 <style id="ownerCustomizerVisibilityFix">
