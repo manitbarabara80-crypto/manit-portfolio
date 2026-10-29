@@ -444,21 +444,19 @@ function unlockOwnerMode(){
   hideOwnerLogin();
   const panel=$('customizer');
   if(panel){
-    panel.classList.add('open');
+    /* Keep the portfolio visible after login. Open the editor only when the owner clicks Customize. */
+    panel.classList.remove('open');
     panel.hidden=false;
-    panel.style.setProperty('display','block','important');
-    panel.style.setProperty('visibility','visible','important');
-    panel.style.setProperty('opacity','1','important');
-    panel.style.setProperty('pointer-events','auto','important');
-    panel.style.setProperty('z-index','2147483000','important');
-    panel.scrollTop=0;
-    document.body.style.overflow='hidden';
-    panel.setAttribute('tabindex','-1');
+    panel.style.removeProperty('display');
+    panel.style.removeProperty('visibility');
+    panel.style.removeProperty('opacity');
+    panel.style.removeProperty('pointer-events');
+    panel.style.removeProperty('z-index');
   }
-  if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','true');
-  if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','true');
-  if(panel)panel.focus({preventScroll:true});
-  setCloudStatus('Owner signed in. Customize your portfolio below. Changes will sync to the server.');
+  document.body.style.overflow='';
+  if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','false');
+  if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','false');
+  setCloudStatus('Owner signed in. Your portfolio is visible. Click Customize to edit your details.');
 }
 async function lockOwnerMode(signOut=true){
   document.body.classList.remove('owner-unlocked');$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';hideOwnerLogin();
