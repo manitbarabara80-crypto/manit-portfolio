@@ -692,6 +692,7 @@ async function saveSettingsToServer(){
         project.image=await uploadDataImage('projects/'+slug+'-'+i+'.jpg',project.image);
       }
     }
+    if(settings.siteEdits&&settings.siteEdits.images){for(const [key,value] of Object.entries(settings.siteEdits.images)){if(/^data:image\\//i.test(value||'')){const slug=String(key).replace(/[^a-z0-9]+/gi,'-').slice(0,80)||'site-image';settings.siteEdits.images[key]=await uploadDataImage('site-edits/'+slug+'.jpg',value);}}}
     const savedPhoto=(()=>{try{return localStorage.getItem('manitPortfolioPhoto')||'';}catch(e){return '';}})();
     if(/^data:image\//i.test(savedPhoto)){
       profilePhotoUrl=await uploadDataImage('profile/profile.jpg',savedPhoto);
@@ -815,6 +816,95 @@ const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isInte
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');if(document.body.classList.contains('owner-unlocked'))lockOwnerMode();}});
 load();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
 initializeServerPortfolio();
+</script>
+
+
+<!-- Owner full-site visual editor: text, image replacement, and element removal -->
+<script>
+(function(){
+  function isOwner(){return document.body.classList.contains('owner-unlocked');}
+  function state(){if(!window.__manitSiteEditState){window.__manitSiteEditState={active:false,selected:null};}return window.__manitSiteEditState;}
+  function pathFor(el){
+    if(!el||el===document.body)return 'body';
+    if(el.id)return '#'+CSS.escape(el.id);
+    const parts=[];let node=el;
+    while(node&&node!==document.body){
+      let part=node.tagName.toLowerCase();
+      if(node.parentElement){
+        const siblings=Array.from(node.parentElement.children).filter(x=>x.tagName===node.tagName);
+        if(siblings.length>1)part+=':nth-of-type('+(siblings.indexOf(node)+1)+')';
+      }
+      parts.unshift(part);node=node.parentElement;
+    }
+    return 'body > '+parts.join(' > ');
+  }
+  function keyFor(el){if(!el.dataset.ownerEditKey)el.dataset.ownerEditKey=pathFor(el);return el.dataset.ownerEditKey;}
+  function getEdits(){if(!settings.siteEdits||typeof settings.siteEdits!=='object')settings.siteEdits={texts:{},images:{},removed:[]};settings.siteEdits.texts=settings.siteEdits.texts||{};settings.siteEdits.images=settings.siteEdits.images||{};settings.siteEdits.removed=settings.siteEdits.removed||[];return settings.siteEdits;}
+  function applySaved(){
+    if(typeof settings==='undefined')return;
+    const edits=getEdits();
+    Object.entries(edits.texts).forEach(([key,value])=>{try{const el=document.querySelector(key);if(el&&!el.closest('#customizer')&&!el.closest('#ownerLoginOverlay'))el.textContent=value;}catch(e){}});
+    Object.entries(edits.images).forEach(([key,value])=>{try{const el=document.querySelector(key);if(el&&el.tagName==='IMG')el.src=value;}catch(e){}});
+    edits.removed.forEach(key=>{try{const el=document.querySelector(key);if(el&&!el.closest('#customizer')&&!el.closest('#ownerLoginOverlay'))el.hidden=true;}catch(e){}});
+  }
+  function makeToolbar(){
+    if(document.getElementById('siteVisualEditToolbar'))return;
+    const style=document.createElement('style');
+    style.textContent='#siteVisualEditToolbar{position:fixed;left:12px;bottom:12px;z-index:2147483646;display:none;gap:7px;flex-wrap:wrap;padding:10px;background:#171323;border:1px solid #a855f7;border-radius:14px;box-shadow:0 10px 35px #000b;max-width:calc(100vw - 24px)}#siteVisualEditToolbar button{border:1px solid #a855f7;border-radius:9px;padding:9px 12px;background:#241b35;color:#fff;font-weight:700;cursor:pointer}body.site-visual-editing [data-owner-edit-key]{outline:1px dashed #a855f7;outline-offset:2px;cursor:text}body.site-visual-editing img[data-owner-edit-key]{cursor:copy}body.site-visual-editing [data-owner-selected=true]{outline:3px solid #f59e0b!important;outline-offset:3px!important}';
+    document.head.appendChild(style);
+    const bar=document.createElement('div');bar.id='siteVisualEditToolbar';bar.innerHTML='<button type="button" id="siteEditDone">✓ Finish editing</button><button type="button" id="siteEditUndo">↶ Restore hidden items</button><button type="button" id="siteEditDelete" disabled>Delete selected section</button><span style="color:#fff;font-size:12px;align-self:center">Click text to edit · click image to replace</span>';
+    document.body.appendChild(bar);
+    bar.querySelector('#siteEditDone').addEventListener('click',()=>toggle(false));
+    bar.querySelector('#siteEditUndo').addEventListener('click',()=>{
+      const edits=getEdits();edits.removed=[];document.querySelectorAll('[hidden]').forEach(el=>{if(el.dataset.ownerEditHidden==='yes'){el.hidden=false;delete el.dataset.ownerEditHidden;}});
+      save();applySaved();alert('Hidden sections restored. Save status is shown in the Customize panel.');
+    });
+    bar.querySelector('#siteEditDelete').addEventListener('click',()=>{
+      const s=state(),el=s.selected;if(!el||el.closest('#customizer')||el.closest('#ownerLoginOverlay'))return;
+      if(!confirm('Hide this entire section/element on the public website? You can restore hidden items later.'))return;
+      const edits=getEdits(),key=keyFor(el);if(!edits.removed.includes(key))edits.removed.push(key);
+      el.hidden=true;el.dataset.ownerEditHidden='yes';el.removeAttribute('data-owner-selected');s.selected=null;bar.querySelector('#siteEditDelete').disabled=true;save();
+    });
+  }
+  function toggle(on){
+    if(!isOwner()){alert('Please sign in as the portfolio owner first.');return;}
+    makeToolbar();const s=state();s.active=on;document.body.classList.toggle('site-visual-editing',on);
+    document.getElementById('siteVisualEditToolbar').style.display=on?'flex':'none';
+    if(!on){document.querySelectorAll('[contenteditable="true"][data-owner-temp-edit]').forEach(el=>{el.removeAttribute('contenteditable');delete el.dataset.ownerTempEdit;});document.querySelectorAll('[data-owner-selected]').forEach(el=>el.removeAttribute('data-owner-selected'));s.selected=null;}
+  }
+  document.addEventListener('click',function(e){
+    if(!state().active||!isOwner())return;
+    const el=e.target.closest('img, h1, h2, h3, p, span, a, li, button, section, article, .card, .section-head, .hero-copy, .footer-inner');
+    if(!el||el.closest('#customizer')||el.closest('#ownerLoginOverlay')||el.closest('#siteVisualEditToolbar'))return;
+    if(el.tagName==='IMG'){
+      e.preventDefault();e.stopPropagation();const input=document.createElement('input');input.type='file';input.accept='image/*';
+      input.onchange=()=>{const file=input.files&&input.files[0];if(!file)return;if(file.size>8*1024*1024){alert('Please choose an image smaller than 8 MB.');return;}
+        const reader=new FileReader();reader.onload=()=>{const key=keyFor(el);getEdits().images[key]=reader.result;el.src=reader.result;save();};reader.readAsDataURL(file);};input.click();return;
+    }
+    e.preventDefault();e.stopPropagation();
+    const s=state();document.querySelectorAll('[data-owner-selected]').forEach(x=>x.removeAttribute('data-owner-selected'));
+    s.selected=el;el.dataset.ownerSelected='true';
+    const del=document.querySelector('#siteVisualEditToolbar #siteEditDelete');if(del)del.disabled=false;
+    if(el.isContentEditable)return;
+    el.contentEditable='true';el.dataset.ownerTempEdit='yes';el.focus();
+    const key=keyFor(el),finish=()=>{if(!el.isConnected)return;el.removeAttribute('contenteditable');delete el.dataset.ownerTempEdit;getEdits().texts[key]=el.innerText;save();el.removeEventListener('blur',finish);};
+    el.addEventListener('blur',finish,{once:true});
+  },true);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&state().active)toggle(false);});
+  window.enableFullSiteVisualEditor=()=>toggle(true);
+  window.disableFullSiteVisualEditor=()=>toggle(false);
+  document.addEventListener('DOMContentLoaded',()=>{makeToolbar();applySaved();});
+  // Expose a small, owner-only button inside the existing customization panel.
+  function addEntry(){
+    const panel=document.getElementById('customizer');if(!panel||document.getElementById('enableFullSiteVisualEditorButton'))return;
+    const button=document.createElement('button');button.type='button';button.id='enableFullSiteVisualEditorButton';button.className='btn primary';button.textContent='✏️ Edit text, images & sections across website';button.style.cssText='width:100%;margin:12px 0;';
+    button.addEventListener('click',()=>toggle(true));
+    const guide=panel.querySelector('.customizer-guide');if(guide)guide.insertAdjacentElement('afterend',button);else panel.prepend(button);
+  }
+  const observer=new MutationObserver(()=>{if(isOwner())addEntry();});observer.observe(document.documentElement,{childList:true,subtree:true});
+  setTimeout(()=>{makeToolbar();addEntry();applySaved();},500);
+  window.applySavedPortfolioVisualEdits=applySaved;
+})();
 </script>
 
 <!-- Final owner customizer visibility fix -->
