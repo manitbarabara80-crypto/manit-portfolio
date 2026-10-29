@@ -98,6 +98,34 @@
 .social:focus-visible,.btn:focus-visible,.menu:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media(max-width:760px){.navlinks{max-height:calc(100vh - 80px);overflow:auto}.navlinks.open{padding:14px;border:1px solid var(--line);border-radius:14px}.navlinks a{padding:6px 2px}}
+/* Mobile-first navigation and content layout fix */
+@media(max-width:760px){
+  .nav-inner{position:relative;gap:10px;padding:12px 0;min-height:58px;flex-wrap:nowrap}
+  .brand{display:inline-flex!important;align-items:center;flex:0 0 auto;font-size:1rem;white-space:nowrap}
+  .menu{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto;margin-left:auto;min-width:42px;min-height:40px;font-size:1.1rem}
+  .navlinks{display:none!important;position:absolute;top:100%;left:0;right:0;z-index:1000;flex-direction:column;align-items:stretch;gap:0;padding:8px 14px!important;background:var(--bg)!important;border:1px solid var(--line);border-radius:0 0 14px 14px;box-shadow:0 14px 30px #0008;max-height:calc(100dvh - 76px);overflow-y:auto}
+  .navlinks.open{display:flex!important}
+  .navlinks a{display:block;padding:11px 4px!important;border-bottom:1px solid var(--line);font-size:.95rem}
+  .navlinks a:last-child{border-bottom:0}
+  .header-customize{display:none!important}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:24px;min-height:0;padding:42px 0 36px}
+  .hero-copy{min-width:0;width:100%}
+  .hero h1{font-size:clamp(2rem,9vw,3rem);overflow-wrap:anywhere;line-height:1.12}
+  .hero p{font-size:1rem;line-height:1.65}
+  .actions{gap:10px;margin:20px 0;flex-wrap:wrap}
+  .actions .btn{max-width:100%;white-space:normal}
+  .portrait-wrap{grid-row:1;min-height:260px;display:grid;place-items:center}
+  .portrait{width:min(245px,66vw)!important}
+  section{scroll-margin-top:76px}
+  .wrap{width:min(1120px,92%)}
+  body{overflow-x:hidden}
+}
+@media(max-width:420px){
+  .hero{padding-top:30px}
+  .availability{font-size:.72rem;line-height:1.5}
+  .socials{flex-wrap:wrap}
+  .customize-toggle{right:12px!important;bottom:12px!important}
+}
 
 
 /* User-customizable animated background */
