@@ -12,11 +12,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://rufqfsrkvkgkssctqkte.supabase.co" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23090610'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle' font-family='Arial' font-weight='bold' fill='%23a855f7'%3EM.%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Portfolio of Manit Barabara Tebligu, a Computer Science and Engineering student at Bule Hora University, focused on web development, programming, responsive design, and practical digital projects.">
 <link rel="canonical" href="https://manitbarabara80-crypto.github.io/manit-portfolio/">
 <meta property="og:url" content="https://manitbarabara80-crypto.github.io/manit-portfolio/">
 <meta property="og:image" content="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg">
+<meta property="og:image:secure_url" content="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="Manit Barabara Tebligu profile photograph">
 <meta name="twitter:image" content="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg">
 <meta name="twitter:image:alt" content="Manit Barabara Tebligu profile photograph">
@@ -174,8 +178,8 @@ button:hover,a:hover{opacity:.94}
 @media(max-width:650px){.customizer{padding:12px 14px 90px!important}.customizer .customizer-head{top:-12px;margin:-12px -14px 14px;padding:12px 14px;align-items:flex-start;flex-direction:column}.customizer-head #closeCustomizer{width:100%}.customizer .color-row{grid-template-columns:1fr}.customizer .customizer-guide{font-size:.9rem}}
 
 /* Fix: keep Customize visibly available in the header and on screen */
-.header-customize{display:inline-flex!important;align-items:center;gap:7px;white-space:nowrap;min-height:42px;padding:9px 14px!important;font-size:.9rem;position:relative;z-index:60;box-shadow:0 8px 26px var(--glow)}
-.customize-toggle{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:fixed!important;right:18px!important;bottom:18px!important;z-index:1000!important}
+.header-customize{display:none!important;align-items:center;gap:7px;white-space:nowrap;min-height:42px;padding:9px 14px!important;font-size:.9rem;position:relative;z-index:60;box-shadow:0 8px 26px var(--glow)}
+.customize-toggle{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;position:fixed!important;right:18px!important;bottom:18px!important;z-index:1000!important}
 .customizer{position:fixed!important;inset:0!important;z-index:999!important;display:none}
 .customizer.open{display:block!important}
 @media(max-width:780px){.nav-inner{gap:10px}.header-customize{margin-left:auto;padding:8px 10px!important;font-size:.82rem}.menu{flex-shrink:0}}
@@ -300,6 +304,23 @@ img,video,canvas,svg{max-width:100%}
   .hero h1 { font-size:clamp(1.8rem,8.8vw,2.5rem) !important; }
   .actions .btn { flex:1 1 100% !important; }
 }
+
+/* Keep the original circular portrait visible and place the Engineer Manit label below it. */
+.portrait-wrap{display:grid!important;place-items:center!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;align-content:center!important;gap:14px!important;min-height:400px!important;padding:16px 8px 28px!important}
+.portrait{overflow:hidden!important;z-index:1!important}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center var(--profile-y,35%);border-radius:50%}
+.portrait.has-photo .placeholder-art,.portrait.has-photo .portrait-note{display:none!important}
+.portrait-wrap>.engineer-nameplate--outside{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;z-index:2!important;width:min(300px,68vw)!important;margin:0!important}
+.orbit{top:calc(50% - 34px)!important;left:50%!important;translate:-50% -50%;}
+.skill[data-skill-name="HTML"] .skill-icon{background:#e34f26;border-color:#e34f26;color:#fff}
+.skill[data-skill-name="CSS"] .skill-icon{background:#1572b6;border-color:#1572b6;color:#fff}
+.skill[data-skill-name="JavaScript"] .skill-icon{background:#f7df1e;border-color:#f7df1e;color:#171717}
+.skill[data-skill-name="PHP"] .skill-icon{background:#777bb4;border-color:#777bb4;color:#fff}
+.skill[data-skill-name="Java"] .skill-icon{background:#5382a1;border-color:#5382a1;color:#fff}
+.skill[data-skill-name="C++"] .skill-icon{background:#00599c;border-color:#00599c;color:#fff}
+.skill[data-skill-name="Python"] .skill-icon{background:linear-gradient(135deg,#3776ab 0 52%,#ffd43b 52%);border-color:#3776ab;color:#fff;text-shadow:0 1px 2px #17202a}
+.skill[data-skill-name="MySQL"] .skill-icon{background:linear-gradient(135deg,#00758f 0 52%,#f29111 52%);border-color:#00758f;color:#fff;text-shadow:0 1px 2px #17202a}
+@media(max-width:760px){.portrait-wrap{min-height:370px!important;padding:12px 8px 24px!important}.portrait{width:min(var(--profile-size,245px),66vw)!important}.orbit{width:min(280px,78vw)!important}.portrait-wrap>.engineer-nameplate--outside{width:min(280px,72vw)!important}.tag1{right:0!important}.tag2{left:0!important}}
 </style>
 </head>
 <body>
@@ -322,7 +343,7 @@ img,video,canvas,svg{max-width:100%}
 </section>
 <section id="about"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">About me</div><h2>Learning, building, and <span class="gradient">solving problems.</span></h2><p id="aboutBio">I combine technical problem-solving with creativity to build useful, responsive, and accessible digital experiences.</p></div><article class="card reveal story-card"><div class="iconbox">✦</div><h3>My professional journey</h3><p id="myStoryText" style="white-space:pre-line;line-height:1.9">I’m Manit Barabara Tebligu, a fourth-year Computer Science and Engineering student at Bule Hora University and an aspiring software engineer and web developer. I enjoy turning ideas into clear, useful digital experiences and continuously improving my technical and creative skills. My focus is on building responsive websites, learning software development, and creating practical solutions that help people access information and services.</p></article><div class="grid two" style="margin-top:18px"><article class="card reveal"><div class="iconbox">⌘</div><h3>How I approach technology</h3><p>I value clear communication, thoughtful design, and practical problem-solving. When working on a project, I aim to understand the goal, organize the information, build a usable interface, and improve the result through testing and feedback.</p><p>I am continuing to strengthen my computer science foundation and learning how to turn ideas into reliable, accessible digital experiences.</p></article><article class="card reveal"><div class="iconbox">◈</div><h3>Skills and professional goals</h3><p>I am developing practical skills in HTML, CSS, JavaScript, PHP, Java, C++, Python, and MySQL. My personal projects help me practice responsive web design, interface development, project structure, and database-backed features.</p><p>My goal is to become a professional software engineer and web developer who builds reliable websites and applications, collaborates effectively, and solves real-world problems. I welcome opportunities to learn, contribute to projects, receive constructive feedback, and grow through hands-on experience.</p></article></div><article class="card reveal" style="margin-top:18px"><div class="iconbox">✧</div><h3>My mission</h3><p>To keep learning, build practical and accessible digital solutions, and use technology to create value. Every project is an opportunity to improve my skills, collaborate with others, and grow as a software engineer and web developer.</p></article></div></section>
 <section id="skills"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">What I work with</div><h2>Technical <span class="gradient">skills</span></h2><p>Technologies I use and continue developing as a full-stack developer and software engineer.</p></div><div class="card reveal"><h3>Programming &amp; development</h3><div class="skill-list" id="skillsList"><span class="skill" data-skill-name="HTML"><span class="skill-icon" aria-hidden="true">5</span><span>HTML</span></span><span class="skill" data-skill-name="CSS"><span class="skill-icon" aria-hidden="true">#</span><span>CSS</span></span><span class="skill" data-skill-name="JavaScript"><span class="skill-icon" aria-hidden="true">JS</span><span>JavaScript</span></span><span class="skill" data-skill-name="PHP"><span class="skill-icon" aria-hidden="true">PHP</span><span>PHP</span></span><span class="skill" data-skill-name="Java"><span class="skill-icon" aria-hidden="true">J</span><span>Java</span></span><span class="skill" data-skill-name="C++"><span class="skill-icon" aria-hidden="true">C++</span><span>C++</span></span><span class="skill" data-skill-name="Python"><span class="skill-icon" aria-hidden="true">Py</span><span>Python</span></span><span class="skill" data-skill-name="MySQL"><span class="skill-icon" aria-hidden="true">SQL</span><span>MySQL</span></span></div></div></div></section>
-<section id="projects"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Selected work</div><h2>Projects I’m <span class="gradient">building</span></h2><p>Selected websites and personal projects, including a live website published with SITE123.</p></div><div class="grid two" id="projectList" aria-live="polite"><article class="card project-card reveal visible" id="omo-project-static"><div class="project-label">Personal project</div><h3>Manita Omo Valley Tourism Ethiopia</h3><p>A full-featured tourism platform for South Omo with cultural storytelling, tours, tribes, local guides, bookings, contact and collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard.</p><div class="project-bottom">HTML · CSS · JavaScript · PHP · MySQL · XAMPP</div><div class="project-links"><a href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Live demo ↗</a><a href="https://github.com/manitbarabara80-crypto/manit-portfolio" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article></div><p class="hint">Each card can include a real demo URL and source-code link. Work in progress is labelled honestly until a public demo is available.</p></div></section>
+<section id="projects"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Selected work</div><h2>Projects I’m <span class="gradient">building</span></h2><p>Selected websites and personal projects, including a live website published with SITE123.</p></div><div class="grid two" id="projectList" aria-live="polite"><article class="card project-card reveal visible" id="omo-project-static"><div class="project-label">Personal project</div><h3>Manita Omo Valley Tourism Ethiopia</h3><p>A full-featured tourism platform for South Omo with cultural storytelling, tours, tribes, local guides, bookings, contact and collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard.</p><div class="project-bottom">HTML · CSS · JavaScript · PHP · MySQL · XAMPP</div><div class="project-links"><a href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></article></div><p class="hint">Only public demos and source links are shown. Work in progress is labelled honestly until a public demo is available.</p></div></section>
 <section id="process"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">How I approach projects</div><h2>From idea to <span class="gradient">working solution.</span></h2><p>A simple, practical workflow I aim to follow as I build and improve digital projects.</p></div><div class="process-grid"><article class="process-step reveal"><div class="number">01 / UNDERSTAND</div><h3>Clarify the goal</h3><p>Understand the audience, problem, and essential requirements before building.</p></article><article class="process-step reveal"><div class="number">02 / PLAN</div><h3>Shape the experience</h3><p>Organize the content, layout, and key interactions into a clear plan.</p></article><article class="process-step reveal"><div class="number">03 / BUILD</div><h3>Develop &amp; iterate</h3><p>Use suitable technologies, test the details, and improve based on feedback.</p></article><article class="process-step reveal"><div class="number">04 / IMPROVE</div><h3>Keep learning</h3><p>Review the result and identify practical ways to make it more useful.</p></article></div></div></section>
 <section id="contribute"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Ways I can contribute</div><h2>Creative thinking. <span class="gradient">Practical building.</span></h2><p>Areas I’m developing through coursework, practice, and personal projects. The exact scope depends on the project and requirements.</p></div><div class="grid three"><article class="card reveal"><div class="iconbox">⌘</div><h3>Website development</h3><p>Responsive page layouts, clear navigation, and accessible web interfaces using HTML, CSS, and JavaScript.</p></article><article class="card reveal"><div class="iconbox">✦</div><h3>UI and visual design</h3><p>Organizing content, choosing visual styles, and creating consistent, user-friendly website experiences.</p></article><article class="card reveal"><div class="iconbox">◈</div><h3>Learning & collaboration</h3><p>Working through problems, documenting what I learn, and collaborating to improve a solution step by step.</p></article></div></div></section>
 <section id="education"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Learning &amp; growth</div><h2>Education</h2></div><div class="card reveal"><div class="timeline"><div class="timeline-item"><div class="project-label">Current education</div><h3>Bule Hora University</h3><p>Computer Science and Engineering · 4th-year student</p><p>Expected graduation: 2028</p></div><div class="timeline-item"><div class="project-label">Ongoing</div><h3>Independent learning &amp; personal projects</h3><p>Practicing web development, programming, databases, and creative digital design.</p></div></div></div></div></section>
@@ -331,18 +352,18 @@ img,video,canvas,svg{max-width:100%}
 <section id="social-accounts"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Find me online</div><h2>Let’s <span class="gradient">connect</span></h2><p>Tap an icon to open the profile. Add your own account links in Customize.</p></div><div class="social-marquee-stack reveal" id="socialList"><div class="social-marquee-row"><div class="social-track"><div class="social-sequence"><a class="social social--Facebook" data-social="Facebook" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Open Facebook profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="35" y="55" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="60" fill="white">f</text></svg></span><span class="sr-only">Facebook</span></a><a class="social social--TikTok" data-social="TikTok" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="Open TikTok profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M37 8h8c1 7 5 12 13 14v10c-7 0-13-3-17-7v20a19 19 0 1 1-17-19c2 0 4 0 6 1v10a10 10 0 1 0 2 8V8h5" fill="#25f4ee" transform="translate(-2 1)"/><path d="M37 8h8c1 7 5 12 13 14v10c-7 0-13-3-17-7v20a19 19 0 1 1-17-19c2 0 4 0 6 1v10a10 10 0 1 0 2 8V8h5" fill="#fe2c55" transform="translate(2 -1)"/><path d="M37 8h7c1 7 5 12 13 14v9c-7 0-13-3-17-7v21a17 17 0 1 1-17-17c2 0 4 0 6 1v9a9 9 0 1 0 2 8V8h6" fill="white"/></svg></span><span class="sr-only">TikTok</span></a><a class="social social--WhatsApp" data-social="WhatsApp" href="https://wa.me/251902266498" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="Open WhatsApp profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 54l4-13a25 25 0 1 1 9 10z" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/><path d="M24 20c-2 1-4 4-3 8 2 8 11 16 19 17 4 0 6-3 7-5l-8-5-5 4c-4-2-7-5-9-9l3-4z" fill="white"/></svg></span><span class="sr-only">WhatsApp</span></a><a class="social social--Telegram" data-social="Telegram" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Open Telegram profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 29L53 11c3-1 5 1 4 5L49 53c-1 4-3 5-6 3L29 44l-7 7c-2 1-3 0-3-2l1-12 27-22-33 18-10-3c-4-1-3-3 1-5z" fill="white"/></svg></span><span class="sr-only">Telegram</span></a><a class="social social--YouTube" data-social="YouTube" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="Open YouTube profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="13" width="54" height="38" rx="12" fill="white"/><path d="M27 22l17 10-17 10z" fill="#ff0000"/></svg></span><span class="sr-only">YouTube</span></a><a class="social social--LinkedIn" data-social="LinkedIn" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="Open LinkedIn profile"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="39" letter-spacing="-2" fill="white">in</text></svg></span><span class="sr-only">LinkedIn</span></a></div><div class="social-sequence" aria-hidden="true"><a class="social social--Facebook" data-social="Facebook" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Open Facebook profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="35" y="55" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="60" fill="white">f</text></svg></span><span class="sr-only">Facebook</span></a><a class="social social--TikTok" data-social="TikTok" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="Open TikTok profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M37 8h8c1 7 5 12 13 14v10c-7 0-13-3-17-7v20a19 19 0 1 1-17-19c2 0 4 0 6 1v10a10 10 0 1 0 2 8V8h5" fill="#25f4ee" transform="translate(-2 1)"/><path d="M37 8h8c1 7 5 12 13 14v10c-7 0-13-3-17-7v20a19 19 0 1 1-17-19c2 0 4 0 6 1v10a10 10 0 1 0 2 8V8h5" fill="#fe2c55" transform="translate(2 -1)"/><path d="M37 8h7c1 7 5 12 13 14v9c-7 0-13-3-17-7v21a17 17 0 1 1-17-17c2 0 4 0 6 1v9a9 9 0 1 0 2 8V8h6" fill="white"/></svg></span><span class="sr-only">TikTok</span></a><a class="social social--WhatsApp" data-social="WhatsApp" href="https://wa.me/251902266498" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="Open WhatsApp profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 54l4-13a25 25 0 1 1 9 10z" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/><path d="M24 20c-2 1-4 4-3 8 2 8 11 16 19 17 4 0 6-3 7-5l-8-5-5 4c-4-2-7-5-9-9l3-4z" fill="white"/></svg></span><span class="sr-only">WhatsApp</span></a><a class="social social--Telegram" data-social="Telegram" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Open Telegram profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 29L53 11c3-1 5 1 4 5L49 53c-1 4-3 5-6 3L29 44l-7 7c-2 1-3 0-3-2l1-12 27-22-33 18-10-3c-4-1-3-3 1-5z" fill="white"/></svg></span><span class="sr-only">Telegram</span></a><a class="social social--YouTube" data-social="YouTube" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="Open YouTube profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="13" width="54" height="38" rx="12" fill="white"/><path d="M27 22l17 10-17 10z" fill="#ff0000"/></svg></span><span class="sr-only">YouTube</span></a><a class="social social--LinkedIn" data-social="LinkedIn" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="Open LinkedIn profile" tabindex="-1" aria-hidden="true"><span class="social-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="39" letter-spacing="-2" fill="white">in</text></svg></span><span class="sr-only">LinkedIn</span></a></div></div></div></div></div></section>
 <section id="faq"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">A few useful details</div><h2>Frequently asked <span class="gradient">questions</span></h2></div><div class="faq-list"><details class="card reveal"><summary>Are these projects live websites?</summary><p>The SITE123 Website includes a live demo link. The Tourism Website and Omo Valley Cultural Website are listed as personal projects; add their demo and source-code links in Customize when those URLs are ready.</p></details><details class="card reveal"><summary>How can I contact you?</summary><p>Email <a data-email-link href="mailto:manitbarabara80@gmail.com">manitbarabara80@gmail.com</a>, or click the GitHub profile link to view source-code projects. Use Customize to add your own GitHub profile URL.</p></details><details class="card reveal"><summary>Can I change the website design?</summary><p>Yes. The owner can update the colors, animated background, background image, profile photo, biography, personal social links, skills, projects, achievements, and languages. When signed in, changes sync to the portfolio server so visitors see the published settings; the browser also keeps a local backup.</p></details><details class="card reveal"><summary>Where can I see your certificates and CV?</summary><p>Certificates and a CV should be added when the final files and verified details are ready. This site does not invent qualifications or attach a CV that has not been provided.</p></details></div></div></section>
 <section id="contact"><div class="wrap"><div class="section-head reveal"><div class="eyebrow">Have an idea?</div><h2>Let’s build something <span class="gradient">great.</span></h2><p>For collaboration, project discussions, or opportunities, feel free to reach out.</p></div><div class="contact-grid"><div class="card reveal"><h3>Contact details</h3><a class="contact-link" data-email-link href="mailto:manitbarabara80@gmail.com"><span>✉</span><span data-email-display>manitbarabara80@gmail.com</span></a><a class="contact-link" data-contact-github href="https://github.com/manitbarabara80-crypto" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile"><span style="background:#181717;color:#fff"><svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><path fill="white" d="M12 .297C5.37.297 0 5.67 0 12.297c0 5.3 3.438 9.8 8.205 11.387.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.334-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.604-.015 2.897-.015 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297 24 5.67 18.63.297 12 .297z"/></svg></span><span>GitHub profile ↗</span></a><a class="contact-link" id="primaryPhoneLink" data-phone-primary href="tel:+251902266498"><span>☎</span><span data-phone-primary-text>0902266498</span></a><a class="contact-link" id="secondaryPhoneLink" data-phone-secondary href="tel:+251986900251"><span>☎</span><span data-phone-secondary-text>0986900251</span></a><a class="btn primary" id="contactWhatsAppButton" data-whatsapp-contact style="margin-top:22px" href="https://wa.me/251902266498" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a></div><div class="card reveal"><h3>Send an email</h3><form class="form" id="contactForm"><label class="sr-only" for="senderName">Your name</label><input id="senderName" name="name" autocomplete="name" placeholder="Your name" required><label class="sr-only" for="senderEmail">Your email (optional)</label><input id="senderEmail" name="email" type="email" autocomplete="email" placeholder="Your email (optional)"><label class="sr-only" for="senderMessage">Your message</label><textarea id="senderMessage" name="message" placeholder="How can we work together?" required></textarea><button class="btn primary" type="submit">Prepare email ↗</button><p class="hint">Opens your email app with a prepared message; it does not send automatically.</p></form></div></div></div></section>
-</main><footer><div class="wrap footer-inner"><span>© <span id="year"></span> Manit Barabara Tebligu</span><span class="footer-links"><a href="#home">Back to top ↑</a><a href="#contact">Contact</a><a data-email-link href="mailto:manitbarabara80@gmail.com">Email</a><a href="#owner-sign-in" id="ownerLoginFooterLink" role="button" style="opacity:.9;cursor:pointer;position:relative;z-index:10" onclick="event.preventDefault();var o=document.getElementById('ownerLoginOverlay');if(o){o.hidden=false;o.style.display='grid';o.style.visibility='visible';o.style.opacity='1';document.body.style.overflow='hidden';var s=document.getElementById('ownerLoginStatus');if(s)s.textContent='';var p=document.getElementById('ownerPasswordInput');if(p)p.value='';var e=document.getElementById('ownerEmailInput');if(e)e.focus();}return false;">Owner sign-in</a></span></div></footer>
+</main><footer><div class="wrap footer-inner"><span>© <span id="year"></span> Manit Barabara Tebligu</span><span class="footer-links"><a href="#home">Back to top ↑</a><a href="#contact">Contact</a><a data-email-link href="mailto:manitbarabara80@gmail.com">Email</a></span></div></footer>
 
 <div class="owner-login-overlay" id="ownerLoginOverlay" role="dialog" aria-modal="true" aria-labelledby="ownerLoginTitle" hidden>
   <div class="owner-login-card">
     <div class="owner-login-icon" aria-hidden="true">🔐</div>
     <h2 id="ownerLoginTitle">Secure owner sign-in</h2>
-    <p>Sign in with the owner account created in Supabase. The server verifies access; visitors do not get customization controls.</p>
+    <p>Use your owner Gmail address and the separate password set for this portfolio account. For your security, never enter your Gmail account password here.</p>
     <form id="ownerLoginForm">
-      <label for="ownerEmailInput">Owner email</label>
+      <label for="ownerEmailInput">Owner Gmail address</label>
       <input id="ownerEmailInput" type="email" autocomplete="username" required value="manitbarabara80@gmail.com" placeholder="Owner email address">
-      <label for="ownerPasswordInput">Password</label>
-      <input id="ownerPasswordInput" type="password" autocomplete="current-password" required placeholder="Enter your Supabase password">
+      <label for="ownerPasswordInput">Portfolio account password</label>
+      <div class="password-field"><input id="ownerPasswordInput" type="password" autocomplete="current-password" required placeholder="Enter your portfolio owner password"><button class="password-visibility-toggle" id="toggleOwnerPassword" type="button" aria-label="Show password" aria-controls="ownerPasswordInput" aria-pressed="false" title="Show password"><svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg><svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18M10.6 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.1 3.9M6.2 6.3C3.5 8.1 2 12 2 12s3.6 7 10 7c1.3 0 2.5-.3 3.5-.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
       <div class="owner-login-actions"><button class="btn primary" id="ownerSignInButton" type="submit">Sign in to Customize</button><button class="btn secondary" id="forgotOwnerPassword" type="button">Forgot password?</button><button class="btn secondary" id="cancelOwnerLogin" type="button">Cancel</button></div>
       <p id="ownerLoginStatus" class="owner-login-status" role="status" aria-live="polite"></p>
       <p class="notice">First-time setup is in <strong>SETUP_SERVER_LOGIN.md</strong>. Never place a Supabase secret or service-role key in this website.</p>
@@ -411,6 +432,11 @@ img,video,canvas,svg{max-width:100%}
 <script src="./supabase-config.js"></script>
 <script>
 const $=id=>document.getElementById(id);
+const DEFAULT_PROFILE_PHOTO_URL='https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg';
+const profileFrame=$('portrait');
+const engineerNameplate=profileFrame&&profileFrame.querySelector('.engineer-nameplate');
+if(profileFrame&&engineerNameplate){profileFrame.insertAdjacentElement('afterend',engineerNameplate);engineerNameplate.classList.add('engineer-nameplate--outside');}
+if($('profileImage')&&!$('profileImage').getAttribute('src')){$('profileImage').src=DEFAULT_PROFILE_PHOTO_URL;profileFrame?.classList.add('has-photo');}
 
 // Server-authenticated owner gate. The database policies in supabase/schema.sql
 // independently restrict every write to the verified owner email.
@@ -423,6 +449,7 @@ let profilePhotoUrl='';
 let cloudSaveTimer=null;
 let cloudSaveInProgress=false;
 let cloudSaveAgain=false;
+let ownerLoginReturnFocus=null;
 try{
   if(window.supabase && /^https:\/\//i.test(SUPABASE_URL) && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.includes('PASTE_')){
     supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
@@ -432,11 +459,26 @@ function setCloudStatus(message,isError=false){const el=$('cloudSyncStatus');if(
 function setLoginStatus(message,isError=true){const el=$('ownerLoginStatus');if(el){el.textContent=message;el.style.color=isError?'#fca5a5':'#86efac';}}
 function showOwnerLogin(){
   if(ownerUser && ownerUser.email && ownerUser.email.toLowerCase()===OWNER_EMAIL){unlockOwnerMode();return;}
-  const overlay=$('ownerLoginOverlay');overlay.hidden=false;setLoginStatus('');$('ownerPasswordInput').value='';
+  const overlay=$('ownerLoginOverlay');
+  ownerLoginReturnFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;
+  overlay.style.removeProperty('display');overlay.style.removeProperty('visibility');overlay.style.removeProperty('opacity');
+  overlay.style.removeProperty('position');overlay.style.removeProperty('inset');overlay.style.removeProperty('z-index');
+  overlay.hidden=false;setLoginStatus('');$('ownerPasswordInput').value='';
+  document.body.style.overflow='hidden';
   if(!supabaseClient){setLoginStatus('Server login is not configured yet. Open SETUP_SERVER_LOGIN.md, complete the Supabase setup, then add your URL and publishable key to supabase-config.js.');}
   setTimeout(()=>$('ownerEmailInput').focus(),40);
 }
-function hideOwnerLogin(){ $('ownerLoginOverlay').hidden=true; setLoginStatus(''); }
+function hideOwnerLogin(){
+  const overlay=$('ownerLoginOverlay');
+  overlay.hidden=true;
+  ['display','visibility','opacity','position','inset','z-index'].forEach(property=>overlay.style.removeProperty(property));
+  $('ownerPasswordInput').value='';
+  setLoginStatus('');
+  document.body.style.overflow='';
+  const returnFocus=ownerLoginReturnFocus||window.__ownerLoginReturnFocus||null;ownerLoginReturnFocus=null;window.__ownerLoginReturnFocus=null;
+  if(returnFocus&&returnFocus.isConnected){try{returnFocus.focus({preventScroll:true});}catch(ignore){}}
+}
+window.closePortfolioManagerLogin=hideOwnerLogin;
 window.openPortfolioManagerLogin=function(){showOwnerLogin();};
 function unlockOwnerMode(){
   if(!ownerUser || !ownerUser.email || ownerUser.email.toLowerCase()!==OWNER_EMAIL){showOwnerLogin();return;}
@@ -444,8 +486,8 @@ function unlockOwnerMode(){
   hideOwnerLogin();
   const panel=$('customizer');
   if(panel){
-    /* Keep the portfolio visible after login. Open the editor only when the owner clicks Customize. */
-    panel.classList.remove('open');
+    /* Open the full owner dashboard immediately after successful authentication. */
+    panel.classList.add('open');
     panel.hidden=false;
     panel.style.removeProperty('display');
     panel.style.removeProperty('visibility');
@@ -453,30 +495,19 @@ function unlockOwnerMode(){
     panel.style.removeProperty('pointer-events');
     panel.style.removeProperty('z-index');
   }
-  document.body.style.overflow='';
+  document.body.style.overflow='hidden';
   if($('customizeToggle')){
     const toggle=$('customizeToggle');
-    toggle.setAttribute('aria-expanded','false');
-    // Force the owner entry button to be visible even if an older CSS rule hides it.
-    toggle.hidden=false;
-    toggle.removeAttribute('hidden');
-    ['display','visibility','opacity','pointer-events','position','z-index','right','bottom','left','top','width','height','transform','clip-path'].forEach(p=>toggle.style.removeProperty(p));
-    toggle.style.setProperty('display','inline-flex','important');
-    toggle.style.setProperty('visibility','visible','important');
-    toggle.style.setProperty('opacity','1','important');
-    toggle.style.setProperty('pointer-events','auto','important');
-    toggle.style.setProperty('position','fixed','important');
-    toggle.style.setProperty('right','16px','important');
-    toggle.style.setProperty('bottom','16px','important');
-    toggle.style.setProperty('left','auto','important');
-    toggle.style.setProperty('top','auto','important');
-    toggle.style.setProperty('z-index','2147483646','important');
+    toggle.setAttribute('aria-expanded','true');
   }
-  if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','false');
-  setCloudStatus('Owner signed in. Your portfolio is visible. Click Customize to edit your details.');
+  if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','true');
+  if(panel){panel.scrollTop=0;panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});}
+  setCloudStatus('Owner signed in. Your portfolio manager panel is open.');
 }
 async function lockOwnerMode(signOut=true){
-  document.body.classList.remove('owner-unlocked');$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';hideOwnerLogin();
+  document.body.classList.remove('owner-unlocked');$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');
+  ['customizeToggle','headerCustomize'].forEach(id=>{const button=$(id);if(button){['display','visibility','opacity','pointer-events','position','z-index','right','bottom','left','top','width','height','transform','clip-path'].forEach(property=>button.style.removeProperty(property));}});
+  document.body.style.overflow='';hideOwnerLogin();
   if(signOut && supabaseClient){try{await supabaseClient.auth.signOut();}catch(err){console.warn('Sign-out request failed:',err);}}
   ownerUser=null;window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -499,7 +530,7 @@ $('ownerLoginForm').addEventListener('submit',async e=>{
       if(result && result.error){
         setCloudStatus('Signed in, but loading saved settings failed: '+result.error.message,true);
       }else{
-        setCloudStatus('Owner signed in. Portfolio is visible; click Customize to edit.');
+        setCloudStatus('Owner signed in. Your portfolio manager panel is open.');
         saveSettingsToServer().catch(syncErr=>{
           console.warn('Initial portfolio sync failed:',syncErr);
           setCloudStatus('Signed in, but initial save failed. Check your connection and server settings.',true);
@@ -507,10 +538,20 @@ $('ownerLoginForm').addEventListener('submit',async e=>{
       }
     }catch(syncErr){
       console.warn('Loading portfolio settings failed:',syncErr);
-      setCloudStatus('Signed in, but loading saved settings failed. Portfolio remains available.',true);
+      setCloudStatus('Manager panel opened, but loading saved settings failed. Please check the connection.',true);
     }
   }catch(err){ownerUser=null;const message=String(err&&err.message||'');setLoginStatus(/invalid login credentials/i.test(message)?'Email or password is incorrect. Check the owner email and use Forgot password if needed.':(message||'Sign-in failed. Check your email and password.'));}
   finally{button.disabled=false;button.textContent='Sign in to Customize';}
+});
+$('toggleOwnerPassword').addEventListener('click',()=>{
+  const input=$('ownerPasswordInput');
+  const button=$('toggleOwnerPassword');
+  const isVisible=input.type==='password';
+  input.type=isVisible?'text':'password';
+  button.setAttribute('aria-pressed',String(isVisible));
+  button.setAttribute('aria-label',isVisible?'Hide password':'Show password');
+  button.title=isVisible?'Hide password':'Show password';
+  input.focus({preventScroll:true});
 });
 $('forgotOwnerPassword').addEventListener('click',async()=>{
   if(!supabaseClient){setLoginStatus('Server login is not configured. Please check the website setup.');return;}
@@ -537,30 +578,8 @@ $('changeOwnerPassword').addEventListener('click',async()=>{
   try{const {error}=await supabaseClient.auth.updateUser({password:newPass});if(error)throw error;$('newOwnerPassword').value='';$('confirmOwnerPassword').value='';status.textContent='Password changed on the authentication server.';}
   catch(err){status.textContent='Password update failed: '+(err.message||'try again.');}
 });
-// Private owner entry: Ctrl+Shift+M on desktop or tap MANIT / the hero name three times on mobile.
-let ownerLogoTapCount=0, ownerLogoTapTimer=null;
-function handleSecretOwnerTap(e){
-  if(e&&e.preventDefault)e.preventDefault();
-  ownerLogoTapCount++;
-  if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);
-  ownerLogoTapTimer=setTimeout(()=>{ownerLogoTapCount=0;ownerLogoTapTimer=null;},3000);
-  if(ownerLogoTapCount>=3){
-    ownerLogoTapCount=0;
-    if(ownerLogoTapTimer)clearTimeout(ownerLogoTapTimer);
-    ownerLogoTapTimer=null;
-    showOwnerLogin();
-  }
-}
-$('brand').addEventListener('click',handleSecretOwnerTap);
-$('heroName').addEventListener('click',handleSecretOwnerTap);
-$('brand').style.cursor='pointer';
-$('heroName').style.cursor='pointer';
-$('brand').title='Tap three times quickly to open owner sign-in';
-$('heroName').title='Tap three times quickly to open owner sign-in';
-$('brand').setAttribute('aria-label','Manit Barabara Tebligu home — tap three times for owner sign-in');
-
-const ownerFooterLink=$('ownerLoginFooterLink');if(ownerFooterLink){ownerFooterLink.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();window.openPortfolioManagerLogin();});ownerFooterLink.addEventListener('touchend',function(e){e.preventDefault();window.openPortfolioManagerLogin();},{passive:false});}
-document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='m'){e.preventDefault();showOwnerLogin();}if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
+// Hidden owner entry is handled by the independent five-tap fallback below.
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
 
 const themes={purple:{accent:'#a855f7',accent2:'#7c3aed'},blue:{accent:'#38bdf8',accent2:'#2563eb'},green:{accent:'#34d399',accent2:'#059669'},pink:{accent:'#f472b6',accent2:'#db2777'},gold:{accent:'#fbbf24',accent2:'#b45309'},cyan:{accent:'#22d3ee',accent2:'#0891b2'}};
 const defaultProjects=[
@@ -711,7 +730,7 @@ function startBackgroundMotion(){
  let tick=0;const draw=()=>{ctx.clearRect(0,0,motionWidth,motionHeight);const mode=settings.backgroundStyle||'particles';const speed=Number(settings.backgroundSpeed??1);const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#a855f7';
  if(mode!=='off'&&speed>0){
  if(mode==='particles'||mode==='stars'){
- motionParticles.forEach((p,i)=>{p.x+=p.vx*speed*(mode==='stars'?2:1);p.y+=p.vy*speed*(mode==='stars'?2:1);if(p.x<0)p.x=motionWidth;if(p.x>motionWidth)p.x=0;if(p.y<0)p.y=motionHeight;if(p.y>motionHeight)p.y=0;const alpha=mode==='stars'?.25+.7*(.5+.5*Math.sin(tick*.02+p.phase)):.2+.45*(.5+.5*Math.sin(tick*.01+p.phase));ctx.beginPath();ctx.arc(p.x,p.y,p.r*(mode==='stars'?1.2:1),0,Math.PI*2);ctx.fillStyle=accent;ctx.globalAlpha=alpha;ctx.fill();if(mode==='particles'&&i%3===0){const q=motionParticles[(i+1)%motionParticles.length];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=accent;ctx.globalAlpha=.09;ctx.lineWidth=.7;ctx.stroke();}});ctx.globalAlpha=1;
+ motionParticles.forEach((p,i)=>{p.x+=p.vx*speed*(mode==='stars'?2:1);p.y+=p.vy*speed*(mode==='stars'?2:1);if(p.x<0)p.x=motionWidth;if(p.x>motionWidth)p.x=0;if(p.y<0)p.y=motionHeight;if(p.y>motionHeight)p.y=0;const alpha=mode==='stars' ? .25+.7*(.5+.5*Math.sin(tick*.02+p.phase)) : .2+.45*(.5+.5*Math.sin(tick*.01+p.phase));ctx.beginPath();ctx.arc(p.x,p.y,p.r*(mode==='stars'?1.2:1),0,Math.PI*2);ctx.fillStyle=accent;ctx.globalAlpha=alpha;ctx.fill();if(mode==='particles'&&i%3===0){const q=motionParticles[(i+1)%motionParticles.length];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=accent;ctx.globalAlpha=.09;ctx.lineWidth=.7;ctx.stroke();}});ctx.globalAlpha=1;
  }else if(mode==='orbits'){
  const cx=motionWidth*.5,cy=motionHeight*.5;for(let i=0;i<7;i++){ctx.beginPath();ctx.ellipse(cx,cy,Math.min(motionWidth,motionHeight)*(.14+i*.065),Math.min(motionWidth,motionHeight)*(.055+i*.026),tick*.0005*speed+i*.3,0,Math.PI*2);ctx.strokeStyle=accent;ctx.globalAlpha=.12+(i%3)*.04;ctx.lineWidth=1;ctx.stroke();}ctx.globalAlpha=1;
  }else if(mode==='aurora'){
@@ -759,7 +778,7 @@ function renderExtras(){
   });
   const contactGitHub=document.querySelector('[data-contact-github]');
   if(contactGitHub)contactGitHub.href=(settings.socials&&settings.socials.GitHub)||knownPersonalLinks.GitHub;
-  const skillIconLabels={HTML:'5',CSS:'#',JavaScript:'JS',PHP:'PHP',Java:'J','C++':'C++',Python:'Py',MySQL:'SQL',SQL:'SQL',React:'⚛','React Native':'RN',TypeScript:'TS',Git:'Git',GitHub:'GH',Firebase:'FB',Supabase:'SB',Android:'And',Kotlin:'Kt',Swift:'Sw',Node.js:'N'};
+  const skillIconLabels={HTML:'5',CSS:'#',JavaScript:'JS',PHP:'PHP',Java:'J','C++':'C++',Python:'Py',MySQL:'SQL',SQL:'SQL',React:'⚛','React Native':'RN',TypeScript:'TS',Git:'Git',GitHub:'GH',Firebase:'FB',Supabase:'SB',Android:'And',Kotlin:'Kt',Swift:'Sw','Node.js':'N'};
   settings.skills.forEach(skill=>{if(![...$('skillsList').children].some(x=>x.dataset.skillName===skill)){const badge=document.createElement('span');badge.className='skill';badge.dataset.skillName=skill;const icon=document.createElement('span');icon.className='skill-icon';icon.setAttribute('aria-hidden','true');icon.textContent=skillIconLabels[skill]||'⌘';const label=document.createElement('span');label.textContent=skill;badge.append(icon,label);$('skillsList').appendChild(badge);}});
   settings.achievements.forEach((item,i)=>{if(!$('achievementList').querySelector('[data-achievement="'+i+'"]')){const d=document.createElement('div');d.className='timeline-item';d.dataset.achievement=i;const h=document.createElement('h3');h.textContent=item.title;const p=document.createElement('p');p.textContent=item.detail;d.append(h,p);$('achievementList').appendChild(d);}});
   settings.languages.forEach((item,i)=>{if(!$('languageList').querySelector('[data-language="'+i+'"]')){const b=document.createElement('span');b.className='skill';b.dataset.language=i;b.textContent=item.name+' · '+item.level;$('languageList').appendChild(b);}});
@@ -836,7 +855,7 @@ async function loadRemoteSettings(){
     profilePhotoUrl=/^(https:\/\/|data:image\/)/i.test(candidatePhoto)?candidatePhoto:'';
     applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();applyManagerTextOverrides();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();
     if(profilePhotoUrl){$('profileImage').src=profilePhotoUrl;$('portrait').classList.add('has-photo');try{localStorage.setItem('manitPortfolioPhoto',profilePhotoUrl);}catch(e){}}
-    else{$('profileImage').removeAttribute('src');$('portrait').classList.remove('has-photo');try{localStorage.removeItem('manitPortfolioPhoto')}catch(e){}}
+    else{let savedPhoto='';try{savedPhoto=localStorage.getItem('manitPortfolioPhoto')||'';}catch(e){}profilePhotoUrl=/^(https:\/\/|data:image\/)/i.test(savedPhoto)?savedPhoto:DEFAULT_PROFILE_PHOTO_URL;$('profileImage').src=profilePhotoUrl;$('portrait').classList.add('has-photo');if(savedPhoto)try{localStorage.setItem('manitPortfolioPhoto',profilePhotoUrl);}catch(e){}}
     try{localStorage.setItem('manitPortfolioSettings',JSON.stringify(settings));if(settings.backgroundImage)localStorage.setItem('manitPortfolioBackground',settings.backgroundImage);else localStorage.removeItem('manitPortfolioBackground');}catch(e){}
     setCloudStatus('Connected to portfolio server. Public content loaded.');
     return {found:true,error:null};
@@ -857,12 +876,8 @@ async function initializeServerPortfolio(){
       const user=sessionNow&&sessionNow.user;
       if(user&&user.email&&user.email.toLowerCase()===OWNER_EMAIL){
         ownerUser=user;
-        // Restore the owner UI when Supabase confirms the saved owner session.
-        document.body.classList.add('owner-unlocked');
-        const panel=$('customizer');
-        if(panel)panel.classList.remove('open');
-        if($('customizeToggle'))$('customizeToggle').setAttribute('aria-expanded','false');
-        if($('headerCustomize'))$('headerCustomize').setAttribute('aria-expanded','false');
+        // Restore the complete manager panel when the owner session is confirmed.
+        unlockOwnerMode();
       }else if(event==='SIGNED_OUT'){
         ownerUser=null;
         document.body.classList.remove('owner-unlocked');
@@ -873,15 +888,17 @@ async function initializeServerPortfolio(){
       // editor immediately after a successful sign-in.
     });
     await loadRemoteSettings();
+    if(ownerUser)unlockOwnerMode();
   }catch(err){setCloudStatus('Server connection failed: '+(err.message||'Unknown error'),true);}
 }
 
 function load(){try{const saved=localStorage.getItem('manitPortfolioSettings');if(saved)settings=normalizePortfolioSettings(JSON.parse(saved));}catch(e){}applyTheme();applyProfileControls();renderCustomText();renderExtras();renderCustomProjects();applyBackgroundSettings();applyManagerTextOverrides();}
 $('menu').addEventListener('click',()=>{const nav=$('navlinks'),open=nav.classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));});
 $('navlinks').querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');}));
-window.togglePortfolioCustomizer=()=>{if(!document.body.classList.contains('owner-unlocked')){showOwnerLogin();return;}const panel=$('customizer');const open=!panel.classList.contains('open');if(!open){lockOwnerMode();return;}panel.classList.add('open');$('customizeToggle').setAttribute('aria-expanded','true');$('headerCustomize').setAttribute('aria-expanded','true');panel.scrollTop=0;document.body.style.overflow='hidden';panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});};
+function closePortfolioCustomizer(){const panel=$('customizer');panel.classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';}
+window.togglePortfolioCustomizer=()=>{if(!document.body.classList.contains('owner-unlocked')){showOwnerLogin();return;}const panel=$('customizer');if(panel.classList.contains('open')){closePortfolioCustomizer();return;}panel.classList.add('open');$('customizeToggle').setAttribute('aria-expanded','true');$('headerCustomize').setAttribute('aria-expanded','true');panel.scrollTop=0;document.body.style.overflow='hidden';panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});};
 $('customizeToggle').addEventListener('click',window.togglePortfolioCustomizer);
-$('closeCustomizer').addEventListener('click',lockOwnerMode);
+$('closeCustomizer').addEventListener('click',closePortfolioCustomizer);
 $('themeSelect').addEventListener('change',()=>{const t=themes[$('themeSelect').value];settings.accent=t.accent;settings.accent2=t.accent2;applyTheme();save();});
 $('bgColor').addEventListener('input',()=>{settings.bg=$('bgColor').value;applyTheme();save();});
 $('accentColor').addEventListener('input',()=>{settings.accent=$('accentColor').value;applyTheme();save();});
@@ -920,14 +937,24 @@ let editingProjectIndex=null, pendingProjectImage='';
 function renderCustomProjects(){
   document.querySelectorAll('#projectList [data-extra-project]').forEach(el=>el.remove());
   const manager=$('projectManagerList'); if(manager) manager.replaceChildren();
+  const staticCard=$('omo-project-static');
+  const staticName=staticCard?.querySelector('h3')?.textContent.trim().toLocaleLowerCase();
+  const customNames=new Set(settings.projects.map(p=>String(p.name||'').trim().toLocaleLowerCase()).filter(Boolean));
+  if(staticCard){const duplicate=!!staticName&&customNames.has(staticName);staticCard.hidden=duplicate;staticCard.style.display=duplicate?'none':'';}
+  const renderedNames=new Set();
   settings.projects.forEach((p,i)=>{
+    const projectName=String(p.name||'').trim().toLocaleLowerCase();
+    if(!projectName||renderedNames.has(projectName))return;
+    renderedNames.add(projectName);
     const art=document.createElement('article');art.className='card project-card reveal visible';art.dataset.extraProject=String(i);
     if(p.image){const im=document.createElement('img');im.className='project-thumb';im.src=p.image;im.alt=p.name+' screenshot';art.appendChild(im)}
     const lab=document.createElement('div');lab.className='project-label';lab.textContent='Personal project';
     const h=document.createElement('h3');h.textContent=p.name;
     const d=document.createElement('p');d.textContent=p.description;
     const b=document.createElement('div');b.className='project-bottom';b.textContent=p.stack||'Personal project';art.append(lab,h,d,b);
-    if(p.demo||p.github){const links=document.createElement('div');links.className='project-links';if(p.demo){const a=document.createElement('a');a.href=p.demo;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Live demo ↗';links.appendChild(a)}if(p.github){const a=document.createElement('a');a.href=p.github;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Source code ↗';links.appendChild(a)}art.appendChild(links)}
+    const projectSource=String(p.github||'').replace(/\/$/,'');
+    const isPortfolioRepository=projectSource==='https://github.com/manitbarabara80-crypto/manit-portfolio'&&projectName.includes('omo valley');
+    if(p.demo||(p.github&&!isPortfolioRepository)){const links=document.createElement('div');links.className='project-links';if(p.demo){const a=document.createElement('a');a.href=p.demo;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Live demo ↗';links.appendChild(a)}if(p.github&&!isPortfolioRepository){const a=document.createElement('a');a.href=p.github;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Source code ↗';links.appendChild(a)}art.appendChild(links)}
     $('projectList').appendChild(art);
     if(manager){const item=document.createElement('div');item.className='project-manager-item';const title=document.createElement('strong');title.textContent=p.name;const actions=document.createElement('div');actions.className='edit-actions';const edit=document.createElement('button');edit.type='button';edit.className='small-btn';edit.textContent='Edit';edit.addEventListener('click',()=>beginProjectEdit(i));const del=document.createElement('button');del.type='button';del.className='small-btn';del.textContent='Delete';del.addEventListener('click',()=>{if(confirm('Delete project “'+p.name+'”?')){settings.projects.splice(i,1);save();renderExtras();renderCustomProjects();if(editingProjectIndex===i)resetProjectForm();}});actions.append(edit,del);item.append(title,actions);manager.appendChild(item)}
   });
@@ -945,7 +972,7 @@ $('year').textContent=new Date().getFullYear();
 const progress=$('scrollProgress');const updateProgress=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?(window.scrollY/max)*100:0)+'%'};window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
 const backTop=$('backTop');window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>550),{passive:true});backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('customizer').classList.remove('open');$('customizeToggle').setAttribute('aria-expanded','false');$('headerCustomize').setAttribute('aria-expanded','false');document.body.style.overflow='';$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');if(document.body.classList.contains('owner-unlocked'))lockOwnerMode();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePortfolioCustomizer();$('navlinks').classList.remove('open');$('menu').setAttribute('aria-expanded','false');}});
 load();if(window.applySavedPortfolioVisualEdits)window.applySavedPortfolioVisualEdits();try{const storedBg=localStorage.getItem('manitPortfolioBackground');if(storedBg&&!settings.backgroundImage){settings.backgroundImage=storedBg;applyBackgroundSettings();}const photo=localStorage.getItem('manitPortfolioPhoto');if(photo){$('profileImage').src=photo;$('portrait').classList.add('has-photo');}}catch(e){}
 initializeServerPortfolio();
 </script>
@@ -1124,6 +1151,39 @@ initializeServerPortfolio();
   }
 </style>
 
+<!-- Keep the public-facing portfolio clean; the hidden name shortcut opens the owner editor. -->
+<style id="hideCustomizeFromPublicFront">
+  body #customizeToggle,
+  body #headerCustomize,
+  body.owner-unlocked #customizeToggle,
+  body.owner-unlocked #headerCustomize {
+    display:none!important; visibility:hidden!important; opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+
+<style id="mobileOwnerLoginAndPasswordToggle">
+  .password-field{position:relative;width:100%;}
+  .password-field input{padding-right:56px!important;min-height:48px;}
+  .password-visibility-toggle{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:44px;padding:10px;border:0;border-radius:10px;background:transparent;color:var(--accent);touch-action:manipulation;}
+  .password-visibility-toggle:hover,.password-visibility-toggle:focus-visible{background:color-mix(in srgb,var(--accent) 14%,transparent);}
+  .password-visibility-toggle svg{width:22px;height:22px;display:block;}
+  .password-visibility-toggle .eye-closed{display:none;}
+  .password-visibility-toggle[aria-pressed="true"] .eye-open{display:none;}
+  .password-visibility-toggle[aria-pressed="true"] .eye-closed{display:block;}
+  @media(max-width:600px){
+    #ownerLoginOverlay:not([hidden]){align-items:start!important;justify-items:center!important;padding:12px!important;overflow-y:auto!important;overscroll-behavior:contain!important;}
+    .owner-login-card{width:min(440px,100%)!important;max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;overscroll-behavior:contain;padding:20px 18px!important;border-radius:18px!important;}
+    .owner-login-card h2{font-size:clamp(1.35rem,6vw,1.65rem)!important;}
+    .owner-login-card input{font-size:16px!important;min-height:48px;}
+    .owner-login-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px!important;}
+    .owner-login-actions #ownerSignInButton{grid-column:1/-1;}
+    .owner-login-actions button{min-width:0!important;min-height:46px;}
+    .owner-login-card .notice{font-size:.78rem;line-height:1.5;}
+  }
+  @media(max-width:360px){.owner-login-card{padding:18px 14px!important}.owner-login-actions{grid-template-columns:1fr}.owner-login-actions #ownerSignInButton{grid-column:auto}}
+</style>
+
 <!-- Independent owner-login fallback: works even if the main portfolio script has an unrelated runtime error. -->
 <script>
 (function(){
@@ -1147,6 +1207,7 @@ initializeServerPortfolio();
   function openOwnerLoginFallback(){
     var overlay=document.getElementById('ownerLoginOverlay');
     if(!overlay){alert('Owner login panel is missing from this page. Please reload the website.');return;}
+    window.__ownerLoginReturnFocus=document.activeElement;
     overlay.hidden=false;
     overlay.removeAttribute('hidden');
     overlay.style.setProperty('display','grid','important');
@@ -1164,18 +1225,16 @@ initializeServerPortfolio();
     if(email)setTimeout(function(){email.focus();},50);
   }
   document.addEventListener('click',function(event){
-    var footer=event.target.closest && event.target.closest('#ownerLoginFooterLink');
-    if(footer){event.preventDefault();event.stopImmediatePropagation();openOwnerLoginFallback();return;}
-    var brand=event.target.closest && event.target.closest('#brand, #heroName');
-    if(brand){
+    var ownerEntry=event.target.closest && event.target.closest('#brand, #heroName');
+    if(ownerEntry){
       window.__ownerTapFallback=(window.__ownerTapFallback||0)+1;
       clearTimeout(window.__ownerTapFallbackTimer);
       window.__ownerTapFallbackTimer=setTimeout(function(){window.__ownerTapFallback=0;},3000);
-      if(window.__ownerTapFallback>=3){event.preventDefault();window.__ownerTapFallback=0;openOwnerLoginFallback();}
+      if(window.__ownerTapFallback>=5){event.preventDefault();window.__ownerTapFallback=0;if(document.body.classList.contains('owner-unlocked')&&typeof window.togglePortfolioCustomizer==='function'){window.togglePortfolioCustomizer();}else{openOwnerLoginFallback();}}
     }
   },true);
   document.addEventListener('keydown',function(event){
-    if(event.ctrlKey&&event.shiftKey&&event.key.toLowerCase()==='m'){event.preventDefault();openOwnerLoginFallback();}
+    if(event.key==='Escape'){var overlay=document.getElementById('ownerLoginOverlay');if(overlay&&!overlay.hidden&&typeof window.closePortfolioManagerLogin==='function'){window.closePortfolioManagerLogin();}}
   },true);
   if (window.location.search.indexOf('owner-login=1') !== -1 || window.location.search.indexOf('v=owner-login') !== -1) {
     setTimeout(openOwnerLoginFallback, 200);
