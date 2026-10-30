@@ -20,11 +20,12 @@ Turning off public sign-ups prevents new accounts from registering; it does **no
 
 ## How to open Customize
 1. Visit https://manitbarabara80-crypto.github.io/manit-portfolio/
-2. On a computer press **Ctrl + Shift + M**. On a phone, tap the MANIT logo or your hero name three times quickly.
-3. Sign in with owner email `manitbarabara80@gmail.com` and the private password for that Supabase Auth account. The password is never stored in website source code.
+2. On the public portfolio, click either the **MANIT** logo or your displayed name five times within three seconds to open the owner sign-in panel. Customize controls and owner-login links are hidden from visitors.
+3. Sign in with owner email `manitbarabara80@gmail.com` and the private password for this portfolio's Supabase Auth account. This is not your Gmail account password. The password is never stored in website source code.
 4. If you do not know the password, press **Forgot password?** in the sign-in panel. Check the Gmail inbox and Spam folder for the reset email. The Supabase Auth email provider and the site URL must be configured for reset emails to arrive and redirect correctly.
-5. The first owner sign-in synchronizes saved settings from the earlier editor. Make a test change and confirm the status says **Saved on the server**.
-6. To finish, press **Lock owner mode**.
+5. After owner sign-in, the full customization manager opens automatically. The first owner sign-in synchronizes saved settings from the earlier editor. Make a test change and confirm the status says **Saved on the server**.
+6. To change the owner password at any time, open **Owner account security and cloud sync** in Customize. Enter the current portfolio password, enter a new password of at least 12 characters twice, and choose **Change account password**. The website verifies the current password with Supabase before updating it. This is the portfolio's Supabase password, not your Gmail password. Store the new password safely; use **Forgot password?** on the sign-in screen if you later lose access.
+7. To finish, press **Lock owner mode**.
 
 ## Files committed to GitHub
 - `index.html` — portfolio plus Supabase authenticated owner editor

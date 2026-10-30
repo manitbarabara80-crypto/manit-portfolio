@@ -379,9 +379,10 @@ img,video,canvas,svg{max-width:100%}
 <details class="owner-security-settings">
   <summary>Owner account security and cloud sync</summary>
   <p class="notice">Your login is verified by Supabase. Portfolio settings are saved to the server so the public website can display your latest changes. Use a unique password.</p>
-  <label for="newOwnerPassword">New account password (at least 12 characters)</label><input id="newOwnerPassword" type="password" autocomplete="new-password" minlength="12" placeholder="New secure password">
-  <label for="confirmOwnerPassword">Confirm new password</label><input id="confirmOwnerPassword" type="password" autocomplete="new-password" minlength="12" placeholder="Enter it again">
-  <div class="edit-actions"><button class="small-btn" id="changeOwnerPassword" type="button">Change server password</button><button class="small-btn" id="lockOwnerMode" type="button">Sign out and lock</button></div>
+  <label for="currentOwnerPassword">Current account password</label><input id="currentOwnerPassword" type="password" autocomplete="current-password" required placeholder="Confirm your current password">
+  <label for="newOwnerPassword">New account password (at least 12 characters)</label><input id="newOwnerPassword" type="password" autocomplete="new-password" minlength="12" required placeholder="Choose a secure new password">
+  <label for="confirmOwnerPassword">Confirm new password</label><input id="confirmOwnerPassword" type="password" autocomplete="new-password" minlength="12" required placeholder="Enter the new password again">
+  <div class="edit-actions"><button class="small-btn" id="changeOwnerPassword" type="button">Change account password</button><button class="small-btn" id="lockOwnerMode" type="button">Sign out and lock</button></div>
   <p class="notice" id="ownerPasswordStatus" role="status" aria-live="polite"></p>
 </details>
 
@@ -571,12 +572,22 @@ $('ownerLoginOverlay').addEventListener('click',e=>{if(e.target===$('ownerLoginO
 $('ownerLockHeader').addEventListener('click',()=>lockOwnerMode(true));
 $('lockOwnerMode').addEventListener('click',()=>lockOwnerMode(true));
 $('changeOwnerPassword').addEventListener('click',async()=>{
-  const newPass=$('newOwnerPassword').value,confirmPass=$('confirmOwnerPassword').value,status=$('ownerPasswordStatus');
-  if(!supabaseClient || !ownerUser){status.textContent='Please sign in to the owner account first.';return;}
-  if(newPass.length<12){status.textContent='Choose a password with at least 12 characters.';return;}
+  const currentPass=$('currentOwnerPassword').value,newPass=$('newOwnerPassword').value,confirmPass=$('confirmOwnerPassword').value,status=$('ownerPasswordStatus'),button=$('changeOwnerPassword');
+  if(!supabaseClient || !ownerUser || !ownerUser.email || ownerUser.email.toLowerCase()!==OWNER_EMAIL){status.textContent='Sign in to the owner account before changing its password.';return;}
+  if(!currentPass){status.textContent='Enter your current account password to continue.';return;}
+  if(newPass.length<12){status.textContent='Choose a new password with at least 12 characters.';return;}
+  if(newPass===currentPass){status.textContent='Choose a new password different from your current password.';return;}
   if(newPass!==confirmPass){status.textContent='The new password and confirmation do not match.';return;}
-  try{const {error}=await supabaseClient.auth.updateUser({password:newPass});if(error)throw error;$('newOwnerPassword').value='';$('confirmOwnerPassword').value='';status.textContent='Password changed on the authentication server.';}
-  catch(err){status.textContent='Password update failed: '+(err.message||'try again.');}
+  button.disabled=true;button.textContent='Updating password…';status.textContent='';
+  try{
+    const {data:reauthData,error:reauthError}=await supabaseClient.auth.signInWithPassword({email:OWNER_EMAIL,password:currentPass});
+    if(reauthError)throw new Error('The current password is incorrect. Please check it and try again.');
+    if(!reauthData.user || !reauthData.user.email || reauthData.user.email.toLowerCase()!==OWNER_EMAIL)throw new Error('Owner account verification failed.');
+    const {error}=await supabaseClient.auth.updateUser({password:newPass});if(error)throw error;
+    $('currentOwnerPassword').value='';$('newOwnerPassword').value='';$('confirmOwnerPassword').value='';
+    status.textContent='Your portfolio account password has been changed successfully. Use the new password next time you sign in.';
+  }catch(err){status.textContent='Password update failed: '+(err.message||'Please try again.');}
+  finally{button.disabled=false;button.textContent='Change account password';}
 });
 // Hidden owner entry is handled by the independent five-tap fallback below.
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('ownerLoginOverlay').hidden)hideOwnerLogin();});
