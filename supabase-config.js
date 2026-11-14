@@ -1,4 +1,4 @@
-// Optional portfolio server configuration.
-// Add the Supabase project URL and publishable key to enable owner sign-in and cloud saves:
-// window.PORTFOLIO_SUPABASE_URL = 'https://your-project.supabase.co';
-// window.PORTFOLIO_SUPABASE_ANON_KEY = 'your-publishable-key';
+// Portfolio server configuration — Supabase connection.
+window.PORTFOLIO_SUPABASE_URL = 'https://rufqfsrkvkgkssctqkte.supabase.co';
+window.PORTFOLIO_SUPABASE_ANON_KEY = 'PASTE_YOUR_ANON_KEY_HERE';
+window.PORTFOLIO_SUPABASE_PUBLISHABLE_KEY = 'PASTE_YOUR_ANON_KEY_HERE';
