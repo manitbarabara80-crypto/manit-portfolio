@@ -137,6 +137,57 @@
     .project-note{max-width:760px;margin:22px auto 0;color:var(--muted);text-align:center;font-size:.83rem}
     @media(max-width:620px){.project-lightbox{padding:9px}.project-lightbox-close{width:38px;height:38px}.project-art:has(.project-shot):after{font-size:.62rem;right:8px;bottom:8px}}
 
+  
+    /* Image-led project cards inspired by a modern product showcase */
+    .projects-intro{max-width:720px;margin:-30px auto 34px;text-align:center;color:var(--muted)}
+    .visual-projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1040px;margin:0 auto}
+    .project-visual-card{display:flex;flex-direction:column;min-width:0;border:1px solid rgba(0,240,160,.48);border-radius:17px;overflow:hidden;background:#080b09;box-shadow:0 15px 40px rgba(0,0,0,.24);transition:transform .28s,border-color .28s,box-shadow .28s}
+    .project-visual-card:nth-child(2){border-color:rgba(255,223,0,.55)}
+    .project-visual-card:nth-child(3){border-color:rgba(192,92,255,.58)}
+    .project-visual-card:nth-child(4){border-color:rgba(34,216,230,.55)}
+    .project-visual-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.38)}
+    .project-cover{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;min-height:365px;padding:17px 18px 18px;overflow:hidden;background:#0b1712}
+    .image-cover>img{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;cursor:zoom-in;transition:transform .45s}
+    .project-visual-card:hover .image-cover>img{transform:scale(1.045)}
+    .cover-shade{position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(2,7,5,.82) 0%,rgba(2,7,5,.08) 34%,rgba(2,7,5,.5) 56%,rgba(2,7,5,.96) 100%)}
+    .cover-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .cover-number{display:inline-grid;place-items:center;min-width:38px;height:27px;padding:0 8px;border:1px solid var(--gold);border-radius:6px;background:rgba(0,0,0,.68);color:var(--gold);font-size:.73rem;font-weight:950}
+    .cover-status{padding:5px 9px;border-radius:5px;background:var(--gold);color:#10130d;font-size:.62rem;font-weight:950;letter-spacing:.06em}
+    .cover-content{margin-top:22px}
+    .cover-content h3{margin:0 0 12px;color:#fff;font-size:1.15rem;line-height:1.25;text-shadow:0 2px 12px #000}
+    .cover-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+    .cover-tags span{padding:4px 8px;border:1px solid rgba(0,240,160,.62);border-radius:5px;background:rgba(2,10,7,.76);color:#73ffd0;font-size:.65rem;font-weight:800}
+    .cover-bottom{margin-top:26px}
+    .cover-bottom p{max-width:95%;margin:0 0 12px;color:#f2f5f2;font-size:.82rem;line-height:1.5;text-shadow:0 2px 8px #000}
+    .cover-action{display:flex;align-items:center;justify-content:center;min-height:40px;width:100%;padding:9px 13px;border-radius:999px;background:linear-gradient(100deg,#00d99a,#008d69);color:#04120c;font-size:.78rem;font-weight:950;text-align:center;box-shadow:0 5px 18px rgba(0,217,154,.18);transition:filter .2s,transform .2s}
+    .cover-action:hover{filter:brightness(1.12);transform:translateY(-2px)}
+    .project-visual-card:nth-child(2) .cover-action{background:#ffdf35}
+    .project-visual-card:nth-child(3) .cover-action{background:#c66cff}
+    .project-visual-card:nth-child(4) .cover-action{background:#39dce7}
+    .cover-static{background:#303a33;color:#e3eae5;box-shadow:none}
+    .project-card-caption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border-top:1px solid rgba(255,255,255,.08)}
+    .project-card-caption h3{margin:0;color:#f3f7f3;font-size:.9rem}
+    .project-card-caption span{color:#aeb9b1;font-size:.7rem;text-align:right}
+    .tourism-cover{background:radial-gradient(circle at 78% 26%,rgba(255,204,130,.88) 0 7%,transparent 7.5%),linear-gradient(180deg,rgba(3,9,6,.08),rgba(3,9,6,.92)),linear-gradient(155deg,#183c36 0 27%,#63754c 28% 44%,#9c633e 45% 58%,#1d4433 59% 100%)}
+    .tourism-cover:before{content:"";position:absolute;z-index:-1;inset:32% -5% 17%;background:linear-gradient(145deg,transparent 0 23%,#3e5940 24% 42%,transparent 43%),linear-gradient(35deg,transparent 0 30%,#263d2e 31% 60%,transparent 61%);opacity:.9}
+    .cover-brand{margin-top:18px;color:#fff;font-size:.88rem;font-weight:950;letter-spacing:.1em}
+    .cover-brand b{color:#f1bd78}
+    .cover-headline{margin-top:10px;color:#fff;font-size:clamp(1.5rem,3vw,2.15rem);font-weight:950;line-height:1.08;text-shadow:0 3px 14px #000}
+    .cover-headline em{color:#f1bd78;font-style:normal}
+    .bank-cover{background:radial-gradient(circle at 88% 8%,rgba(0,217,154,.23),transparent 35%),linear-gradient(145deg,#0c2a21,#07100d 75%)}
+    .bank-cover-brand{margin-top:28px;color:#f5fff9;font-size:1.5rem;font-weight:950;letter-spacing:.12em}
+    .bank-cover-brand b{color:#00dfa0}
+    .bank-cover-brand small{display:block;margin-top:4px;color:#9db9aa;font-size:.62rem;letter-spacing:.2em}
+    .bank-cover-panel{margin:14px auto 0;width:min(100%,350px);padding:17px;border:1px solid rgba(0,223,160,.35);border-radius:13px;background:linear-gradient(135deg,#0bbd88,#08654e);box-shadow:0 12px 32px #0008}
+    .bank-cover-panel small{display:block;color:#d8fff0;font-size:.6rem;font-weight:800;letter-spacing:.08em}
+    .bank-cover-panel strong{display:block;margin:9px 0 15px;color:white;font-size:1.8rem;letter-spacing:.1em}
+    .bank-cover-panel div{display:flex;gap:7px;flex-wrap:wrap}
+    .bank-cover-panel i{padding:6px 9px;border-radius:6px;background:rgba(0,0,0,.2);color:white;font-size:.66rem;font-style:normal}
+    .bank-cover .cover-tags{margin-top:14px}
+    .project-note{max-width:780px;margin:22px auto 0;color:var(--muted);text-align:center;font-size:.8rem;line-height:1.55}
+    @media(max-width:700px){.visual-projects{grid-template-columns:1fr;max-width:500px;gap:18px}.project-cover{min-height:340px;padding:15px}.cover-content h3{font-size:1.08rem}.cover-bottom p{font-size:.82rem}.projects-intro{margin-top:-25px}}
+    @media(min-width:701px) and (max-width:900px){.project-cover{min-height:350px;padding:15px}.cover-headline{font-size:1.65rem}}
+
   </style>
 </head>
 <body>
@@ -218,64 +269,59 @@
     </div></section>
     <section id="projects"><div class="wrap">
       <h2 class="section-title reveal">Featured <span>Projects</span></h2>
-      <div class="projects-grid">
-        <article class="project reveal">
-          <div class="project-art">
-            <div class="tourism-demo" data-tourism-preview role="region" aria-label="Interactive Manita Omo Valley visitor walkthrough">
-              <div class="tourism-browserbar" aria-hidden="true"><i></i><i></i><i></i><span>manitaomovalley.infinityfreeapp.com</span></div>
-              <div class="tourism-demo-viewport" data-tourism-viewport aria-label="Website preview">
-                <div class="tourism-scene is-active" data-tourism-scene="0" aria-hidden="false">
-                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>DESTINATIONS&nbsp;&nbsp; CULTURE&nbsp;&nbsp; TOURS</span></div>
-                  <div class="tourism-hero-content"><small>DISCOVER SOUTH OMO, ETHIOPIA</small><h4>Find your next<br><em>meaningful journey.</em></h4><p>Meet local guides. Explore places and stories.</p><a class="tourism-cta" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Visit the live website <b>↗</b></a></div>
-                  <span class="tourism-scene-tag">01 · WELCOME</span>
-                </div>
-                <div class="tourism-scene tourism-scene-explore" data-tourism-scene="1" aria-hidden="true">
-                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>EXPLORE&nbsp;&nbsp; CULTURE&nbsp;&nbsp; GUIDES</span></div>
-                  <div class="tourism-explore-content"><small>EXPLORE AT YOUR OWN PACE</small><h4>Choose what inspires you</h4><div class="tourism-destinations"><div><i class="destination-landscape"></i><b>Places</b><span>Find a new view</span></div><div><i class="destination-culture"></i><b>Culture</b><span>Discover local stories</span></div><div><i class="destination-guide"></i><b>Local guides</b><span>Plan with a local</span></div></div></div>
-                  <span class="tourism-scene-tag">02 · DISCOVER</span>
-                </div>
-                <div class="tourism-scene tourism-scene-plan" data-tourism-scene="2" aria-hidden="true">
-                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>YOUR JOURNEY&nbsp;&nbsp; CONTACT</span></div>
-                  <div class="tourism-plan-content"><small>MAKE IT YOUR JOURNEY</small><h4>Ready to start planning?</h4><p>Choose an experience, then send a booking inquiry to the team.</p><div class="tourism-inquiry-preview"><span>YOUR EXPERIENCE</span><b>Local tours &amp; cultural experiences</b><a class="tourism-cta" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Continue to live site <b>→</b></a></div></div>
-                  <span class="tourism-scene-tag">03 · PLAN A VISIT</span>
-                </div>
-              </div>
-              <div class="tourism-demo-controls" role="group" aria-label="Visitor walkthrough controls">
-                <button class="tourism-demo-arrow" type="button" data-tourism-previous aria-label="Previous walkthrough step">←</button>
-                <button class="tourism-demo-step is-active" type="button" data-tourism-step="0" aria-label="Show the welcome page" aria-pressed="true">Home</button>
-                <button class="tourism-demo-step" type="button" data-tourism-step="1" aria-label="Show destination discovery" aria-pressed="false">Explore</button>
-                <button class="tourism-demo-step" type="button" data-tourism-step="2" aria-label="Show how to start planning" aria-pressed="false">Plan</button>
-                <button class="tourism-demo-toggle" type="button" data-tourism-toggle aria-label="Pause the walkthrough" aria-pressed="false">Ⅱ <span>Pause</span></button>
-                <button class="tourism-demo-arrow" type="button" data-tourism-next aria-label="Next walkthrough step">→</button>
-              </div>
-              <span class="sr-only" data-tourism-status role="status" aria-live="polite"></span>
-            </div>
-            <span class="project-number">#01</span><span class="project-ribbon">FEATURED</span><span class="project-image-label">Interactive visitor walkthrough</span>
+      <p class="projects-intro reveal">A closer look at the websites and software concepts I’m building. Open a project to explore its live page or source code.</p>
+      <div class="projects-grid visual-projects">
+        <article class="project project-visual-card reveal">
+          <div class="project-cover tourism-cover">
+            <div class="cover-top"><span class="cover-number">01</span><span class="cover-status">LIVE WEBSITE</span></div>
+            <div class="cover-brand">MANITA <b>OMO VALLEY</b></div>
+            <div class="cover-headline">Discover South Omo.<br><em>Experience its stories.</em></div>
+            <div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Tourism</span></div>
+            <div class="cover-bottom"><p>A tourism platform introducing visitors to South Omo destinations, culture and local experiences.</p><a class="cover-action" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">↗ Visit Live Website</a></div>
           </div>
-          <div class="project-copy"><div class="project-heading"><h3>🌍 Manita Omo Valley Tourism</h3></div><p>Preview how visitors discover South Omo, explore cultural experiences, and begin a booking inquiry. Use the controls above to walk through the front end.</p><div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Responsive UI</span></div><a class="project-link" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">↗ &nbsp; Visit Live Website</a></div>
+          <div class="project-card-caption"><h3>🌍 Manita Omo Valley Tourism</h3><span>Featured project</span></div>
         </article>
-        <article class="project reveal">
-          <div class="project-art"><img class="project-shot" src="assets/project-previews/airport.svg" alt="Illustrated Jinka Airport flight management dashboard preview" loading="lazy" decoding="async"><span class="project-number">#02</span><span class="project-ribbon">FULL-STACK</span><span class="project-image-label">Airport management · Jinka</span></div>
-          <div class="project-copy"><div class="project-heading"><h3>✈️ Jinka Airport Management</h3></div><p>A bilingual airline system for flight search, bookings, check-in, flight status, and airport team workflows. Built to run with XAMPP.</p><div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bilingual</span></div><a class="project-link" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ &nbsp; Browse Projects on GitHub</a></div>
+        <article class="project project-visual-card reveal">
+          <div class="project-cover image-cover">
+            <img class="project-shot" src="assets/project-previews/airport.svg" alt="Visual preview of the Jinka Airport management dashboard" loading="lazy" decoding="async">
+            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">02</span><span class="cover-status">SYSTEM CONCEPT</span></div>
+            <div class="cover-content"><h3>✈️ Jinka Airport Management</h3><div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bilingual UI</span></div></div>
+            <div class="cover-bottom"><p>An airport operations concept for flight information, bookings, check-in and team workflows.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ Explore Source on GitHub</a></div>
+          </div>
+          <div class="project-card-caption"><h3>Jinka Airport Management</h3><span>Full-stack concept</span></div>
         </article>
-        <article class="project reveal">
-          <div class="project-art"><img class="project-shot" src="assets/project-previews/school.svg" alt="Illustrated Hanna School management dashboard preview" loading="lazy" decoding="async"><span class="project-number">#03</span><span class="project-ribbon">FULL-STACK</span><span class="project-image-label">School portal · Dashboard</span></div>
-          <div class="project-copy"><div class="project-heading"><h3>🎓 Hanna School Management</h3></div><p>A role-based school portal for admissions, attendance, grades, timetables, fees, documents, and announcements. Built to run with XAMPP.</p><div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Role-based portal</span></div><a class="project-link" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ &nbsp; Browse Projects on GitHub</a></div>
+        <article class="project project-visual-card reveal">
+          <div class="project-cover image-cover">
+            <img class="project-shot" src="assets/project-previews/school.svg" alt="Visual preview of the Hanna School management portal" loading="lazy" decoding="async">
+            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">03</span><span class="cover-status">SYSTEM CONCEPT</span></div>
+            <div class="cover-content"><h3>🎓 Hanna School Management</h3><div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>School Portal</span></div></div>
+            <div class="cover-bottom"><p>A school portal concept for student records, attendance, grades, timetables and administration.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ Explore Source on GitHub</a></div>
+          </div>
+          <div class="project-card-caption"><h3>Hanna School Management</h3><span>Full-stack concept</span></div>
         </article>
-        <article class="project reveal">
-          <div class="project-art"><img class="project-shot" src="assets/project-previews/portfolio.svg" alt="Illustrated personal developer portfolio website preview" loading="lazy" decoding="async"><span class="project-number">#04</span><span class="project-ribbon">PORTFOLIO</span><span class="project-image-label">Personal portfolio · Web</span></div>
-          <div class="project-copy"><div class="project-heading"><h3>💻 Developer Portfolio</h3></div><p>A responsive personal website that brings together my background, technical skills, selected projects, and contact links.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Accessible design</span></div><a class="project-link" href="https://github.com/manitbarabara80-crypto/manit-portfolio" target="_blank" rel="noopener noreferrer">↗ &nbsp; View Source on GitHub</a></div>
+        <article class="project project-visual-card reveal">
+          <div class="project-cover image-cover">
+            <img class="project-shot" src="assets/project-previews/portfolio.svg" alt="Visual preview of the developer portfolio website" loading="lazy" decoding="async">
+            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">04</span><span class="cover-status">LIVE PORTFOLIO</span></div>
+            <div class="cover-content"><h3>💻 Developer Portfolio</h3><div class="cover-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div></div>
+            <div class="cover-bottom"><p>A responsive portfolio presenting my skills, projects, professional journey and ways to collaborate.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto/manit-portfolio" target="_blank" rel="noopener noreferrer">↗ View Source on GitHub</a></div>
+          </div>
+          <div class="project-card-caption"><h3>Developer Portfolio</h3><span>Personal website</span></div>
+        </article>
+        <article class="project project-visual-card reveal">
+          <div class="project-cover bank-cover">
+            <div class="cover-top"><span class="cover-number">05</span><span class="cover-status">PROTOTYPE</span></div>
+            <div class="bank-cover-brand">OMO <b>BANK</b><small>DIGITAL BANKING DEMO</small></div>
+            <div class="bank-cover-panel"><small>AVAILABLE BALANCE · SAMPLE</small><strong>•••••• ETB</strong><div><i>Transfer</i><i>Payments</i><i>History</i></div></div>
+            <div class="cover-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP / MySQL</span></div>
+            <div class="cover-bottom"><p>A learning prototype exploring account views, transaction flows and accessible digital banking interfaces. Not a live banking service.</p><span class="cover-action cover-static">Prototype · In development</span></div>
+          </div>
+          <div class="project-card-caption"><h3>Omo Bank Demo</h3><span>Learning prototype</span></div>
         </article>
       </div>
-      <p class="project-note">Project previews are illustrative where a live product link is not provided. Prototype labels distinguish work in progress from live websites.</p>
-      <div class="projects-grid extra-project">
-        <article class="project reveal">
-          <div class="project-art bank-art"><div class="bank-preview"><span class="bank-label">OMO BANK · DEMO</span><strong>Simple digital banking concept</strong><div class="bank-balance"><small>Available balance</small><b>•••••• ETB</b></div><div class="bank-actions"><i>Transfer</i><i>Pay</i><i>History</i></div></div></div>
-          <div class="project-copy"><div class="project-heading"><h3>Omo Bank Demo</h3><span class="status-tag">Prototype</span></div><p>A learning-focused banking interface concept exploring account views, transaction flows, and accessible digital services. This is a demo—not a live banking service.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP / MySQL</span></div><span class="project-link project-link-static">Concept prototype · In development</span></div>
-        </article>
-</div>
+      <p class="project-note">Some project visuals are designed previews of the interface, not captured screenshots of a finished live system. Labels identify live websites and prototypes clearly. I’ll replace these previews with real product screenshots and demo videos as they become available.</p>
     </div></section>
-    <section id="contact"><div class="wrap">
+<section id="contact"><div class="wrap">
       <h2 class="section-title">Get In <span>Touch</span></h2>
       <div class="contact-grid">
         <div class="contact-card"><h3>Let’s build something useful</h3><p>I’m open to internships, junior developer roles, collaborations, and freelance projects. Choose a verified profile below, or send me a message directly.</p><div class="contact-socials" aria-label="Connect with Manit"><a class="social" href="https://github.com/manitbarabara80-crypto" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH <span>GitHub</span></a><a class="social" href="https://wa.me/251902266498" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA <span>WhatsApp</span></a><a class="social" href="mailto:manitbarabara80@gmail.com" aria-label="Email">@ <span>Email</span></a></div><a class="contact-item" href="mailto:manitbarabara80@gmail.com"><span class="contact-icon">@</span><span><small>Email</small>manitbarabara80@gmail.com</span></a><a class="contact-item" href="tel:+251902266498"><span class="contact-icon">☎</span><span><small>Phone / WhatsApp</small>0902266498</span></a><a class="contact-item" href="https://github.com/manitbarabara80-crypto" target="_blank" rel="noopener noreferrer"><span class="contact-icon">GH</span><span><small>Code and projects</small>GitHub profile</span></a></div>
