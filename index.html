@@ -214,6 +214,54 @@
     @media(min-width:701px) and (max-width:900px){.visual-projects{gap:16px}.showcase-art{min-height:235px;padding:15px}.showcase-copy{padding:15px}}
     @media(prefers-reduced-motion:reduce){.showcase-card,.project-filter,.showcase-link{transition:none}}
 
+  
+    /* Refined professional identity and responsive About section */
+    :root{--cyan:#55e5b0;--cyan2:#16b887;--navy:#07110e;--navy2:#0c1b15;--card:#102219;--line:rgba(169,235,204,.13);--muted:#b6c8bd}
+    body{background:radial-gradient(ellipse at 8% 5%,rgba(20,133,93,.13),transparent 34%),radial-gradient(ellipse at 94% 38%,rgba(65,117,151,.1),transparent 32%),#07110e}
+    .nav{background:rgba(7,17,14,.86);border-bottom:1px solid rgba(169,235,204,.1)}
+    .brand span,.accent,.role span,.section-title span{color:var(--cyan)}
+    .btn{background:linear-gradient(135deg,#65efbd,#20b984);color:#052016;box-shadow:0 10px 30px rgba(32,185,132,.18)}
+    .btn:hover{box-shadow:0 14px 34px rgba(32,185,132,.3)}
+    .social{border-color:rgba(85,229,176,.5);color:var(--cyan)}
+    .social:hover{background:var(--cyan);color:#06150f}
+    .about-section{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(15,34,25,.36),rgba(7,17,14,.2))}
+    .about-heading{text-align:center;margin-bottom:48px}
+    .about-heading .section-title{margin:9px 0 12px}
+    .section-kicker{color:#70e9bb;font-size:.72rem;font-weight:900;letter-spacing:.2em}
+    .about-intro{margin:0;color:#aebfb5;font-size:1.02rem}
+    .about-modern{grid-template-columns:.78fr 1.22fr;align-items:start;gap:clamp(35px,6vw,82px)}
+    .about-visual{position:sticky;top:110px;padding:22px;border:1px solid rgba(114,226,177,.2);border-radius:25px;background:linear-gradient(145deg,rgba(22,53,39,.9),rgba(10,24,18,.94));box-shadow:0 25px 70px rgba(0,0,0,.25)}
+    .about-photo{width:min(100%,350px);aspect-ratio:4/4.5;border-radius:20px;padding:6px;background:linear-gradient(145deg,#70eac0,#1c8d6b 50%,#6b78bb);box-shadow:0 18px 45px #0006}
+    .about-photo img{border:0;border-radius:15px;object-position:center 28%}
+    .about-photo-caption{display:flex;align-items:center;gap:9px;margin:15px 2px 0;color:#b6c8bd;font-size:.77rem}
+    .caption-dot{width:8px;height:8px;flex:none;border-radius:50%;background:#52e6ad;box-shadow:0 0 13px #52e6ad}
+    .about-visual-note{position:relative;margin-top:20px;padding:18px 18px 18px 46px;border:1px solid rgba(114,226,177,.15);border-radius:15px;background:rgba(5,16,11,.48)}
+    .about-visual-note .note-mark{position:absolute;left:15px;top:4px;color:#5de5b2;font-family:Georgia,serif;font-size:3rem;line-height:1}
+    .about-visual-note p{margin:0;color:#e4f1e9;font-size:.95rem;font-weight:700;line-height:1.5}
+    .about-copy-modern{padding:4px 0}
+    .about-eyebrow{display:inline-block;margin-bottom:12px;color:#66e9b7;font-size:.7rem;font-weight:950;letter-spacing:.18em}
+    .about-copy-modern h3{max-width:650px;margin:0 0 20px;color:#f1faf4;font-size:clamp(1.8rem,3.3vw,2.7rem);line-height:1.12;letter-spacing:-.045em}
+    .about-copy-modern p{margin:0 0 15px;color:#b8c9bf;font-size:.97rem;line-height:1.8}
+    .about-highlights{display:grid;gap:10px;margin:26px 0}
+    .about-highlights>div{display:flex;align-items:center;gap:14px;padding:13px 15px;border:1px solid rgba(151,220,185,.13);border-radius:13px;background:rgba(18,39,28,.62)}
+    .highlight-icon{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:11px;background:rgba(71,222,164,.12);color:#6be9b9;font-size:.72rem;font-weight:950}
+    .about-highlights strong,.about-highlights small{display:block}
+    .about-highlights strong{color:#eaf7ef;font-size:.88rem}
+    .about-highlights small{margin-top:2px;color:#9fb2a6;font-size:.78rem;line-height:1.45}
+    .about-facts-modern{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:25px 0}
+    .about-facts-modern>div{padding:13px 14px;border:1px solid rgba(151,220,185,.13);border-radius:12px;background:rgba(11,28,19,.75)}
+    .about-facts-modern>div:last-child{grid-column:1/-1}
+    .about-facts-modern strong{display:block;margin-bottom:4px;color:#65e6b5;font-size:.7rem;text-transform:uppercase;letter-spacing:.09em}
+    .about-facts-modern span{display:block;color:#e2eee6;font-size:.86rem;line-height:1.45}
+    .about-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .about-actions .btn.secondary{border-color:rgba(151,220,185,.26);color:#e7f3eb}
+    .proof-strip{background:rgba(13,34,24,.7);border-top:1px solid rgba(151,220,185,.1);border-bottom:1px solid rgba(151,220,185,.1)}
+    .service,.showcase-card,.project-visual-card{backdrop-filter:blur(12px)}
+    a:focus-visible,button:focus-visible{outline:3px solid #8af3cb;outline-offset:3px}
+    @media(max-width:800px){.about-modern{grid-template-columns:1fr;gap:32px}.about-visual{position:relative;top:auto;max-width:440px;width:100%;margin:0 auto}.about-photo{width:100%;max-width:100%;aspect-ratio:16/11}.about-photo img{object-position:center 27%}.about-visual-note{margin-top:14px}.about-heading{margin-bottom:32px}}
+    @media(max-width:520px){.about-visual{padding:14px;border-radius:19px}.about-photo{aspect-ratio:4/4.1}.about-copy-modern h3{font-size:1.8rem}.about-copy-modern p{font-size:.91rem;line-height:1.72}.about-facts-modern{grid-template-columns:1fr}.about-facts-modern>div:last-child{grid-column:auto}.about-actions{display:grid;grid-template-columns:1fr}.about-actions .btn{width:100%}.about-highlights>div{align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
   </style>
 </head>
 <body>
@@ -240,11 +288,33 @@
       </div>
       <div class="portrait-wrap reveal"><div class="portrait"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div></div>
     </section>
-    <section id="about"><div class="wrap">
-      <h2 class="section-title">About <span>Me</span></h2>
-      <div class="about-grid">
-        <div class="about-photo"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div>
-        <div class="about-copy"><span class="about-eyebrow">A little more about me</span><h3>Student, builder, and lifelong learner</h3><p>I’m Manit, a fourth-year Computer Science and Engineering student at Bule Hora University, Ethiopia. I’m developing my skills in software engineering by designing and building practical web applications.</p><p>I work across front-end development, PHP and MySQL back-end development, and user-focused interface design. I enjoy turning ideas into working prototypes, learning from feedback, and improving the details that make digital products easier to use.</p><p>My connection to South Omo inspires me to explore how technology can help communities share their stories, access information, and create new opportunities.</p><div class="about-facts" aria-label="About Manit"><div><strong>Education</strong><span>Computer Science &amp; Engineering</span></div><div><strong>University</strong><span>Bule Hora University</span></div><div><strong>Interests</strong><span>Web apps · UI · South Omo</span></div></div><a class="btn" href="#contact">Let’s Work Together</a> <a class="btn secondary" href="#projects">Explore My Projects</a></div>
+    <section id="about" class="about-section" aria-labelledby="aboutTitle"><div class="wrap">
+      <div class="about-heading"><span class="section-kicker">THE PERSON BEHIND THE PROJECTS</span><h2 class="section-title" id="aboutTitle">About <span>Me</span></h2><p class="about-intro">Curiosity drives me. Purpose guides what I build.</p></div>
+      <div class="about-grid about-modern">
+        <div class="about-visual">
+          <div class="about-photo"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Portrait of Manit Barabara Tebligu" loading="lazy"></div>
+          <div class="about-photo-caption"><span class="caption-dot"></span><span>Based in Ethiopia · Building for a wider world</span></div>
+          <div class="about-visual-note"><span class="note-mark">“</span><p>I believe technology becomes powerful when it creates opportunities for people.</p></div>
+        </div>
+        <div class="about-copy about-copy-modern">
+          <span class="about-eyebrow">HELLO, I'M MANIT</span>
+          <h3>A future-focused developer with a purpose beyond code.</h3>
+          <p>I’m Manit Barabara Tebligu, a fourth-year Computer Science and Engineering student at Bule Hora University, Ethiopia, working toward my graduation in 2028. I’m building my path in software engineering through hands-on projects, continuous learning and a strong interest in solving practical problems with technology.</p>
+          <p>My work and learning focus on web development and full-stack fundamentals. I use HTML, CSS and JavaScript to create front-end experiences, and I’m developing my back-end skills with PHP and MySQL. I also work with Java, C++, and Python as I strengthen my programming and problem-solving foundation.</p>
+          <p>My connection to South Omo and its pastoralist communities shapes the kind of impact I hope to make. It reminds me that talent exists everywhere, while access to technology and opportunity is not always equal. I want to help build useful digital tools, share local stories with wider audiences, and contribute to solutions that respond to real needs.</p>
+          <p>I’m open to learning from experienced developers, contributing to meaningful projects, and connecting with mentors, teams and organizations that value curiosity, consistency and community-centered innovation.</p>
+          <div class="about-highlights">
+            <div><span class="highlight-icon">01</span><div><strong>What I’m building</strong><small>Responsive websites and practical software concepts</small></div></div>
+            <div><span class="highlight-icon">02</span><div><strong>What motivates me</strong><small>Learning, problem-solving and expanding access to opportunity</small></div></div>
+            <div><span class="highlight-icon">03</span><div><strong>What I’m looking for</strong><small>Internships, mentorship and collaborative projects</small></div></div>
+          </div>
+          <div class="about-facts about-facts-modern" aria-label="Education and interests">
+            <div><strong>Education</strong><span>BSc Computer Science &amp; Engineering · In progress</span></div>
+            <div><strong>University</strong><span>Bule Hora University</span></div>
+            <div><strong>Expected graduation</strong><span>2028</span></div>
+          </div>
+          <div class="about-actions"><a class="btn" href="#contact">Let’s Connect <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#projects">Explore My Work</a></div>
+        </div>
       </div>
     </div></section>
 
