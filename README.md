@@ -17,7 +17,7 @@ HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL
 
 ## Selected projects
 
-The project cards use locally stored SVG illustrations as visual previews; these are mockups, not captured screenshots of the deployed applications.
+The project previews are locally built mockups, not captured screenshots of the deployed applications. The Manita Omo Valley card includes an interactive visitor walkthrough; its controls demonstrate the visitor journey and do not submit a real booking inquiry. Use the live website link to open the deployed tourism site.
 
 - **Manita Omo Valley Tourism Ethiopia** — full-featured South Omo tourism platform with cultural storytelling, tours, tribes, guides, bookings, collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard. [Open the live public demo](https://manitaomovalley.infinityfreeapp.com/).
 - **Jinka Airport Management System** — bilingual airline management platform with flight search, booking management, check-in, flight status, lost-property reporting, payment configuration, CMS controls, manager authorization, and audit logging. [Run the local XAMPP demo](http://localhost/xampp-jinka-airport/).

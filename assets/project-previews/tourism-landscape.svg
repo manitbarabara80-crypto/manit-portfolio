@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">South Omo landscape</title>
+  <desc id="desc">Layered hills beneath a bright sky in South Omo, Ethiopia.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#153d5d"/><stop offset="1" stop-color="#78b8b8"/></linearGradient>
+    <linearGradient id="hills" x2="0" y2="1"><stop stop-color="#688c70"/><stop offset="1" stop-color="#193b3c"/></linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#sky)"/>
+  <circle cx="925" cy="155" r="72" fill="#f3d9a1" opacity=".8"/>
+  <path d="M0 405 170 260l125 92 184-206 183 211 140-130 144 114 140-86 114 92v353H0Z" fill="#345a60"/>
+  <path d="m0 480 185-121 128 113 184-167 141 132 147-87 140 96 126-104 149 106v252H0Z" fill="#477665"/>
+  <path d="M0 535q172-111 350-16t350-24q191-102 500 21v184H0Z" fill="url(#hills)"/>
+  <path d="M0 615q208-74 384 0t403-6q209-83 413 10v81H0Z" fill="#173533"/>
+  <path d="M0 588q166-42 320 5t329 4q257-95 551-4" fill="none" stroke="#a9be82" stroke-opacity=".48" stroke-width="8"/>
+</svg>

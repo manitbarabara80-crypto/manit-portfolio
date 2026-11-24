@@ -57,10 +57,12 @@
     .projects-grid{max-width:1120px;gap:26px}.project{background:#0d1b32;border-color:color-mix(in srgb,var(--project-color,var(--cyan)) 45%,transparent);box-shadow:0 14px 36px rgba(0,0,0,.24)}.project:nth-child(2){--project-color:#8c9dff}.project:nth-child(3){--project-color:#59d1ed}.project:nth-child(4){--project-color:#76b9ff}.project-art,.project:nth-child(n) .project-art{height:250px;padding:0;background:linear-gradient(145deg,#10213b,#081326);border-bottom:1px solid var(--line)}.project-art:before{z-index:1;background:linear-gradient(180deg,rgba(8,19,38,.08),transparent 55%,rgba(8,19,38,.35));pointer-events:none}.project-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .4s}.project:hover .project-shot{transform:scale(1.045);filter:brightness(1.08)}.project-number{border-color:var(--cyan);color:var(--cyan);background:rgba(8,19,38,.88)}.project-ribbon{background:var(--cyan);color:#071426}.project-image-label{position:absolute;z-index:2;right:13px;bottom:12px;padding:5px 10px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(8,19,38,.78);color:#eaf7ff;font-size:.7rem;font-weight:700;backdrop-filter:blur(8px)}.project-copy{background:linear-gradient(180deg,#0e1c32,#0a1526)}.project-copy p{color:#c3d0e0}.project-tech span{border-color:color-mix(in srgb,var(--project-color,var(--cyan)) 34%,transparent)}.project-link{background:var(--project-color,var(--cyan));color:#081326}
     .about-eyebrow{display:inline-block;margin-bottom:8px;color:var(--cyan);font-size:.77rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.about-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 6px}.about-facts div{min-height:88px;padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(17,31,54,.68)}.about-facts strong,.about-facts span{display:block}.about-facts strong{margin-bottom:5px;color:var(--cyan);font-size:.82rem}.about-facts span{color:var(--muted);font-size:.77rem;line-height:1.45}
     .contact-card{background:linear-gradient(145deg,#12213a,#0a1527);border-color:rgba(55,199,239,.25)}.contact-socials{align-items:center}.contact-socials .social{display:flex;width:auto;min-width:45px;height:44px;align-items:center;justify-content:center;gap:7px;padding:0 13px;border-radius:999px}.contact-socials .social span{font-size:.8rem;font-weight:750}.contact-item>span:last-child{display:flex;flex-direction:column;line-height:1.4;overflow-wrap:anywhere}.contact-item small{margin-bottom:2px;color:var(--muted);font-size:.72rem}
+    .tourism-demo{position:absolute;z-index:2;inset:0;display:grid;grid-template-rows:24px minmax(0,1fr) 40px;overflow:hidden;background:#f4f4ef;color:#14251f;font-family:inherit}.project:first-child .project-number,.project:first-child .project-ribbon,.project:first-child .project-image-label{display:none}.tourism-browserbar{display:flex;align-items:center;gap:5px;padding:0 10px;background:#0d1928;color:#aab8c6;font:600 9px/1 system-ui,sans-serif}.tourism-browserbar i{width:6px;height:6px;border-radius:50%;background:#738293}.tourism-browserbar i:first-child{background:#ff776d}.tourism-browserbar i:nth-child(2){background:#ffc55d}.tourism-browserbar i:nth-child(3){background:#58cf82}.tourism-browserbar span{margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tourism-demo-viewport{position:relative;min-height:0;overflow:hidden}.tourism-scene{position:absolute;inset:0;overflow:hidden;padding:0 17px 14px;opacity:0;transform:translateX(14px);pointer-events:none;transition:opacity .42s ease,transform .42s ease}.tourism-scene.is-active{z-index:1;opacity:1;transform:translateX(0);pointer-events:auto}.tourism-scene[aria-hidden="true"]{visibility:hidden}.tourism-scene:first-child{background:#183c3b url("assets/project-previews/tourism-landscape.svg") center 52%/cover no-repeat;color:#fff}.tourism-scene:first-child:before{position:absolute;inset:0;content:"";background:linear-gradient(90deg,rgba(8,25,30,.82),rgba(8,25,30,.25) 75%),linear-gradient(0deg,rgba(8,25,30,.3),transparent 55%)}.tourism-site-nav,.tourism-hero-content,.tourism-scene-tag,.tourism-explore-content,.tourism-plan-content{position:relative;z-index:1}.tourism-site-nav{height:34px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);color:#fff;font:650 8px/1 system-ui,sans-serif}.tourism-site-nav strong{font-size:10px;letter-spacing:.11em}.tourism-site-nav strong span{color:#8ce2d2}.tourism-site-nav>span{font-size:7px;letter-spacing:.08em}.tourism-hero-content{max-width:350px;padding-top:10px}    .tourism-hero-content small,.tourism-explore-content>small,.tourism-plan-content>small{font:750 7px/1.3 system-ui,sans-serif;letter-spacing:.13em;color:#9be0d1}.tourism-hero-content h4{margin:4px 0 3px;color:#fff;font-size:clamp(17px,2.1vw,25px);line-height:1.08;letter-spacing:-.035em}.tourism-hero-content h4 em{color:#b6edda;font-style:normal}.tourism-hero-content p{margin:0 0 8px;color:#e3e8e4;font-size:9px}.tourism-cta{display:inline-flex;align-items:center;gap:12px;padding:6px 9px;border:0;border-radius:4px;background:#b9edda;color:#163a32;font:750 8px/1 system-ui,sans-serif;text-decoration:none;cursor:pointer}.tourism-cta:hover{filter:brightness(1.06)}.tourism-cta:focus-visible{outline:2px solid #fff;outline-offset:2px}.tourism-cta b{font-size:12px}.tourism-scene-tag{position:absolute;right:13px;bottom:9px;color:rgba(255,255,255,.75);font:700 7px/1 system-ui,sans-serif;letter-spacing:.12em}.tourism-scene-explore,.tourism-scene-plan{background:linear-gradient(135deg,#e9efe9,#d4e5db);color:#19342c}.tourism-scene-explore .tourism-site-nav,.tourism-scene-plan .tourism-site-nav{border-color:rgba(25,52,44,.18);color:#19342c}.tourism-scene-explore .tourism-site-nav strong span,.tourism-scene-plan .tourism-site-nav strong span{color:#37816f}.tourism-explore-content,.tourism-plan-content{padding-top:10px}.tourism-explore-content h4,.tourism-plan-content h4{margin:3px 0 8px;color:#173c31;font-size:clamp(13px,1.55vw,18px);line-height:1.15}.tourism-destinations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.tourism-destinations>div{display:flex;min-width:0;flex-direction:column;overflow:hidden;border:1px solid rgba(25,52,44,.1);border-radius:6px;background:#fff;box-shadow:0 4px 12px rgba(27,65,52,.08)}.tourism-destinations i{height:52px;background:linear-gradient(160deg,transparent 35%,rgba(16,54,46,.45)),linear-gradient(135deg,#bbd8c6,#739c7c)}.tourism-destinations>div:nth-child(2) i{background:linear-gradient(160deg,transparent 35%,rgba(16,54,46,.42)),linear-gradient(135deg,#e5ce9a,#9d7951)}.tourism-destinations>div:nth-child(3) i{background:linear-gradient(160deg,transparent 35%,rgba(16,54,46,.45)),linear-gradient(135deg,#9dc8bd,#488c7f)}.tourism-destinations b,.tourism-destinations span{overflow:hidden;padding:0 6px;text-overflow:ellipsis;white-space:nowrap}.tourism-destinations b{padding-top:5px;color:#173c31;font-size:9px}.tourism-destinations span{padding-bottom:6px;color:#60746a;font-size:7px}.tourism-plan-content{max-width:380px}.tourism-plan-content p{max-width:285px;margin:0 0 7px;color:#60746a;font-size:8px;line-height:1.35}.tourism-inquiry-preview{display:grid;gap:4px;max-width:275px;padding:7px 9px;border:1px solid rgba(25,52,44,.12);border-radius:6px;background:rgba(255,255,255,.88)}.tourism-inquiry-preview>span:first-child{color:#6e8277;font:750 6px/1 system-ui,sans-serif;letter-spacing:.1em}.tourism-inquiry-preview>b{color:#19342c;font-size:8px}.tourism-inquiry-preview .tourism-cta{justify-self:start;padding:5px 7px;background:#24705d;color:#fff}.tourism-scene-explore .tourism-scene-tag,.tourism-scene-plan .tourism-scene-tag{color:#4b6c5e}.tourism-demo-controls{z-index:2;display:flex;align-items:center;justify-content:center;gap:5px;padding:4px 8px;background:#0d1928}.tourism-demo-controls button{display:inline-flex;min-width:29px;height:27px;align-items:center;justify-content:center;padding:0 7px;border:1px solid rgba(255,255,255,.2);border-radius:5px;background:transparent;color:#e8f0f3;font:700 9px/1 system-ui,sans-serif;cursor:pointer}.tourism-demo-controls button:hover,.tourism-demo-controls button.is-active{border-color:#8ce2d2;background:rgba(140,226,210,.16);color:#b9edda}.tourism-demo-controls button:focus-visible{outline:2px solid #8ce2d2;outline-offset:2px}.tourism-demo-controls .tourism-demo-arrow{min-width:27px;font-size:13px}.tourism-demo-controls .tourism-demo-toggle{margin-left:auto;min-width:64px;gap:5px}.tourism-demo-toggle span{font-size:8px}
     @keyframes name-glow-blue{from{text-shadow:0 0 8px rgba(55,199,239,.12)}to{text-shadow:0 0 24px rgba(55,199,239,.34)}}@keyframes skill-slide-in{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:translateX(0)}}
     @media(max-width:900px){.about-facts{max-width:700px;margin-inline:auto}.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:620px){.about-facts{grid-template-columns:1fr;text-align:left}.about-facts div{min-height:auto}.projects-grid{grid-template-columns:1fr}.project-art,.project:nth-child(n) .project-art{height:220px}.contact-socials .social{min-width:42px;padding:0 10px}.contact-socials .social span{font-size:.74rem}}
-    @media(prefers-reduced-motion:reduce){.hero-copy h1 span:last-child,.skills-viewport.is-visible #skillsSet .skill{animation:none!important}.project-shot{transition:none}}
+    @media(max-width:620px){.tourism-demo{grid-template-rows:21px minmax(0,1fr) 36px}.tourism-browserbar{font-size:8px}.tourism-scene{padding-inline:12px}.tourism-site-nav{height:29px}.tourism-site-nav>span{font-size:6px}.tourism-hero-content{padding-top:8px}.tourism-hero-content p{font-size:8px}.tourism-destinations{gap:5px}.tourism-destinations i{height:42px}.tourism-demo-controls{gap:4px;padding-inline:5px}.tourism-demo-controls button{min-width:26px;height:25px;padding-inline:6px}.tourism-demo-controls .tourism-demo-arrow{min-width:24px}.tourism-demo-controls .tourism-demo-toggle{min-width:55px}}
+    @media(prefers-reduced-motion:reduce){.hero-copy h1 span:last-child,.skills-viewport.is-visible #skillsSet .skill{animation:none!important}.project-shot,.tourism-scene{transition:none}}
   </style>
 </head>
 <body>
@@ -132,8 +134,39 @@
       <h2 class="section-title reveal">Featured <span>Projects</span></h2>
       <div class="projects-grid">
         <article class="project reveal">
-          <div class="project-art"><img class="project-shot" src="assets/project-previews/tourism.svg" alt="Illustrated South Omo tourism website preview" loading="lazy" decoding="async"><span class="project-number">#01</span><span class="project-ribbon">FEATURED</span><span class="project-image-label">Tourism · South Omo</span></div>
-          <div class="project-copy"><div class="project-heading"><h3>🌍 Manita Omo Valley Tourism</h3></div><p>A tourism experience featuring cultural stories, local guides, tours, booking inquiries, and a manager dashboard.</p><div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Responsive UI</span></div><a class="project-link" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">↗ &nbsp; Visit Live Website</a></div>
+          <div class="project-art">
+            <div class="tourism-demo" data-tourism-preview role="region" aria-label="Interactive Manita Omo Valley visitor walkthrough">
+              <div class="tourism-browserbar" aria-hidden="true"><i></i><i></i><i></i><span>manitaomovalley.infinityfreeapp.com</span></div>
+              <div class="tourism-demo-viewport" data-tourism-viewport aria-label="Website preview">
+                <div class="tourism-scene is-active" data-tourism-scene="0" aria-hidden="false">
+                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>DESTINATIONS&nbsp;&nbsp; CULTURE&nbsp;&nbsp; TOURS</span></div>
+                  <div class="tourism-hero-content"><small>DISCOVER SOUTH OMO, ETHIOPIA</small><h4>Find your next<br><em>meaningful journey.</em></h4><p>Meet local guides. Explore places and stories.</p><button class="tourism-cta" type="button" data-tourism-show="1">Explore destinations <b>→</b></button></div>
+                  <span class="tourism-scene-tag">01 · WELCOME</span>
+                </div>
+                <div class="tourism-scene tourism-scene-explore" data-tourism-scene="1" aria-hidden="true">
+                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>EXPLORE&nbsp;&nbsp; CULTURE&nbsp;&nbsp; GUIDES</span></div>
+                  <div class="tourism-explore-content"><small>EXPLORE AT YOUR OWN PACE</small><h4>Choose what inspires you</h4><div class="tourism-destinations"><div><i class="destination-landscape"></i><b>Places</b><span>Find a new view</span></div><div><i class="destination-culture"></i><b>Culture</b><span>Discover local stories</span></div><div><i class="destination-guide"></i><b>Local guides</b><span>Plan with a local</span></div></div></div>
+                  <span class="tourism-scene-tag">02 · DISCOVER</span>
+                </div>
+                <div class="tourism-scene tourism-scene-plan" data-tourism-scene="2" aria-hidden="true">
+                  <div class="tourism-site-nav"><strong>MANITA <span>OMO VALLEY</span></strong><span>YOUR JOURNEY&nbsp;&nbsp; CONTACT</span></div>
+                  <div class="tourism-plan-content"><small>MAKE IT YOUR JOURNEY</small><h4>Ready to start planning?</h4><p>Choose an experience, then send a booking inquiry to the team.</p><div class="tourism-inquiry-preview"><span>YOUR EXPERIENCE</span><b>Local tours &amp; cultural experiences</b><a class="tourism-cta" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Continue to live site <b>→</b></a></div></div>
+                  <span class="tourism-scene-tag">03 · PLAN A VISIT</span>
+                </div>
+              </div>
+              <div class="tourism-demo-controls" role="group" aria-label="Visitor walkthrough controls">
+                <button class="tourism-demo-arrow" type="button" data-tourism-previous aria-label="Previous walkthrough step">←</button>
+                <button class="tourism-demo-step is-active" type="button" data-tourism-step="0" aria-label="Show the welcome page" aria-pressed="true">Home</button>
+                <button class="tourism-demo-step" type="button" data-tourism-step="1" aria-label="Show destination discovery" aria-pressed="false">Explore</button>
+                <button class="tourism-demo-step" type="button" data-tourism-step="2" aria-label="Show how to start planning" aria-pressed="false">Plan</button>
+                <button class="tourism-demo-toggle" type="button" data-tourism-toggle aria-label="Pause the walkthrough" aria-pressed="false">Ⅱ <span>Pause</span></button>
+                <button class="tourism-demo-arrow" type="button" data-tourism-next aria-label="Next walkthrough step">→</button>
+              </div>
+              <span class="sr-only" data-tourism-status role="status" aria-live="polite"></span>
+            </div>
+            <span class="project-number">#01</span><span class="project-ribbon">FEATURED</span><span class="project-image-label">Interactive visitor walkthrough</span>
+          </div>
+          <div class="project-copy"><div class="project-heading"><h3>🌍 Manita Omo Valley Tourism</h3></div><p>Preview how visitors discover South Omo, explore cultural experiences, and begin a booking inquiry. Use the controls above to walk through the front end.</p><div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Responsive UI</span></div><a class="project-link" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">↗ &nbsp; Visit Live Website</a></div>
         </article>
         <article class="project reveal">
           <div class="project-art"><img class="project-shot" src="assets/project-previews/airport.svg" alt="Illustrated Jinka Airport flight management dashboard preview" loading="lazy" decoding="async"><span class="project-number">#02</span><span class="project-ribbon">FULL-STACK</span><span class="project-image-label">Airport management · Jinka</span></div>
@@ -177,6 +210,71 @@
     const skillsPause=document.getElementById('skillsPause');
     const skillsStatus=document.getElementById('skillsStatus');
     const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+    const tourismPreview=document.querySelector('[data-tourism-preview]');
+    if(tourismPreview){
+      const tourismScenes=[...tourismPreview.querySelectorAll('[data-tourism-scene]')];
+      const tourismSteps=[...tourismPreview.querySelectorAll('[data-tourism-step]')];
+      const tourismPrevious=tourismPreview.querySelector('[data-tourism-previous]');
+      const tourismNext=tourismPreview.querySelector('[data-tourism-next]');
+      const tourismActions=tourismPreview.querySelectorAll('[data-tourism-show]');
+      const tourismToggle=tourismPreview.querySelector('[data-tourism-toggle]');
+      const tourismStatus=tourismPreview.querySelector('[data-tourism-status]');
+      const tourismReducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+      let tourismIndex=0,tourismTimer=0,tourismVisible=false,tourismPaused=tourismReducedMotion.matches,tourismPointerPaused=false,tourismFocusPaused=false;
+      const pauseTourism=()=>tourismPaused||tourismPointerPaused||tourismFocusPaused||document.hidden||tourismReducedMotion.matches;
+      const showTourismScene=(index,announce)=>{
+        tourismIndex=(index+tourismScenes.length)%tourismScenes.length;
+        tourismScenes.forEach((scene,sceneIndex)=>{
+          const active=sceneIndex===tourismIndex;
+          scene.classList.toggle('is-active',active);
+          scene.setAttribute('aria-hidden',String(!active));
+        });
+        tourismSteps.forEach((step,stepIndex)=>{
+          const active=stepIndex===tourismIndex;
+          step.classList.toggle('is-active',active);
+          step.setAttribute('aria-pressed',String(active));
+        });
+        if(announce)tourismStatus.textContent=['Welcome page preview','Destination discovery preview','Visit planning preview'][tourismIndex];
+      };
+      const updateTourismToggle=()=>{
+        const label=tourismToggle.querySelector('span');
+        tourismToggle.disabled=tourismReducedMotion.matches;
+        tourismToggle.firstChild.textContent=tourismReducedMotion.matches?'–':(tourismPaused?'▶':'Ⅱ');
+        label.textContent=tourismReducedMotion.matches?'Motion off':(tourismPaused?'Play':'Pause');
+        tourismToggle.setAttribute('aria-label',tourismReducedMotion.matches?'Automatic preview motion is off because reduced motion is enabled':(tourismPaused?'Play the walkthrough':'Pause the walkthrough'));
+        tourismToggle.setAttribute('aria-pressed',String(tourismPaused));
+      };
+      const updateTourismTimer=()=>{
+        window.clearInterval(tourismTimer);
+        tourismTimer=0;
+        if(tourismVisible&&!pauseTourism())tourismTimer=window.setInterval(()=>showTourismScene(tourismIndex+1,false),4200);
+      };
+      tourismActions.forEach(action=>action.addEventListener('click',()=>showTourismScene(Number(action.dataset.tourismShow),true)));
+      tourismSteps.forEach(step=>step.addEventListener('click',()=>showTourismScene(Number(step.dataset.tourismStep),true)));
+      tourismPrevious.addEventListener('click',()=>showTourismScene(tourismIndex-1,true));
+      tourismNext.addEventListener('click',()=>showTourismScene(tourismIndex+1,true));
+      tourismToggle.addEventListener('click',()=>{
+        tourismPaused=!tourismPaused;
+        updateTourismToggle();
+        updateTourismTimer();
+      });
+      tourismPreview.addEventListener('pointerenter',()=>{tourismPointerPaused=true;updateTourismTimer();});
+      tourismPreview.addEventListener('pointerleave',()=>{tourismPointerPaused=false;updateTourismTimer();});
+      tourismPreview.addEventListener('focusin',()=>{tourismFocusPaused=true;updateTourismTimer();});
+      tourismPreview.addEventListener('focusout',event=>{if(!tourismPreview.contains(event.relatedTarget)){tourismFocusPaused=false;updateTourismTimer();}});
+      document.addEventListener('visibilitychange',updateTourismTimer);
+      tourismReducedMotion.addEventListener('change',()=>{
+        tourismPaused=tourismReducedMotion.matches;
+        updateTourismToggle();
+        updateTourismTimer();
+      });
+      const tourismObserver=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{tourismVisible=entry.isIntersecting;updateTourismTimer();});
+      },{threshold:.35});
+      showTourismScene(0,false);
+      updateTourismToggle();
+      tourismObserver.observe(tourismPreview);
+    }
     const skillsClone=skillsSet.cloneNode(true);
     skillsClone.removeAttribute('id');
     skillsClone.setAttribute('aria-hidden','true');
