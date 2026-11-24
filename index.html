@@ -188,6 +188,32 @@
     @media(max-width:700px){.visual-projects{grid-template-columns:1fr;max-width:500px;gap:18px}.project-cover{min-height:340px;padding:15px}.cover-content h3{font-size:1.08rem}.cover-bottom p{font-size:.82rem}.projects-intro{margin-top:-25px}}
     @media(min-width:701px) and (max-width:900px){.project-cover{min-height:350px;padding:15px}.cover-headline{font-size:1.65rem}}
 
+  
+    /* Professional responsive project showcase */
+    .projects-intro{max-width:700px;margin:-30px auto 24px;text-align:center;color:var(--muted)}
+    .project-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:0 auto 30px}
+    .project-filter{padding:9px 16px;border:1px solid var(--line);border-radius:30px;background:#111612;color:#d7e1da;font-size:.8rem;font-weight:800;cursor:pointer;transition:.2s}
+    .project-filter:hover,.project-filter.is-active{border-color:var(--cyan);background:rgba(0,240,160,.12);color:var(--cyan)}
+    .visual-projects{max-width:1040px;margin:0 auto;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .showcase-card{min-width:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--project-color,var(--cyan)) 52%,transparent);border-radius:18px;background:#0b0f0c;box-shadow:0 16px 40px #0005;transition:transform .28s,border-color .28s,box-shadow .28s}
+    .showcase-card:nth-child(2){--project-color:#ffdf00}.showcase-card:nth-child(3){--project-color:#bf70ff}.showcase-card:nth-child(4){--project-color:#29d6e6}.showcase-card:nth-child(5){--project-color:#00d99a}
+    .showcase-card:hover{transform:translateY(-6px);border-color:var(--project-color,var(--cyan));box-shadow:0 20px 48px color-mix(in srgb,var(--project-color,var(--cyan)) 12%,transparent)}
+    .showcase-art{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:255px;padding:20px;overflow:hidden;border-bottom:1px solid var(--line);font-family:Inter,"Segoe UI",Arial,sans-serif}
+    .showcase-art:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.28))}
+    .screen-top{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#fff;font-size:.9rem;letter-spacing:.1em}.screen-top b span{color:#f4c27e}.screen-top small{font-size:.52rem;letter-spacing:.08em;color:#e2e9e2}
+    .tourism-art{background:radial-gradient(circle at 78% 28%,#ffd38a 0 7%,transparent 7.5%),linear-gradient(155deg,#173b34 0 30%,#62764c 31% 49%,#a86d43 50% 62%,#1c3e30 63% 100%)}
+    .tourism-screen{margin:auto 0;padding:17px 5px;color:#fff;text-shadow:0 2px 8px #0009}.tourism-screen>small{color:#f6d8a8;font-size:.61rem;letter-spacing:.16em}.tourism-screen strong{display:block;margin:8px 0;font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.08}.tourism-screen strong i{color:#f3c17b;font-style:normal}.tourism-screen p{font-size:.74rem}.tourism-screen>span{display:inline-block;padding:7px 12px;border-radius:22px;background:#e5ad68;color:#142016;text-shadow:none;font-size:.62rem;font-weight:950}.screen-bottom{display:flex;justify-content:space-between;gap:8px;color:#f2e1c7;font-size:.53rem;letter-spacing:.08em}
+    .airport-art{background:radial-gradient(circle at 80% 5%,rgba(255,223,0,.17),transparent 38%),linear-gradient(140deg,#121a15,#26352d 55%,#0c110e)}
+    .dashboard-top{display:flex;justify-content:space-between;align-items:center;color:white;font-size:.95rem;letter-spacing:.12em}.dashboard-top b span{color:#ffdf00}.dashboard-top small{font-size:.52rem;color:#b7c7bc}.dashboard-welcome{margin:22px 0 10px;color:white;font-weight:850;font-size:1.12rem}.dashboard-welcome small{display:block;color:#9eafa4;font-size:.62rem;font-weight:500}.dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.dashboard-stats span{padding:10px;border:1px solid #ffffff1a;border-radius:8px;background:#ffffff0a}.dashboard-stats b{display:block;color:#ffdf00;font-size:1.3rem}.dashboard-stats small{color:#bac8bf;font-size:.58rem}.flight-line{display:grid;grid-template-columns:.7fr 1fr .8fr;gap:8px;margin-top:7px;padding:8px 10px;border-radius:6px;background:#ffffff0b;color:#e6ede8;font-size:.62rem}.flight-line em{color:#51e4a4;font-style:normal}
+    .school-art{background:linear-gradient(135deg,#111c2d,#253d5a)}.school-screen{display:grid;grid-template-columns:95px 1fr;min-height:205px;overflow:hidden;border:1px solid #ffffff24;border-radius:10px;background:#0d1725;color:#f3f7ff;box-shadow:0 14px 32px #0006}.school-screen aside{display:flex;flex-direction:column;gap:13px;padding:14px 10px;background:#17283e}.school-screen aside b{color:#86d4ff;font-size:.7rem;line-height:1.35}.school-screen aside small{color:#b7c8d8;font-size:.56rem}.school-content{padding:16px 13px}.school-content>b{font-size:.83rem}.school-content>small{display:block;margin-top:3px;color:#a8b9ca;font-size:.57rem}.school-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0}.school-metrics span{padding:9px 5px;border-radius:6px;background:#1a2b42;text-align:center}.school-metrics b{display:block;color:#8bd5ff;font-size:1rem}.school-metrics small{font-size:.52rem;color:#b5c6d5}.school-graph{height:55px;border-radius:6px;background:linear-gradient(180deg,#3aa8e52a,transparent),linear-gradient(155deg,transparent 38%,#43baf1 39% 42%,transparent 43% 61%,#9875f8 62% 65%,transparent 66%);border-bottom:1px solid #45627d}
+    .portfolio-art{background:radial-gradient(circle at 80% 12%,#154c3b,transparent 40%),linear-gradient(145deg,#0b1512,#121b20)}.portfolio-browser{overflow:hidden;border:1px solid #ffffff24;border-radius:10px;background:#0a100e;box-shadow:0 15px 35px #0008}.browser-dots{display:flex;align-items:center;gap:5px;padding:8px 10px;background:#1b2420}.browser-dots i{width:6px;height:6px;border-radius:50%;background:#ff756b}.browser-dots i:nth-child(2){background:#ffce55}.browser-dots i:nth-child(3){background:#44d78d}.browser-dots span{margin-left:8px;color:#9caaa1;font-size:.5rem}.portfolio-nav{display:flex;justify-content:space-between;padding:12px 14px;color:#e6eee8}.portfolio-nav b{font-size:.82rem}.portfolio-nav b span{color:#00f0a0}.portfolio-nav small{font-size:.48rem;color:#aebdb3}.portfolio-hero{margin:5px 12px;padding:15px;border:1px solid #ffffff15;border-radius:7px;background:linear-gradient(120deg,#12231b,#121a1e)}.portfolio-hero>small{color:#ffdf00;font-size:.54rem;letter-spacing:.13em}.portfolio-hero strong{display:block;margin:7px 0;font-size:1.25rem;line-height:1.1;color:white}.portfolio-hero strong i{color:#00f0a0;font-style:normal}.portfolio-hero p{color:#b5c5bb;font-size:.62rem}.portfolio-pill{display:inline-block;padding:6px 10px;border-radius:20px;background:#00d99a;color:#06130c;font-size:.52rem;font-weight:900}.portfolio-footer{display:flex;gap:8px;padding:10px 14px;color:#a8b8ae;font-size:.53rem}
+    .bank-art{background:radial-gradient(circle at 85% 8%,#08795766,transparent 36%),linear-gradient(145deg,#071e18,#0b110e)}.bank-screen{width:min(100%,390px);margin:auto;padding:17px;border:1px solid #1b6349;border-radius:12px;background:#0c1c15;color:#effff7;box-shadow:0 14px 35px #0008}.bank-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.bank-top b{font-size:1rem;letter-spacing:.1em}.bank-top b span{color:#00e6a0}.bank-top small{color:#a6b9ad;font-size:.52rem}.bank-screen>small{color:#a9c8b7;font-size:.56rem;letter-spacing:.08em}.bank-screen>strong{display:block;margin:7px 0 15px;font-size:1.8rem;letter-spacing:.13em}.bank-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.bank-actions span{padding:9px;border-radius:7px;background:#123c2b;color:#00e5a0;text-align:center}.bank-actions span small{display:block;color:#e1fff1;font-size:.57rem}.bank-activity{margin-top:15px;padding:10px;border-radius:6px;background:#12271d;color:#c8d8ce;font-size:.57rem}.bank-activity i{display:block;margin-top:8px;color:#00d99a;font-style:normal;letter-spacing:.15em}
+    .showcase-copy{display:flex;flex:1;flex-direction:column;padding:18px 19px 19px}.showcase-title{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.showcase-title h3{margin:0;color:var(--project-color,var(--cyan));font-size:1.02rem;line-height:1.35}.project-status{flex:none;padding:4px 7px;border-radius:5px;font-size:.56rem;font-weight:950;letter-spacing:.05em}.project-status.live{background:#00d99a;color:#04140c}.project-status.concept{background:#ffdf00;color:#171506}.project-status.prototype{background:#a97bff;color:#140b22}.showcase-copy p{min-height:78px;margin:12px 0;color:#c3cec6;font-size:.84rem;line-height:1.55}.showcase-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:15px}.showcase-tags span{padding:4px 8px;border:1px solid color-mix(in srgb,var(--project-color,var(--cyan)) 38%,transparent);border-radius:5px;color:var(--project-color,var(--cyan));font-size:.64rem;font-weight:800}.showcase-link{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:auto;padding:10px 13px;border-radius:30px;background:var(--project-color,var(--cyan));color:#06110b;font-size:.8rem;font-weight:950;transition:filter .2s,transform .2s}.showcase-link:hover{filter:brightness(1.12);transform:translateY(-2px)}.project-note{max-width:780px;margin:22px auto 0;color:var(--muted);text-align:center;font-size:.78rem;line-height:1.55}
+    .showcase-card[hidden]{display:none!important}
+    @media(max-width:700px){.visual-projects{grid-template-columns:1fr;max-width:510px;gap:18px}.showcase-art{min-height:240px;padding:16px}.showcase-copy p{min-height:0}.projects-intro{margin-top:-25px}.project-filters{gap:6px}.project-filter{padding:8px 12px;font-size:.72rem}}
+    @media(min-width:701px) and (max-width:900px){.visual-projects{gap:16px}.showcase-art{min-height:235px;padding:15px}.showcase-copy{padding:15px}}
+    @media(prefers-reduced-motion:reduce){.showcase-card,.project-filter,.showcase-link{transition:none}}
+
   </style>
 </head>
 <body>
@@ -267,59 +293,52 @@
       <p class="skills-carousel-hint" id="skillsHint">Skills glide continuously from left to right. Hover or focus to pause; use the arrows to browse.</p>
       <p class="sr-only" id="skillsStatus" role="status" aria-live="polite"></p>
     </div></section>
-    <section id="projects"><div class="wrap">
-      <h2 class="section-title reveal">Featured <span>Projects</span></h2>
-      <p class="projects-intro reveal">A closer look at the websites and software concepts I’m building. Open a project to explore its live page or source code.</p>
+    <section id="projects" aria-labelledby="projectsTitle"><div class="wrap">
+      <h2 class="section-title reveal" id="projectsTitle">Featured <span>Projects</span></h2>
+      <p class="projects-intro reveal">Selected websites and software concepts. Explore the interface previews, technologies and project links.</p>
+      <div class="project-filters reveal" role="group" aria-label="Filter projects">
+        <button class="project-filter is-active" type="button" data-project-filter="all" aria-pressed="true">All projects</button>
+        <button class="project-filter" type="button" data-project-filter="live" aria-pressed="false">Live websites</button>
+        <button class="project-filter" type="button" data-project-filter="concept" aria-pressed="false">Concepts & prototypes</button>
+      </div>
       <div class="projects-grid visual-projects">
-        <article class="project project-visual-card reveal">
-          <div class="project-cover tourism-cover">
-            <div class="cover-top"><span class="cover-number">01</span><span class="cover-status">LIVE WEBSITE</span></div>
-            <div class="cover-brand">MANITA <b>OMO VALLEY</b></div>
-            <div class="cover-headline">Discover South Omo.<br><em>Experience its stories.</em></div>
-            <div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Tourism</span></div>
-            <div class="cover-bottom"><p>A tourism platform introducing visitors to South Omo destinations, culture and local experiences.</p><a class="cover-action" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">↗ Visit Live Website</a></div>
+        <article class="project showcase-card reveal" data-project-kind="live">
+          <div class="showcase-art tourism-art" role="img" aria-label="Illustrative tourism website interface preview">
+            <div class="screen-top"><b>MANITA <span>OMO VALLEY</span></b><small>DESTINATIONS　 CULTURE　 JOURNEYS</small></div>
+            <div class="tourism-screen"><small>DISCOVER SOUTH OMO · ETHIOPIA</small><strong>A journey beyond<br><i>the ordinary.</i></strong><p>Explore landscapes, living cultures and local stories.</p><span>EXPLORE OMO VALLEY　↗</span></div>
+            <div class="screen-bottom"><span>DESTINATIONS</span><span>LOCAL STORIES</span><span>PLAN A VISIT</span></div>
           </div>
-          <div class="project-card-caption"><h3>🌍 Manita Omo Valley Tourism</h3><span>Featured project</span></div>
+          <div class="showcase-copy"><div class="showcase-title"><h3>🌍 Manita Omo Valley Tourism</h3><span class="project-status live">LIVE WEBSITE</span></div><p>A tourism platform sharing South Omo destinations, cultural heritage and local experiences with visitors around the world.</p><div class="showcase-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Tourism</span></div><a class="showcase-link" href="https://manitaomovalley.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Visit live website <span>↗</span></a></div>
         </article>
-        <article class="project project-visual-card reveal">
-          <div class="project-cover image-cover">
-            <img class="project-shot" src="assets/project-previews/airport.svg" alt="Visual preview of the Jinka Airport management dashboard" loading="lazy" decoding="async">
-            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">02</span><span class="cover-status">SYSTEM CONCEPT</span></div>
-            <div class="cover-content"><h3>✈️ Jinka Airport Management</h3><div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bilingual UI</span></div></div>
-            <div class="cover-bottom"><p>An airport operations concept for flight information, bookings, check-in and team workflows.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ Explore Source on GitHub</a></div>
+        <article class="project showcase-card reveal" data-project-kind="concept">
+          <div class="showcase-art airport-art" role="img" aria-label="Illustrative airport operations dashboard interface preview">
+            <div class="dashboard-top"><b>JINKA <span>AIRPORT</span></b><small>OPERATIONS DASHBOARD</small></div>
+            <div class="dashboard-welcome">Flight Operations <small>Overview · Today</small></div>
+            <div class="dashboard-stats"><span><b>08</b><small>Flights</small></span><span><b>04</b><small>Arrivals</small></span><span><b>04</b><small>Departures</small></span></div>
+            <div class="flight-line"><b>ET 271</b><span>ADD → BCO</span><em>On time</em></div><div class="flight-line"><b>ET 272</b><span>BCO → ADD</span><em>Scheduled</em></div>
           </div>
-          <div class="project-card-caption"><h3>Jinka Airport Management</h3><span>Full-stack concept</span></div>
+          <div class="showcase-copy"><div class="showcase-title"><h3>✈️ Jinka Airport Management</h3><span class="project-status concept">CONCEPT</span></div><p>An airport management concept exploring flight information, passenger services and organized operational workflows.</p><div class="showcase-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Dashboard UI</span></div><a class="showcase-link" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">Explore GitHub projects <span>↗</span></a></div>
         </article>
-        <article class="project project-visual-card reveal">
-          <div class="project-cover image-cover">
-            <img class="project-shot" src="assets/project-previews/school.svg" alt="Visual preview of the Hanna School management portal" loading="lazy" decoding="async">
-            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">03</span><span class="cover-status">SYSTEM CONCEPT</span></div>
-            <div class="cover-content"><h3>🎓 Hanna School Management</h3><div class="cover-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>School Portal</span></div></div>
-            <div class="cover-bottom"><p>A school portal concept for student records, attendance, grades, timetables and administration.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">↗ Explore Source on GitHub</a></div>
+        <article class="project showcase-card reveal" data-project-kind="concept">
+          <div class="showcase-art school-art" role="img" aria-label="Illustrative school administration portal interface preview">
+            <div class="school-screen"><aside><b>HANNA<br>SCHOOL</b><small>Dashboard</small><small>Students</small><small>Attendance</small><small>Results</small></aside><div class="school-content"><b>School Overview</b><small>Welcome to the management portal</small><div class="school-metrics"><span><b>420</b><small>Students</small></span><span><b>28</b><small>Teachers</small></span><span><b>12</b><small>Classes</small></span></div><div class="school-graph"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
           </div>
-          <div class="project-card-caption"><h3>Hanna School Management</h3><span>Full-stack concept</span></div>
+          <div class="showcase-copy"><div class="showcase-title"><h3>🎓 Hanna School Management</h3><span class="project-status concept">CONCEPT</span></div><p>A school portal concept for student registration, attendance, academic records, teacher workflows and administration.</p><div class="showcase-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Education</span></div><a class="showcase-link" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">Explore GitHub projects <span>↗</span></a></div>
         </article>
-        <article class="project project-visual-card reveal">
-          <div class="project-cover image-cover">
-            <img class="project-shot" src="assets/project-previews/portfolio.svg" alt="Visual preview of the developer portfolio website" loading="lazy" decoding="async">
-            <div class="cover-shade"></div><div class="cover-top"><span class="cover-number">04</span><span class="cover-status">LIVE PORTFOLIO</span></div>
-            <div class="cover-content"><h3>💻 Developer Portfolio</h3><div class="cover-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div></div>
-            <div class="cover-bottom"><p>A responsive portfolio presenting my skills, projects, professional journey and ways to collaborate.</p><a class="cover-action" href="https://github.com/manitbarabara80-crypto/manit-portfolio" target="_blank" rel="noopener noreferrer">↗ View Source on GitHub</a></div>
+        <article class="project showcase-card reveal" data-project-kind="live">
+          <div class="showcase-art portfolio-art" role="img" aria-label="Illustrative personal developer portfolio interface preview">
+            <div class="portfolio-browser"><div class="browser-dots"><i></i><i></i><i></i><span>manitbarabara80-crypto.github.io</span></div><div class="portfolio-nav"><b>MANIT<span>.</span></b><small>HOME　 ABOUT　 PROJECTS　 CONTACT</small></div><div class="portfolio-hero"><small>HELLO, I'M MANIT</small><strong>Building technology.<br><i>Creating impact.</i></strong><p>Software Engineer · Full-Stack Developer</p><div class="portfolio-pill">EXPLORE MY WORK　↗</div></div><div class="portfolio-footer"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div></div>
           </div>
-          <div class="project-card-caption"><h3>Developer Portfolio</h3><span>Personal website</span></div>
+          <div class="showcase-copy"><div class="showcase-title"><h3>💻 Developer Portfolio</h3><span class="project-status live">LIVE WEBSITE</span></div><p>A responsive professional portfolio presenting my skills, projects, technical journey and opportunities to collaborate.</p><div class="showcase-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div><a class="showcase-link" href="https://manitbarabara80-crypto.github.io/manit-portfolio/" target="_blank" rel="noopener noreferrer">Visit portfolio <span>↗</span></a></div>
         </article>
-        <article class="project project-visual-card reveal">
-          <div class="project-cover bank-cover">
-            <div class="cover-top"><span class="cover-number">05</span><span class="cover-status">PROTOTYPE</span></div>
-            <div class="bank-cover-brand">OMO <b>BANK</b><small>DIGITAL BANKING DEMO</small></div>
-            <div class="bank-cover-panel"><small>AVAILABLE BALANCE · SAMPLE</small><strong>•••••• ETB</strong><div><i>Transfer</i><i>Payments</i><i>History</i></div></div>
-            <div class="cover-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP / MySQL</span></div>
-            <div class="cover-bottom"><p>A learning prototype exploring account views, transaction flows and accessible digital banking interfaces. Not a live banking service.</p><span class="cover-action cover-static">Prototype · In development</span></div>
+        <article class="project showcase-card reveal" data-project-kind="concept">
+          <div class="showcase-art bank-art" role="img" aria-label="Illustrative Omo Bank digital banking prototype interface preview">
+            <div class="bank-screen"><div class="bank-top"><b>OMO <span>BANK</span></b><small>DEMO DASHBOARD</small></div><small>AVAILABLE BALANCE · SAMPLE</small><strong>•••••• ETB</strong><div class="bank-actions"><span>↗<small>Transfer</small></span><span>＋<small>Payments</small></span><span>≡<small>History</small></span></div><div class="bank-activity">RECENT ACTIVITY <i>••••••••••••••••</i></div></div>
           </div>
-          <div class="project-card-caption"><h3>Omo Bank Demo</h3><span>Learning prototype</span></div>
+          <div class="showcase-copy"><div class="showcase-title"><h3>🏦 Omo Bank Demo</h3><span class="project-status prototype">PROTOTYPE</span></div><p>A learning prototype exploring digital banking interfaces, account views and transaction workflows. Not connected to a real bank.</p><div class="showcase-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP / MySQL</span></div><a class="showcase-link" href="https://github.com/manitbarabara80-crypto?tab=repositories" target="_blank" rel="noopener noreferrer">Explore GitHub projects <span>↗</span></a></div>
         </article>
       </div>
-      <p class="project-note">Some project visuals are designed previews of the interface, not captured screenshots of a finished live system. Labels identify live websites and prototypes clearly. I’ll replace these previews with real product screenshots and demo videos as they become available.</p>
+      <p class="project-note">The interface artwork is illustrative, created to show each project's intended design. It is not a captured screenshot or proof of completed functionality. Project labels distinguish live websites from concepts and prototypes. Demo videos can be added when real recordings are available.</p>
     </div></section>
 <section id="contact"><div class="wrap">
       <h2 class="section-title">Get In <span>Touch</span></h2>
@@ -362,6 +381,20 @@
     projectLightboxClose.addEventListener('click',()=>projectLightbox.close());
     projectLightbox.addEventListener('click',event=>{if(event.target===projectLightbox)projectLightbox.close();});
     projectLightbox.addEventListener('close',()=>{projectLightboxImage.removeAttribute('src');});
+
+
+    // Project filters keep the portfolio showcase easy to explore.
+    const projectFilterButtons=[...document.querySelectorAll('[data-project-filter]')];
+    const showcaseCards=[...document.querySelectorAll('.showcase-card[data-project-kind]')];
+    projectFilterButtons.forEach(button=>button.addEventListener('click',()=>{
+      const filter=button.dataset.projectFilter;
+      projectFilterButtons.forEach(item=>{
+        const active=item===button;
+        item.classList.toggle('is-active',active);
+        item.setAttribute('aria-pressed',String(active));
+      });
+      showcaseCards.forEach(card=>{card.hidden=filter!=='all'&&card.dataset.projectKind!==filter;});
+    }));
 
     const menu=document.getElementById('menu'),navlinks=document.getElementById('navlinks');
     menu.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
