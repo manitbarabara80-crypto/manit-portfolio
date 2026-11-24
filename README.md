@@ -39,5 +39,7 @@ These help with discovery but do not guarantee search ranking or indexing. The o
 - [View my GitHub projects](https://github.com/manitbarabara80-crypto?tab=repositories)
 - [Email me](mailto:manitbarabara80@gmail.com)
 
+The contact form requires a name, valid email address, and message, then opens the visitor’s default email app so they can review and send it.
+
 ---
 This repository is public so visitors and search engines can discover the portfolio and its source. The portfolio editor is intended for the owner; public visitors can view the published website.
