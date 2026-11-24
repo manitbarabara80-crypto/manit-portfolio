@@ -292,13 +292,13 @@
     @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-set>.skill,#skills .skills-track .skill{flex-basis:124px!important;width:124px!important;min-width:124px!important;max-width:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}#skills .skills-track{animation-duration:24s!important}}
     @media(prefers-reduced-motion:reduce){#skills .skills-track{animation:none!important;transform:none!important}}
 
-      /* Skills carousel: each card advances one step toward the RIGHT. */
+      /* Skills carousel: smooth, constant-speed movement to the RIGHT. */
     #skills .skills-viewport{display:block!important;width:100%!important;overflow:hidden!important;padding:10px 4px 26px!important}
-    #skills .skills-track{display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;width:max-content!important;max-width:none!important;animation:skills-move-right 24s steps(8,end) infinite!important;will-change:transform}
+    #skills .skills-track{display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;width:max-content!important;max-width:none!important;animation:skills-constant-right 32s linear infinite!important;will-change:transform}
     #skills .skills-set{display:flex!important;flex:0 0 auto!important;flex-flow:row nowrap!important;align-items:stretch!important;gap:18px!important;width:max-content!important;min-width:max-content!important;padding:0 18px 0 0!important}
     #skills .skills-set>.skill{display:flex!important;flex:0 0 164px!important;width:164px!important;min-width:164px!important;max-width:164px!important;min-height:180px!important;box-sizing:border-box!important;animation:none!important}
     #skills .skills-track:hover,#skills .skills-track:focus-within{animation-play-state:paused!important}
-    @keyframes skills-move-right{0%{transform:translate3d(-50%,0,0)}100%{transform:translate3d(0,0,0)}}
+    @keyframes skills-constant-right{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
     @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-set>.skill{flex-basis:124px!important;width:124px!important;min-width:124px!important;max-width:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}}
     @media(prefers-reduced-motion:reduce){#skills .skills-track{animation:none!important;transform:none!important}}
 
