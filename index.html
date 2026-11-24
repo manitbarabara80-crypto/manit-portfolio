@@ -305,7 +305,9 @@
   
     .owner-login-dialog{width:min(420px,calc(100% - 28px));border:1px solid rgba(55,199,239,.35);border-radius:20px;background:#0d1b32;color:#edf4ff;padding:28px;box-shadow:0 24px 80px #0009}.owner-login-dialog::backdrop{background:#020817c9;backdrop-filter:blur(5px)}.owner-login-dialog h2{margin:0 0 8px}.owner-login-dialog p{color:#b3c0d4}.owner-login-dialog label{display:block;margin:14px 0 6px}.owner-login-dialog input{width:100%;padding:12px;border:1px solid #40516d;border-radius:10px;background:#081326;color:#fff}.owner-login-actions{display:flex;gap:10px;margin-top:18px}.owner-login-actions button{padding:11px 16px;border:0;border-radius:10px;cursor:pointer}.owner-login-status{min-height:24px;color:#37c7ef}.owner-login-success{display:none;margin-top:14px;padding:12px;background:#102d34;border-radius:10px}.hero h1{cursor:pointer}
 
-  </style>
+  
+    .owner-admin-dialog{width:min(1050px,calc(100% - 20px));max-height:92vh;overflow:auto;border:1px solid #00d99a;border-radius:18px;background:#0b120e;color:#f3f7f4;padding:22px;box-shadow:0 25px 90px #000b}.owner-admin-dialog::backdrop{background:#020805df;backdrop-filter:blur(5px)}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:-22px;background:#0b120e;padding:8px 0 15px;z-index:2;border-bottom:1px solid #29352d}.admin-head h2{margin:0;color:#00e69a}.admin-head button,.admin-actions button{border:1px solid #455449;border-radius:9px;background:#17231b;color:#fff;padding:10px 14px;cursor:pointer}.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.admin-field{display:grid;gap:6px;min-width:0}.admin-field.full{grid-column:1/-1}.admin-field label{font-weight:750;color:#b9f5d7}.admin-field input,.admin-field textarea{width:100%;min-width:0;padding:11px;border:1px solid #3a4b3f;border-radius:9px;background:#101b14;color:#f5fff8;font:inherit}.admin-field textarea{min-height:120px;resize:vertical;font-family:ui-monospace,monospace;font-size:.82rem;line-height:1.5}.admin-help{color:#a9b8ac;font-size:.84rem}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.admin-actions .save{background:#00d99a;color:#04130b;border-color:#00d99a;font-weight:900}.admin-status{min-height:24px;color:#9bf2c7}.admin-section{grid-column:1/-1;margin:12px 0 0;padding-top:12px;border-top:1px solid #2a382e;color:#00e69a;font-size:1.1rem}@media(max-width:650px){.owner-admin-dialog{padding:14px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-head{top:-14px}.admin-actions button{flex:1}}
+</style>
 </head>
 <body>
   <header class="nav" id="nav"><div class="wrap nav-inner">
@@ -460,7 +462,26 @@
     <form id="ownerLoginForm"><label for="ownerEmail">Owner email</label><input id="ownerEmail" type="email" autocomplete="username" value="manitbarabara80@gmail.com" required><label for="ownerPassword">Password</label><input id="ownerPassword" type="password" autocomplete="current-password" required><div class="owner-login-actions"><button class="btn" type="submit">Sign in</button><button class="btn secondary" type="button" id="ownerLoginCancel">Cancel</button></div><p class="owner-login-status" id="ownerLoginStatus" role="status"></p></form>
     <div class="owner-login-success" id="ownerLoginSuccess">Signed in successfully. Your owner account is authenticated. Admin editing tools still need to be connected.</div>
   </dialog>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <dialog class="owner-admin-dialog" id="ownerAdminDialog" aria-labelledby="adminTitle">
+    <div class="admin-head"><div><h2 id="adminTitle">Website Control Center</h2><small>Owner only · Changes are saved to Supabase</small></div><button type="button" id="adminClose">Close</button></div>
+    <p class="admin-help">Edit the fields below, then save. Use the JSON boxes for lists: skills, services, projects and social links. Keep valid JSON syntax. Leave a field unchanged if you do not want to edit it.</p>
+    <form id="adminForm"><div class="admin-grid">
+      <h3 class="admin-section">Website identity &amp; SEO</h3>
+      <div class="admin-field"><label for="aSiteTitle">Browser / website title</label><input id="aSiteTitle"></div><div class="admin-field"><label for="aDescription">SEO description</label><textarea id="aDescription"></textarea></div>
+      <h3 class="admin-section">Home / hero section</h3>
+      <div class="admin-field"><label for="aGreeting">Greeting</label><input id="aGreeting"></div><div class="admin-field"><label for="aRole">Main professional title</label><input id="aRole"></div><div class="admin-field full"><label for="aHeroText">Hero introduction</label><textarea id="aHeroText"></textarea></div>
+      <h3 class="admin-section">About section</h3>
+      <div class="admin-field"><label for="aAboutHeading">About heading</label><input id="aAboutHeading"></div><div class="admin-field"><label for="aAboutIntro">About subtitle</label><input id="aAboutIntro"></div><div class="admin-field full"><label for="aAboutText">About paragraphs (one paragraph per line)</label><textarea id="aAboutText" style="min-height:180px"></textarea></div>
+      <h3 class="admin-section">Images &amp; appearance</h3>
+      <div class="admin-field full"><label for="aPhoto">Profile photo URL</label><input id="aPhoto" type="url" placeholder="https://..."></div><div class="admin-field"><label for="aBackground">Page background CSS color / gradient</label><input id="aBackground" placeholder="#070908"></div><div class="admin-field"><label for="aAccent">Accent color</label><input id="aAccent" placeholder="#00f0a0"></div>
+      <h3 class="admin-section">Skills, services &amp; projects</h3>
+      <div class="admin-field full"><label for="aSkills">Skills list (JSON array)</label><textarea id="aSkills" placeholder='["HTML", "CSS", "JavaScript"]'></textarea></div><div class="admin-field full"><label for="aServices">Services list (JSON array of {"title":"...","description":"..."})</label><textarea id="aServices"></textarea></div><div class="admin-field full"><label for="aProjects">Projects list (JSON array of {"title":"...","description":"...","url":"https://...","type":"live"})</label><textarea id="aProjects" style="min-height:180px"></textarea></div>
+      <h3 class="admin-section">Social &amp; contact information</h3>
+      <div class="admin-field full"><label for="aSocials">Social links (JSON object: platform to URL)</label><textarea id="aSocials" placeholder='{"GitHub":"https://github.com/...","WhatsApp":"https://wa.me/..."}'></textarea></div><div class="admin-field"><label for="aEmail">Contact email</label><input id="aEmail" type="email"></div><div class="admin-field"><label for="aPhone">Phone number</label><input id="aPhone"></div>
+    </div><div class="admin-actions"><button class="save" type="submit">Save all website settings</button><button type="button" id="adminReload">Reload saved settings</button><button type="button" id="adminSignOut">Sign out</button></div><p class="admin-status" id="adminStatus" role="status"></p></form>
+  </dialog>
+\n  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
 
 
@@ -482,10 +503,26 @@
       const {data,error}=await ownerSupabase.auth.signInWithPassword({email,password});
       if(error){status.textContent='Sign-in failed. Check your email and password.';return;}
       if(data.user?.email?.toLowerCase()!=='manitbarabara80@gmail.com'){await ownerSupabase.auth.signOut();status.textContent='This account is not authorized as the portfolio owner.';return;}
-      status.textContent='';document.getElementById('ownerLoginForm').style.display='none';document.getElementById('ownerLoginSuccess').style.display='block';
+      status.textContent='';ownerDialog.close();await openAdminDashboard();
     });
 
-    // Accessible screenshot lightbox: opens full-size project previews on desktop and mobile.
+
+    // Owner-only website control center. Database row access is protected by Supabase RLS.
+    const adminDialog=document.getElementById('ownerAdminDialog');
+    const adminFields={siteTitle:'aSiteTitle',description:'aDescription',greeting:'aGreeting',role:'aRole',heroText:'aHeroText',aboutHeading:'aAboutHeading',aboutIntro:'aAboutIntro',aboutText:'aAboutText',photo:'aPhoto',background:'aBackground',accent:'aAccent',skills:'aSkills',services:'aServices',projects:'aProjects',socials:'aSocials',email:'aEmail',phone:'aPhone'};
+    const adminDefaults={siteTitle:document.title,description:document.querySelector('meta[name="description"]')?.content||'',greeting:document.querySelector('.hello')?.textContent||'',role:'Full-Stack Developer',heroText:document.querySelector('.hero-copy>p')?.textContent||'',aboutHeading:document.querySelector('.about-copy h3')?.textContent||'',aboutIntro:document.querySelector('.about-intro')?.textContent||'',aboutText:[...document.querySelectorAll('.about-copy>p')].map(x=>x.textContent).join('\n'),photo:document.querySelector('.portrait img')?.src||'',background:'#070908',accent:'#00f0a0',skills:['HTML','CSS','JavaScript','PHP','Java','C++','Python','MySQL'],services:[],projects:[],socials:{GitHub:'https://github.com/manitbarabara80-crypto',WhatsApp:'https://wa.me/251902266498',Email:'mailto:manitbarabara80@gmail.com'},email:'manitbarabara80@gmail.com',phone:'0902266498'};
+    const jsonFields=['skills','services','projects','socials'];
+    function fillAdmin(settings){const v={...adminDefaults,...(settings||{})};Object.entries(adminFields).forEach(([key,id])=>{const el=document.getElementById(id);el.value=jsonFields.includes(key)?JSON.stringify(v[key],null,2):(v[key]??'');});}
+    function collectAdmin(){const v={};Object.entries(adminFields).forEach(([key,id])=>{const raw=document.getElementById(id).value;v[key]=jsonFields.includes(key)?JSON.parse(raw|| (key==='socials'?'{}':'[]')):raw;});return v;}
+    async function loadAdminSettings(){const status=document.getElementById('adminStatus');status.textContent='Loading saved website settings…';const {data,error}=await ownerSupabase.from('portfolio_settings').select('settings').eq('id','main').maybeSingle();if(error){status.textContent='Could not load settings: '+error.message;fillAdmin(adminDefaults);return;}fillAdmin(data?.settings||adminDefaults);status.textContent=data?'Saved settings loaded.':'No saved settings yet. Defaults are shown; save to create your settings record.';}
+    async function openAdminDashboard(){await loadAdminSettings();adminDialog.showModal();}
+    function applyPublicSettings(s){if(!s)return;const set=(sel,val)=>{if(val!==undefined&&val!==null&&val!==''){const el=document.querySelector(sel);if(el)el.textContent=val;}};set('.hello',s.greeting);set('.hero-copy>p',s.heroText);set('.about-copy h3',s.aboutHeading);set('.about-intro',s.aboutIntro);if(s.siteTitle)document.title=s.siteTitle;if(s.description){const m=document.querySelector('meta[name="description"]');if(m)m.content=s.description;}if(s.photo)document.querySelectorAll('.portrait img,.about-photo img').forEach(i=>i.src=s.photo);if(s.background)document.body.style.background=s.background;if(s.accent){document.documentElement.style.setProperty('--cyan',s.accent);document.documentElement.style.setProperty('--cyan2',s.accent);}if(s.aboutText){const box=document.querySelector('.about-copy.about-copy-modern');if(box){const old=[...box.querySelectorAll(':scope>p')];const lines=String(s.aboutText).split('\n').filter(Boolean);old.forEach((p,i)=>{if(lines[i]!==undefined)p.textContent=lines[i];});}}if(s.email){document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href='mailto:'+s.email);document.querySelectorAll('.contact-item').forEach(a=>{if(a.href.startsWith('mailto:'))a.querySelector('span:last-child').lastChild.textContent=s.email;});}if(s.phone){document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.href='tel:'+s.phone.replace(/\D/g,''));}}
+    ownerSupabase.from('portfolio_settings').select('settings').eq('id','main').maybeSingle().then(({data})=>{if(data?.settings)applyPublicSettings(data.settings);});
+    document.getElementById('adminForm').addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('adminStatus');try{const settings=collectAdmin();status.textContent='Saving…';const {error}=await ownerSupabase.from('portfolio_settings').upsert({id:'main',settings,updated_at:new Date().toISOString()},{onConflict:'id'});if(error)throw error;applyPublicSettings(settings);status.textContent='All settings saved. The public website will load them on refresh.';}catch(err){status.textContent='Could not save. Check JSON syntax and permissions. '+err.message;}});
+    document.getElementById('adminReload').addEventListener('click',loadAdminSettings);
+    document.getElementById('adminClose').addEventListener('click',()=>adminDialog.close());
+    document.getElementById('adminSignOut').addEventListener('click',async()=>{await ownerSupabase.auth.signOut();adminDialog.close();});
+\n    // Accessible screenshot lightbox: opens full-size project previews on desktop and mobile.
     const projectLightbox=document.getElementById('projectLightbox');
     const projectLightboxImage=document.getElementById('projectLightboxImage');
     const projectLightboxTitle=document.getElementById('projectLightboxTitle');
