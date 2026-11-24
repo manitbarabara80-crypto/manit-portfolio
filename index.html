@@ -302,6 +302,9 @@
     @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-set>.skill{flex-basis:124px!important;width:124px!important;min-width:124px!important;max-width:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}}
     @media(prefers-reduced-motion:reduce){#skills .skills-track{animation:none!important;transform:none!important}}
 
+  
+    .owner-login-dialog{width:min(420px,calc(100% - 28px));border:1px solid rgba(55,199,239,.35);border-radius:20px;background:#0d1b32;color:#edf4ff;padding:28px;box-shadow:0 24px 80px #0009}.owner-login-dialog::backdrop{background:#020817c9;backdrop-filter:blur(5px)}.owner-login-dialog h2{margin:0 0 8px}.owner-login-dialog p{color:#b3c0d4}.owner-login-dialog label{display:block;margin:14px 0 6px}.owner-login-dialog input{width:100%;padding:12px;border:1px solid #40516d;border-radius:10px;background:#081326;color:#fff}.owner-login-actions{display:flex;gap:10px;margin-top:18px}.owner-login-actions button{padding:11px 16px;border:0;border-radius:10px;cursor:pointer}.owner-login-status{min-height:24px;color:#37c7ef}.owner-login-success{display:none;margin-top:14px;padding:12px;background:#102d34;border-radius:10px}.hero h1{cursor:pointer}
+
   </style>
 </head>
 <body>
@@ -451,7 +454,36 @@
 
   <footer><div class="wrap">© <span id="year"></span> Manit Barabara Tebligu · Building useful technology with purpose</div></footer>
   <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+
+  <dialog class="owner-login-dialog" id="ownerLoginDialog" aria-labelledby="ownerLoginTitle">
+    <h2 id="ownerLoginTitle">Owner sign in</h2><p>Sign in with your existing portfolio owner account.</p>
+    <form id="ownerLoginForm"><label for="ownerEmail">Owner email</label><input id="ownerEmail" type="email" autocomplete="username" value="manitbarabara80@gmail.com" required><label for="ownerPassword">Password</label><input id="ownerPassword" type="password" autocomplete="current-password" required><div class="owner-login-actions"><button class="btn" type="submit">Sign in</button><button class="btn secondary" type="button" id="ownerLoginCancel">Cancel</button></div><p class="owner-login-status" id="ownerLoginStatus" role="status"></p></form>
+    <div class="owner-login-success" id="ownerLoginSuccess">Signed in successfully. Your owner account is authenticated. Admin editing tools still need to be connected.</div>
+  </dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+
+
+    // Hidden owner login: click the portfolio owner's name five times.
+    const ownerName=document.querySelector('.hero h1');
+    const ownerDialog=document.getElementById('ownerLoginDialog');
+    let ownerNameClicks=0,ownerClickReset;
+    ownerName?.addEventListener('click',()=>{
+      ownerNameClicks++;
+      clearTimeout(ownerClickReset);
+      ownerClickReset=setTimeout(()=>{ownerNameClicks=0;},2200);
+      if(ownerNameClicks>=5){ownerNameClicks=0;clearTimeout(ownerClickReset);document.getElementById('ownerLoginStatus').textContent='';document.getElementById('ownerLoginSuccess').style.display='none';document.getElementById('ownerLoginForm').style.display='block';ownerDialog.showModal();}
+    });
+    document.getElementById('ownerLoginCancel').addEventListener('click',()=>ownerDialog.close());
+    const ownerSupabase=window.supabase.createClient('https://rufqfsrkvkgkssctqkte.supabase.co','sb_publishable_MRQAAZPzWBRC_QrNghztPg_EGzWg693');
+    document.getElementById('ownerLoginForm').addEventListener('submit',async event=>{
+      event.preventDefault();const status=document.getElementById('ownerLoginStatus');status.textContent='Signing in…';
+      const email=document.getElementById('ownerEmail').value.trim();const password=document.getElementById('ownerPassword').value;
+      const {data,error}=await ownerSupabase.auth.signInWithPassword({email,password});
+      if(error){status.textContent='Sign-in failed. Check your email and password.';return;}
+      if(data.user?.email?.toLowerCase()!=='manitbarabara80@gmail.com'){await ownerSupabase.auth.signOut();status.textContent='This account is not authorized as the portfolio owner.';return;}
+      status.textContent='';document.getElementById('ownerLoginForm').style.display='none';document.getElementById('ownerLoginSuccess').style.display='block';
+    });
 
     // Accessible screenshot lightbox: opens full-size project previews on desktop and mobile.
     const projectLightbox=document.getElementById('projectLightbox');
