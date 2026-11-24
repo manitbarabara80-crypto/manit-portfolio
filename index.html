@@ -509,12 +509,31 @@
     document.getElementById('ownerLoginCancel').addEventListener('click',()=>ownerDialog.close());
     const ownerSupabase=window.supabase.createClient('https://rufqfsrkvkgkssctqkte.supabase.co','sb_publishable_MRQAAZPzWBRC_QrNghztPg_EGzWg693');
     document.getElementById('ownerLoginForm').addEventListener('submit',async event=>{
-      event.preventDefault();const status=document.getElementById('ownerLoginStatus');status.textContent='Signing in…';
-      const email=document.getElementById('ownerEmail').value.trim();const password=document.getElementById('ownerPassword').value;
-      const {data,error}=await ownerSupabase.auth.signInWithPassword({email,password});
-      if(error){status.textContent='Sign-in failed. Check your email and password.';return;}
-      if(data.user?.email?.toLowerCase()!=='manitbarabara80@gmail.com'){await ownerSupabase.auth.signOut();status.textContent='This account is not authorized as the portfolio owner.';return;}
-      status.textContent='';ownerDialog.close();await openAdminDashboard();
+      event.preventDefault();
+      const form=event.currentTarget;
+      const status=document.getElementById('ownerLoginStatus');
+      const submit=form.querySelector('button[type="submit"]');
+      const email=document.getElementById('ownerEmail').value.trim().toLowerCase();
+      const password=document.getElementById('ownerPassword').value;
+      if(!window.supabase?.createClient){status.textContent='Login service did not load. Refresh the page or try another network.';return;}
+      if(email!=='manitbarabara80@gmail.com'){status.textContent='Use the portfolio owner email address.';return;}
+      submit.disabled=true;submit.textContent='Signing in…';status.textContent='Connecting securely…';
+      try{
+        const {data,error}=await ownerSupabase.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        if(data.user?.email?.toLowerCase()!=='manitbarabara80@gmail.com'){
+          await ownerSupabase.auth.signOut();
+          throw new Error('This account is not authorized as the portfolio owner.');
+        }
+        status.textContent='Login successful. Opening your editor…';
+        document.getElementById('ownerPassword').value='';
+        ownerDialog.close();
+        await openAdminDashboard();
+      }catch(error){
+        status.textContent=error?.message?.includes('Invalid login')?'Incorrect email or password. Please try again.':(error?.message||'Sign-in failed. Please refresh and try again.');
+      }finally{
+        submit.disabled=false;submit.textContent='Sign in';
+      }
     });
 
 
@@ -525,8 +544,25 @@
     const jsonFields=['skills','services','projects','socials'];
     function fillAdmin(settings){const v={...adminDefaults,...(settings||{})};Object.entries(adminFields).forEach(([key,id])=>{const el=document.getElementById(id);if(el)el.value=jsonFields.includes(key)?JSON.stringify(v[key],null,2):(v[key]??'');});const p=document.getElementById('photoPreview');if(p)p.replaceChildren();if(v.photo&&p){const img=document.createElement('img');img.src=v.photo;img.alt='Current profile photo';p.appendChild(img);}}
     function collectAdmin(){const v={};Object.entries(adminFields).forEach(([key,id])=>{const raw=document.getElementById(id).value;v[key]=jsonFields.includes(key)?JSON.parse(raw|| (key==='socials'?'{}':'[]')):raw;});return v;}
-    async function loadAdminSettings(){const status=document.getElementById('adminStatus');status.textContent='Loading saved website settings…';const {data,error}=await ownerSupabase.from('portfolio_settings').select('settings').eq('id','main').maybeSingle();if(error){status.textContent='Could not load settings: '+error.message;fillAdmin(adminDefaults);return;}fillAdmin(data?.settings||adminDefaults);status.textContent=data?'Saved settings loaded.':'No saved settings yet. Defaults are shown; save to create your settings record.';}
-    async function openAdminDashboard(){await loadAdminSettings();adminDialog.showModal();}
+    async function loadAdminSettings(){
+      const status=document.getElementById('adminStatus');
+      status.textContent='Loading your saved website settings…';
+      try{
+        const {data,error}=await ownerSupabase.from('portfolio_settings').select('settings').eq('id','main').maybeSingle();
+        if(error)throw error;
+        fillAdmin(data?.settings||adminDefaults);
+        status.textContent=data?'Your saved settings are loaded.':'No saved settings yet. Your current website content is ready to edit.';
+        return true;
+      }catch(error){
+        fillAdmin(adminDefaults);
+        status.textContent='Editor opened, but settings could not load: '+(error?.message||'connection error')+'. Check your internet connection, then tap Reload.';
+        return false;
+      }
+    }
+    async function openAdminDashboard(){
+      if(!adminDialog.open)adminDialog.showModal();
+      await loadAdminSettings();
+    }
     function safeAdminUrl(value){try{const u=new URL(value,location.href);return ['http:','https:','mailto:','tel:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
     function applyPublicSettings(s){
       if(!s)return;
