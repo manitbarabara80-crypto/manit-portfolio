@@ -589,7 +589,8 @@
     document.getElementById('adminReload').addEventListener('click',loadAdminSettings);
     document.getElementById('adminClose').addEventListener('click',()=>adminDialog.close());
     document.getElementById('adminSignOut').addEventListener('click',async()=>{await ownerSupabase.auth.signOut();adminDialog.close();});
-\n    // Accessible screenshot lightbox: opens full-size project previews on desktop and mobile.
+
+    // Accessible screenshot lightbox: opens full-size project previews on desktop and mobile.
     const projectLightbox=document.getElementById('projectLightbox');
     const projectLightboxImage=document.getElementById('projectLightboxImage');
     const projectLightboxTitle=document.getElementById('projectLightboxTitle');
