@@ -125,7 +125,7 @@
           </div>
         </div>
       </div>
-      <p class="skills-carousel-hint" id="skillsHint">Skills slide automatically. Hover, focus, or use Pause to stop the carousel.</p>
+      <p class="skills-carousel-hint" id="skillsHint">Skills glide continuously from left to right. Hover or focus to pause; use the arrows to browse.</p>
       <p class="sr-only" id="skillsStatus" role="status" aria-live="polite"></p>
     </div></section>
     <section id="projects"><div class="wrap">
@@ -182,27 +182,31 @@
     skillsClone.setAttribute('aria-hidden','true');
     skillsClone.querySelectorAll('[id]').forEach(element=>element.removeAttribute('id'));
     skillsTrack.appendChild(skillsClone);
-    let skillsTimer=0,skillsResetTimer=0,userPaused=reducedMotion.matches,pointerPaused=false,focusPaused=false;
+    let skillsFrame=0,lastSkillsFrame=0,userPaused=reducedMotion.matches,pointerPaused=false,focusPaused=false;
     const pauseSkills=()=>userPaused||pointerPaused||focusPaused||document.hidden||reducedMotion.matches;
+    const animateSkills=now=>{
+      skillsFrame=0;
+      if(pauseSkills()){lastSkillsFrame=0;return;}
+      if(lastSkillsFrame){
+        const distance=Math.min(now-lastSkillsFrame,48)*.038;
+        const loop=loopWidth(),next=skillsViewport.scrollLeft-distance;
+        skillsViewport.scrollLeft=next<=0?loop+next:next;
+      }
+      lastSkillsFrame=now;
+      skillsFrame=window.requestAnimationFrame(animateSkills);
+    };
     const updateSkillsTimer=()=>{
-      window.clearInterval(skillsTimer);
-      skillsTimer=0;
-      if(!pauseSkills())skillsTimer=window.setInterval(()=>moveSkills(1),2600);
+      window.cancelAnimationFrame(skillsFrame);
+      skillsFrame=0;
+      lastSkillsFrame=0;
+      if(!pauseSkills())skillsFrame=window.requestAnimationFrame(animateSkills);
     };
     const stepWidth=()=>{const card=skillsSet.querySelector('.skill');return card?card.getBoundingClientRect().width+14:146;};
     const loopWidth=()=>skillsSet.getBoundingClientRect().width;
-    const scrollMode=()=>reducedMotion.matches?'instant':'smooth';
     const moveSkills=direction=>{
-      window.clearTimeout(skillsResetTimer);
       const step=stepWidth(),loop=loopWidth(),position=skillsViewport.scrollLeft;
-      if(direction>0){
-        const destination=Math.min(position+step,loop);
-        skillsViewport.scrollTo({left:destination,behavior:scrollMode()});
-        if(destination>=loop)skillsResetTimer=window.setTimeout(()=>skillsViewport.scrollTo({left:0,behavior:'instant'}),reducedMotion.matches?0:450);
-      }else if(position<step/2){
-        skillsViewport.scrollTo({left:loop,behavior:'instant'});
-        window.requestAnimationFrame(()=>skillsViewport.scrollBy({left:-step,behavior:scrollMode()}));
-      }else skillsViewport.scrollBy({left:-step,behavior:scrollMode()});
+      const destination=position+direction*step;
+      skillsViewport.scrollLeft=destination<0?loop+destination:(destination>=loop?destination-loop:destination);
     };
     skillsPrevious.addEventListener('click',()=>moveSkills(-1));
     skillsNext.addEventListener('click',()=>moveSkills(1));
