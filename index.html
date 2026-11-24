@@ -281,6 +281,17 @@
     @media(max-width:520px){.about-visual{padding:14px;border-radius:19px}.about-photo{aspect-ratio:4/4.1}.about-copy-modern h3{font-size:1.8rem}.about-copy-modern p{font-size:.91rem;line-height:1.72}.about-facts-modern{grid-template-columns:1fr}.about-facts-modern>div:last-child{grid-column:auto}.about-actions{display:grid;grid-template-columns:1fr}.about-actions .btn{width:100%}.about-highlights>div{align-items:flex-start}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+  
+    /* Skills: step-by-step right-to-left marquee */
+    #skills .skills-viewport{overflow:hidden!important;padding:10px 4px 26px!important}
+    #skills .skills-track{display:flex!important;grid-template-columns:none!important;width:max-content!important;align-items:stretch;animation:skills-step-left 24s steps(8,end) infinite}
+    #skills .skills-set{display:flex!important;flex:0 0 auto!important;grid-template-columns:none!important;gap:18px!important;padding:0 18px 0 0!important}
+    #skills .skills-track .skill{flex:0 0 164px!important;min-height:180px!important;animation:none!important}
+    #skills .skills-track:hover{animation-play-state:paused}
+    @keyframes skills-step-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-track .skill{flex-basis:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}#skills .skills-track{animation-duration:24s}}
+    @media(prefers-reduced-motion:reduce){#skills .skills-track{animation:none!important;transform:none!important}}
+
   </style>
 </head>
 <body>
@@ -455,6 +466,17 @@
     projectLightbox.addEventListener('click',event=>{if(event.target===projectLightbox)projectLightbox.close();});
     projectLightbox.addEventListener('close',()=>{projectLightboxImage.removeAttribute('src');});
 
+
+    // Duplicate the skills row so the leftward step animation loops seamlessly.
+    const skillsTrack=document.getElementById('skillsTrack');
+    const skillsSet=document.getElementById('skillsSet');
+    if(skillsTrack&&skillsSet&&!skillsTrack.querySelector('[data-skills-clone]')){
+      const skillsClone=skillsSet.cloneNode(true);
+      skillsClone.removeAttribute('id');
+      skillsClone.setAttribute('data-skills-clone','true');
+      skillsClone.setAttribute('aria-hidden','true');
+      skillsTrack.appendChild(skillsClone);
+    }
 
     // Project filters keep the portfolio showcase easy to explore.
     const projectFilterButtons=[...document.querySelectorAll('[data-project-filter]')];
