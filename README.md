@@ -17,6 +17,8 @@ HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL
 
 ## Selected projects
 
+The project cards use locally stored SVG illustrations as visual previews; these are mockups, not captured screenshots of the deployed applications.
+
 - **Manita Omo Valley Tourism Ethiopia** — full-featured South Omo tourism platform with cultural storytelling, tours, tribes, guides, bookings, collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard. [Open the live public demo](https://manitaomovalley.infinityfreeapp.com/).
 - **Jinka Airport Management System** — bilingual airline management platform with flight search, booking management, check-in, flight status, lost-property reporting, payment configuration, CMS controls, manager authorization, and audit logging. [Run the local XAMPP demo](http://localhost/xampp-jinka-airport/).
 - **South Omo Cultural Website** — an in-progress concept highlighting Bodi (Me’en), Mursi, Dime, and Bacha communities. A public demo link will be added when it is ready.

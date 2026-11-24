@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">Jinka Airport management dashboard visual preview</title>
+  <desc id="desc">A sample airport operations screen showing a bilingual flight board and management dashboard.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0c2946"/><stop offset="1" stop-color="#071323"/></linearGradient><linearGradient id="panel" x2="0" y2="1"><stop stop-color="#142944"/><stop offset="1" stop-color="#0e1d32"/></linearGradient></defs>
+  <rect width="960" height="500" fill="url(#bg)"/>
+  <circle cx="817" cy="78" r="169" fill="#37c7ef" opacity=".08"/>
+  <rect x="40" y="36" width="880" height="428" rx="25" fill="#081326" stroke="#37c7ef" stroke-opacity=".35" stroke-width="2"/>
+  <rect x="40" y="36" width="205" height="428" rx="25" fill="#0e1c31"/>
+  <path d="M220 36h25v428h-25" fill="#0e1c31"/>
+  <circle cx="79" cy="79" r="17" fill="#37c7ef"/><path d="m68 80 13-5-7 14 2-8Z" fill="#081326"/>
+  <text x="106" y="86" fill="#f1f7ff" font-family="Arial,sans-serif" font-size="20" font-weight="700">JINKA AIR</text>
+  <text x="66" y="137" fill="#7489a3" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">OPERATIONS</text>
+  <rect x="57" y="155" width="169" height="43" rx="10" fill="#163550"/><circle cx="78" cy="176" r="5" fill="#37c7ef"/><text x="95" y="181" fill="#e9f8ff" font-family="Arial,sans-serif" font-size="14" font-weight="600">Dashboard</text>
+  <circle cx="78" cy="224" r="5" fill="#647e99"/><text x="95" y="229" fill="#afbdce" font-family="Arial,sans-serif" font-size="14">Flight board</text>
+  <circle cx="78" cy="270" r="5" fill="#647e99"/><text x="95" y="275" fill="#afbdce" font-family="Arial,sans-serif" font-size="14">Bookings</text>
+  <circle cx="78" cy="316" r="5" fill="#647e99"/><text x="95" y="321" fill="#afbdce" font-family="Arial,sans-serif" font-size="14">Check-in</text>
+  <rect x="278" y="64" width="604" height="50" rx="12" fill="#101f34" stroke="#fff" stroke-opacity=".08"/>
+  <text x="300" y="96" fill="#eff6ff" font-family="Arial,sans-serif" font-size="21" font-weight="700">Flight information</text>
+  <rect x="771" y="77" width="90" height="25" rx="12" fill="#103c51"/><text x="787" y="94" fill="#78dcf4" font-family="Arial,sans-serif" font-size="11" font-weight="700">LIVE · JIK</text>
+  <text x="300" y="143" fill="#7387a0" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1">FLIGHT</text><text x="420" y="143" fill="#7387a0" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1">DESTINATION</text><text x="639" y="143" fill="#7387a0" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1">STATUS</text><text x="797" y="143" fill="#7387a0" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1">TIME</text>
+  <g font-family="Arial,sans-serif" font-size="14"><rect x="282" y="157" width="580" height="59" rx="10" fill="url(#panel)"/><text x="301" y="192" fill="#37c7ef" font-weight="700">ET 271</text><text x="420" y="192" fill="#e5edf7">Addis Ababa</text><rect x="626" y="176" width="88" height="24" rx="12" fill="#103c35"/><text x="640" y="193" fill="#58dda9" font-size="12">On time</text><text x="802" y="192" fill="#e5edf7">09:45</text>
+  <rect x="282" y="227" width="580" height="59" rx="10" fill="url(#panel)"/><text x="301" y="262" fill="#37c7ef" font-weight="700">ET 403</text><text x="420" y="262" fill="#e5edf7">Arba Minch</text><rect x="626" y="246" width="88" height="24" rx="12" fill="#45341a"/><text x="643" y="263" fill="#ffd177" font-size="12">Boarding</text><text x="802" y="262" fill="#e5edf7">10:20</text>
+  <rect x="282" y="297" width="580" height="59" rx="10" fill="url(#panel)"/><text x="301" y="332" fill="#37c7ef" font-weight="700">ET 512</text><text x="420" y="332" fill="#e5edf7">Hawassa</text><rect x="626" y="316" width="88" height="24" rx="12" fill="#202f45"/><text x="641" y="333" fill="#b7c8df" font-size="12">Scheduled</text><text x="802" y="332" fill="#e5edf7">11:05</text></g>
+  <text x="286" y="412" fill="#8fa4bf" font-family="Arial,sans-serif" font-size="13">EN</text><circle cx="318" cy="407" r="3" fill="#37c7ef"/><text x="333" y="412" fill="#7188a4" font-family="Arial,sans-serif" font-size="13">AM</text>
+</svg>

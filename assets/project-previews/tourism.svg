@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">South Omo tourism website visual preview</title>
+  <desc id="desc">A scenic South Omo landscape paired with a sample tourism website hero layout.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0c2946"/><stop offset="1" stop-color="#40b9d1"/></linearGradient>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#3d8b72"/><stop offset="1" stop-color="#102c32"/></linearGradient>
+    <linearGradient id="shade"><stop stop-color="#061326" stop-opacity=".88"/><stop offset=".72" stop-color="#081326" stop-opacity=".24"/><stop offset="1" stop-color="#081326" stop-opacity=".08"/></linearGradient>
+  </defs>
+  <rect width="960" height="500" fill="url(#sky)"/>
+  <circle cx="757" cy="128" r="58" fill="#ffd991" opacity=".86"/>
+  <path d="M0 293 144 191l104 76 129-135 179 158 130-97 274 108v199H0Z" fill="#285867"/>
+  <path d="m0 330 173-104 139 105 165-134 134 128 115-74 234 95v154H0Z" fill="#377b69"/>
+  <path d="M0 383q183-91 353-19t307-7q142-57 300 18v125H0Z" fill="url(#land)"/>
+  <path d="M0 431q167-54 323-13t314 1q169-43 323 9" fill="none" stroke="#80c7a2" stroke-opacity=".52" stroke-width="5"/>
+  <rect width="960" height="500" fill="url(#shade)"/>
+  <rect x="48" y="42" width="168" height="42" rx="21" fill="#061326" fill-opacity=".7" stroke="#fff" stroke-opacity=".25"/>
+  <circle cx="73" cy="63" r="7" fill="#37c7ef"/><text x="91" y="69" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2">SOUTH OMO</text>
+  <text x="56" y="247" fill="#c4f4ff" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4">DISCOVER ETHIOPIA</text>
+  <text x="54" y="312" fill="#fff" font-family="Arial,sans-serif" font-size="57" font-weight="700">South Omo</text>
+  <text x="56" y="365" fill="#fff" font-family="Arial,sans-serif" font-size="40" font-weight="600">Awaits You</text>
+  <rect x="56" y="395" width="189" height="48" rx="24" fill="#37c7ef"/><text x="82" y="425" fill="#081326" font-family="Arial,sans-serif" font-size="15" font-weight="700">Explore cultural tours</text>
+</svg>
