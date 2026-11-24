@@ -345,7 +345,7 @@
     const projectLightboxImage=document.getElementById('projectLightboxImage');
     const projectLightboxTitle=document.getElementById('projectLightboxTitle');
     const projectLightboxClose=document.getElementById('projectLightboxClose');
-    document.querySelectorAll('.project-art img.project-shot').forEach((shot,index)=>{
+    document.querySelectorAll('.project-cover img.project-shot').forEach((shot,index)=>{
       shot.tabIndex=0;
       shot.setAttribute('role','button');
       shot.setAttribute('aria-label','Enlarge '+(shot.alt||'project')+' screenshot');
