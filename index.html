@@ -462,7 +462,7 @@
   </dialog>
 
 
-  <footer><div class="wrap">© <span id="year"></span> Manit Barabara Tebligu · Building useful technology with purpose <a id="ownerSignInLink" href="#owner-sign-in" style="margin-left:12px;color:var(--cyan);font-size:.82rem;text-decoration:underline">Owner sign in</a></div></footer>
+  <footer><div class="wrap">© <span id="year"></span> Manit Barabara Tebligu · Building useful technology with purpose</div></footer>
   <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
 
   <dialog class="owner-login-dialog" id="ownerLoginDialog" aria-labelledby="ownerLoginTitle">
@@ -493,7 +493,7 @@
   <script>
 
 
-    // Reliable owner sign-in: three quick clicks on the name OR use the visible footer link.
+    // Hidden owner access: click the main portfolio name five times within five seconds.
     const ownerDialog=document.getElementById('ownerLoginDialog');
     let ownerNameClicks=0,ownerClickReset;
     function openOwnerLogin(){
@@ -506,13 +506,12 @@
       if(ownerDialog && !ownerDialog.open)ownerDialog.showModal();
     }
     document.addEventListener('click',event=>{
-      const trigger=event.target.closest('.hero h1,.brand,#ownerSignInLink');
+      const trigger=event.target.closest('.hero h1');
       if(!trigger)return;
-      if(trigger.id==='ownerSignInLink'){event.preventDefault();openOwnerLogin();return;}
       ownerNameClicks++;
       clearTimeout(ownerClickReset);
       ownerClickReset=setTimeout(()=>{ownerNameClicks=0;},5000);
-      if(ownerNameClicks>=3){ownerNameClicks=0;clearTimeout(ownerClickReset);openOwnerLogin();}
+      if(ownerNameClicks>=5){ownerNameClicks=0;clearTimeout(ownerClickReset);openOwnerLogin();}
     });
     document.getElementById('ownerLoginCancel').addEventListener('click',()=>ownerDialog.close());
     const ownerSupabase=window.supabase.createClient('https://rufqfsrkvkgkssctqkte.supabase.co','sb_publishable_MRQAAZPzWBRC_QrNghztPg_EGzWg693');
