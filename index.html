@@ -220,8 +220,8 @@
       const tourismToggle=tourismPreview.querySelector('[data-tourism-toggle]');
       const tourismStatus=tourismPreview.querySelector('[data-tourism-status]');
       const tourismReducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
-      let tourismIndex=0,tourismTimer=0,tourismVisible=false,tourismPaused=false,tourismMotionAllowed=!tourismReducedMotion.matches,tourismPointerPaused=false,tourismFocusPaused=false;
-      const pauseTourism=()=>tourismPaused||tourismPointerPaused||tourismFocusPaused||document.hidden||(tourismReducedMotion.matches&&!tourismMotionAllowed);
+      let tourismIndex=0,tourismTimer=0,tourismVisible=false,tourismPaused=false,tourismMotionAllowed=!tourismReducedMotion.matches;
+      const pauseTourism=()=>tourismPaused||document.hidden||(tourismReducedMotion.matches&&!tourismMotionAllowed);
       const showTourismScene=(index,announce)=>{
         tourismIndex=(index+tourismScenes.length)%tourismScenes.length;
         tourismScenes.forEach((scene,sceneIndex)=>{
@@ -262,10 +262,6 @@
         updateTourismToggle();
         updateTourismTimer();
       });
-      tourismPreview.addEventListener('pointerenter',()=>{tourismPointerPaused=true;updateTourismTimer();});
-      tourismPreview.addEventListener('pointerleave',()=>{tourismPointerPaused=false;updateTourismTimer();});
-      tourismPreview.addEventListener('focusin',()=>{tourismFocusPaused=true;updateTourismTimer();});
-      tourismPreview.addEventListener('focusout',event=>{if(!tourismPreview.contains(event.relatedTarget)){tourismFocusPaused=false;updateTourismTimer();}});
       document.addEventListener('visibilitychange',updateTourismTimer);
       tourismReducedMotion.addEventListener('change',()=>{
         tourismMotionAllowed=!tourismReducedMotion.matches;
