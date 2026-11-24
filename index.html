@@ -220,8 +220,8 @@
       const tourismToggle=tourismPreview.querySelector('[data-tourism-toggle]');
       const tourismStatus=tourismPreview.querySelector('[data-tourism-status]');
       const tourismReducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
-      let tourismIndex=0,tourismTimer=0,tourismVisible=false,tourismPaused=tourismReducedMotion.matches,tourismPointerPaused=false,tourismFocusPaused=false;
-      const pauseTourism=()=>tourismPaused||tourismPointerPaused||tourismFocusPaused||document.hidden||tourismReducedMotion.matches;
+      let tourismIndex=0,tourismTimer=0,tourismVisible=false,tourismPaused=false,tourismMotionAllowed=!tourismReducedMotion.matches,tourismPointerPaused=false,tourismFocusPaused=false;
+      const pauseTourism=()=>tourismPaused||tourismPointerPaused||tourismFocusPaused||document.hidden||(tourismReducedMotion.matches&&!tourismMotionAllowed);
       const showTourismScene=(index,announce)=>{
         tourismIndex=(index+tourismScenes.length)%tourismScenes.length;
         tourismScenes.forEach((scene,sceneIndex)=>{
@@ -238,11 +238,12 @@
       };
       const updateTourismToggle=()=>{
         const label=tourismToggle.querySelector('span');
-        tourismToggle.disabled=tourismReducedMotion.matches;
-        tourismToggle.firstChild.textContent=tourismReducedMotion.matches?'–':(tourismPaused?'▶':'Ⅱ');
-        label.textContent=tourismReducedMotion.matches?'Motion off':(tourismPaused?'Play':'Pause');
-        tourismToggle.setAttribute('aria-label',tourismReducedMotion.matches?'Automatic preview motion is off because reduced motion is enabled':(tourismPaused?'Play the walkthrough':'Pause the walkthrough'));
-        tourismToggle.setAttribute('aria-pressed',String(tourismPaused));
+        const needsMotionOptIn=tourismReducedMotion.matches&&!tourismMotionAllowed;
+        const paused=tourismPaused||needsMotionOptIn;
+        tourismToggle.firstChild.textContent=paused?'▶':'Ⅱ';
+        label.textContent=paused?'Play':'Pause';
+        tourismToggle.setAttribute('aria-label',needsMotionOptIn?'Play the walkthrough (reduced motion is enabled)':(paused?'Play the walkthrough':'Pause the walkthrough'));
+        tourismToggle.setAttribute('aria-pressed',String(paused));
       };
       const updateTourismTimer=()=>{
         window.clearInterval(tourismTimer);
@@ -254,7 +255,10 @@
       tourismPrevious.addEventListener('click',()=>showTourismScene(tourismIndex-1,true));
       tourismNext.addEventListener('click',()=>showTourismScene(tourismIndex+1,true));
       tourismToggle.addEventListener('click',()=>{
-        tourismPaused=!tourismPaused;
+        if(tourismReducedMotion.matches&&!tourismMotionAllowed){
+          tourismMotionAllowed=true;
+          tourismPaused=false;
+        }else tourismPaused=!tourismPaused;
         updateTourismToggle();
         updateTourismTimer();
       });
@@ -264,7 +268,8 @@
       tourismPreview.addEventListener('focusout',event=>{if(!tourismPreview.contains(event.relatedTarget)){tourismFocusPaused=false;updateTourismTimer();}});
       document.addEventListener('visibilitychange',updateTourismTimer);
       tourismReducedMotion.addEventListener('change',()=>{
-        tourismPaused=tourismReducedMotion.matches;
+        tourismMotionAllowed=!tourismReducedMotion.matches;
+        tourismPaused=false;
         updateTourismToggle();
         updateTourismTimer();
       });
