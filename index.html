@@ -304,6 +304,13 @@
 
   
     .owner-login-dialog{width:min(420px,calc(100% - 28px));border:1px solid rgba(55,199,239,.35);border-radius:20px;background:#0d1b32;color:#edf4ff;padding:28px;box-shadow:0 24px 80px #0009}.owner-login-dialog::backdrop{background:#020817c9;backdrop-filter:blur(5px)}.owner-login-dialog h2{margin:0 0 8px}.owner-login-dialog p{color:#b3c0d4}.owner-login-dialog label{display:block;margin:14px 0 6px}.owner-login-dialog input{width:100%;padding:12px;border:1px solid #40516d;border-radius:10px;background:#081326;color:#fff}.owner-login-actions{display:flex;gap:10px;margin-top:18px}.owner-login-actions button{padding:11px 16px;border:0;border-radius:10px;cursor:pointer}.owner-login-status{min-height:24px;color:#37c7ef}.owner-login-success{display:none;margin-top:14px;padding:12px;background:#102d34;border-radius:10px}.hero h1{cursor:pointer}
+    .hero h1.name-intro{display:block;line-height:1.18;overflow-wrap:anywhere}
+    .name-prefix{display:inline-block;color:var(--muted);font-size:.72em;font-weight:650;margin-right:.12em}
+    .name-animated{display:inline-block;color:transparent;background:linear-gradient(100deg,#fff 8%,#37c7ef 38%,#a78bfa 68%,#fff 92%);background-size:220% auto;background-clip:text;-webkit-background-clip:text;animation:nameShimmer 4s linear infinite;position:relative}
+    .name-animated::after{content:"";display:inline-block;width:3px;height:.82em;background:var(--cyan);margin-left:5px;vertical-align:-.06em;animation:nameCaret .8s steps(2,start) infinite}
+    @keyframes nameShimmer{to{background-position:220% center}}
+    @keyframes nameCaret{to{opacity:0}}
+    @media(prefers-reduced-motion:reduce){.name-animated{animation:none}.name-animated::after{animation:none;opacity:0}}
 
   
     .owner-admin-dialog{width:min(1050px,calc(100% - 20px));max-height:92vh;overflow:auto;border:1px solid #00d99a;border-radius:18px;background:#0b120e;color:#f3f7f4;padding:22px;box-shadow:0 25px 90px #000b}.owner-admin-dialog::backdrop{background:#020805df;backdrop-filter:blur(5px)}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:-22px;background:#0b120e;padding:8px 0 15px;z-index:2;border-bottom:1px solid #29352d}.admin-head h2{margin:0;color:#00e69a}.admin-head button,.admin-actions button{border:1px solid #455449;border-radius:9px;background:#17231b;color:#fff;padding:10px 14px;cursor:pointer}.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.admin-field{display:grid;gap:6px;min-width:0}.admin-field.full{grid-column:1/-1}.admin-field label{font-weight:750;color:#b9f5d7}.admin-field input,.admin-field textarea{width:100%;min-width:0;padding:11px;border:1px solid #3a4b3f;border-radius:9px;background:#101b14;color:#f5fff8;font:inherit}.admin-field textarea{min-height:120px;resize:vertical;font-family:ui-monospace,monospace;font-size:.82rem;line-height:1.5}.admin-help{color:#a9b8ac;font-size:.84rem}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.admin-actions .save{background:#00d99a;color:#04130b;border-color:#00d99a;font-weight:900}.admin-status{min-height:24px;color:#9bf2c7}.admin-section{grid-column:1/-1;margin:12px 0 0;padding-top:12px;border-top:1px solid #2a382e;color:#00e69a;font-size:1.1rem}@media(max-width:650px){.owner-admin-dialog{padding:14px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-head{top:-14px}.admin-actions button{flex:1}}
@@ -321,7 +328,7 @@
     <section class="hero wrap" id="home">
       <div class="hero-copy">
         <div class="hello">Hello, world! · Welcome to my portfolio</div>
-        <h1 class="reveal"><span>Manit Barabara</span><span>Tebligu</span></h1>
+        <h1 class="reveal name-intro" aria-label="I’m Manit Barabara Tebligu"><span class="name-prefix">I’m </span><span class="name-animated" id="animatedName">Manit Barabara Tebligu</span></h1>
         <div class="role">I’m a <span id="typedRole" aria-live="off">Full-Stack Developer</span></div><div class="availability"><span class="availability-dot"></span> Open to internships, mentorship &amp; collaboration</div>
         <p>I’m a Computer Science and Engineering student and aspiring software engineer who builds responsive websites and practical full-stack solutions. I turn ideas into useful digital experiences with a focus on clean design, real-world problems, and continuous learning.</p>
         <div class="socials" aria-label="Social links">
@@ -651,6 +658,20 @@
     const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});},{threshold:.12});
     document.body.classList.add('motion-ready');
     document.querySelectorAll('.reveal').forEach(element=>revealObserver.observe(element));
+    // Reveal the owner name with a type-on effect, then keep it fully visible.
+    const animatedName=document.getElementById('animatedName');
+    const fullName='Manit Barabara Tebligu';
+    if(animatedName&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      animatedName.textContent='';
+      let namePosition=0;
+      const typeName=()=>{
+        namePosition++;
+        animatedName.textContent=fullName.slice(0,namePosition);
+        if(namePosition<fullName.length)window.setTimeout(typeName,85);
+      };
+      window.setTimeout(typeName,450);
+    }
+
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       const role=document.getElementById('typedRole');
       const roles=['Full-Stack Developer','Software Engineer','Web Developer','Android App Developer'];
