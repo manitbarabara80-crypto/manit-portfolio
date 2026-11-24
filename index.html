@@ -282,14 +282,14 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
   
-    /* Skills: step-by-step right-to-left marquee */
-    #skills .skills-viewport{overflow:hidden!important;padding:10px 4px 26px!important}
-    #skills .skills-track{display:flex!important;grid-template-columns:none!important;width:max-content!important;align-items:stretch;animation:skills-step-left 24s steps(8,end) infinite}
-    #skills .skills-set{display:flex!important;flex:0 0 auto!important;grid-template-columns:none!important;gap:18px!important;padding:0 18px 0 0!important}
-    #skills .skills-track .skill{flex:0 0 164px!important;min-height:180px!important;animation:none!important}
-    #skills .skills-track:hover{animation-play-state:paused}
-    @keyframes skills-step-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-track .skill{flex-basis:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}#skills .skills-track{animation-duration:24s}}
+    /* Skills: evenly spaced standard cards, advancing one step at a time to the right */
+    #skills .skills-viewport{display:block!important;overflow:hidden!important;width:100%;padding:10px 4px 26px!important}
+    #skills .skills-track{display:flex!important;grid-template-columns:none!important;grid-auto-flow:unset!important;flex-wrap:nowrap!important;align-items:stretch!important;width:max-content!important;max-width:none!important;animation:skills-step-right 24s steps(8,end) infinite!important;will-change:transform}
+    #skills .skills-set{display:flex!important;flex:0 0 auto!important;flex-wrap:nowrap!important;grid-template-columns:none!important;grid-auto-columns:unset!important;align-items:stretch!important;gap:18px!important;width:max-content!important;min-width:max-content!important;padding:0 18px 0 0!important}
+    #skills .skills-set>.skill,#skills .skills-track .skill{display:flex!important;position:relative!important;flex:0 0 164px!important;width:164px!important;min-width:164px!important;max-width:164px!important;min-height:180px!important;box-sizing:border-box!important;animation:none!important}
+    #skills .skills-track:hover,#skills .skills-track:focus-within{animation-play-state:paused!important}
+    @keyframes skills-step-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    @media(max-width:620px){#skills .skills-set{gap:13px!important;padding-right:13px!important}#skills .skills-set>.skill,#skills .skills-track .skill{flex-basis:124px!important;width:124px!important;min-width:124px!important;max-width:124px!important;min-height:142px!important}#skills .skills-track .skill-icon{width:64px!important;height:64px!important}#skills .skills-track{animation-duration:24s!important}}
     @media(prefers-reduced-motion:reduce){#skills .skills-track{animation:none!important;transform:none!important}}
 
   </style>
