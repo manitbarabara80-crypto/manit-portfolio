@@ -63,29 +63,86 @@
     @media(max-width:620px){.about-facts{grid-template-columns:1fr;text-align:left}.about-facts div{min-height:auto}.projects-grid{grid-template-columns:1fr}.project-art,.project:nth-child(n) .project-art{height:220px}.contact-socials .social{min-width:42px;padding:0 10px}.contact-socials .social span{font-size:.74rem}}
     @media(max-width:620px){.tourism-demo{grid-template-rows:21px minmax(0,1fr) 36px}.tourism-browserbar{font-size:8px}.tourism-scene{padding-inline:12px}.tourism-site-nav{height:29px}.tourism-site-nav>span{font-size:6px}.tourism-hero-content{padding-top:8px}.tourism-hero-content p{font-size:8px}.tourism-destinations{gap:5px}.tourism-destinations i{height:42px}.tourism-demo-controls{gap:4px;padding-inline:5px}.tourism-demo-controls button{min-width:26px;height:25px;padding-inline:6px}.tourism-demo-controls .tourism-demo-arrow{min-width:24px}.tourism-demo-controls .tourism-demo-toggle{min-width:55px}}
     @media(prefers-reduced-motion:reduce){.hero-copy h1 span:last-child,.skills-viewport.is-visible #skillsSet .skill{animation:none!important}.project-shot,.tourism-scene{transition:none}}
+  
+    /* Version 2 professional refinement */
+    :root{--navy:#080b16;--navy2:#11172a;--card:#151b30;--text:#f5f4ff;--muted:#b8b8ce;--cyan:#a78bfa;--cyan2:#8b5cf6;--line:rgba(221,214,254,.13);--gold:#c4b5fd}
+    body{background:radial-gradient(ellipse at 80% 10%,rgba(139,92,246,.13),transparent 36%),radial-gradient(ellipse at 4% 65%,rgba(99,102,241,.07),transparent 32%),#080b16}
+    .nav{background:rgba(8,11,22,.92)}
+    .brand span,.hello,.section-title span{color:#b9a2ff}
+    .hero-copy h1 span:last-child{color:transparent;-webkit-text-stroke:1.5px #b9a2ff;text-shadow:0 0 25px rgba(167,139,250,.2)}
+    .role span{color:#c4b5fd}
+    .role span:after{background:#c4b5fd}
+    .social{border-color:rgba(167,139,250,.6);color:#c4b5fd}
+    .social:hover{background:#a78bfa;color:#0b0b17}
+    .btn{background:linear-gradient(135deg,#a78bfa,#7c3aed);color:#fff;box-shadow:0 10px 28px rgba(139,92,246,.18)}
+    .btn:hover{box-shadow:0 14px 35px rgba(139,92,246,.3)}
+    .btn.secondary{border-color:rgba(196,181,253,.35);color:#f5f4ff}
+    .about-photo{background:linear-gradient(135deg,#a78bfa,#60a5fa)}
+    .service{background:linear-gradient(145deg,#171b31,#101426)}
+    .service-icon,.contact-icon{color:#c4b5fd;background:rgba(167,139,250,.13)}
+    .skills-control{border-color:rgba(167,139,250,.32)}
+    .skills-control:hover{border-color:#a78bfa;background:rgba(167,139,250,.12)}
+    .skills-control.pause{color:#c4b5fd}
+    .skill{--skill-color:#a78bfa}
+    .skill:nth-child(4n+2){--skill-color:#60a5fa}.skill:nth-child(4n+3){--skill-color:#c084fc}.skill:nth-child(4n+4){--skill-color:#f0abfc}
+    .project{--project-color:#a78bfa;border-color:rgba(167,139,250,.28);background:#111528}
+    .project:nth-child(2){--project-color:#60a5fa}.project:nth-child(3){--project-color:#c084fc}.project:nth-child(4){--project-color:#f0abfc}.project:nth-child(5){--project-color:#a78bfa}
+    .project-art{background:linear-gradient(135deg,#171332,#292052 55%,#111426)}
+    .project:nth-child(2) .project-art{background:linear-gradient(135deg,#101c35,#163a59 55%,#101426)}
+    .project:nth-child(3) .project-art{background:linear-gradient(135deg,#21102f,#48245b 55%,#131126)}
+    .project:nth-child(4) .project-art{background:linear-gradient(135deg,#101b32,#273d69 55%,#101426)}
+    .project-link{background:var(--project-color,#a78bfa);color:#10101b}
+    .contact-card{background:linear-gradient(145deg,#171b31,#101426);border-color:rgba(167,139,250,.3)}
+    .availability{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:7px 12px;border:1px solid rgba(167,139,250,.28);border-radius:999px;background:rgba(167,139,250,.08);color:#ddd6fe;font-size:.82rem;font-weight:700}
+    .availability-dot{width:8px;height:8px;border-radius:50%;background:#86efac;box-shadow:0 0 0 4px rgba(134,239,172,.12)}
+    .proof-strip{padding:0 0 48px}.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .proof-grid>div{padding:18px 16px;border:1px solid var(--line);border-radius:13px;background:rgba(20,25,46,.72)}
+    .proof-grid strong{display:block;color:#e9ddff;font-size:1.12rem}.proof-grid span{display:block;margin-top:3px;color:var(--muted);font-size:.78rem;line-height:1.4}
+    .mission-section{padding-top:68px;padding-bottom:78px;background:linear-gradient(110deg,rgba(90,65,160,.14),rgba(13,18,38,.16));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .mission-kicker{color:#c4b5fd;text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:850}
+    .mission-section .section-title{text-align:left;margin:12px 0 0;font-size:clamp(2rem,4vw,3.4rem)}
+    .mission-copy p{color:#c7c8dc}.mission-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
+    .mission-link{color:#c4b5fd;font-weight:800}
+    .status-tag{margin-left:auto;padding:4px 9px;border:1px solid rgba(196,181,253,.35);border-radius:999px;color:#ddd6fe;font-size:.68rem;font-weight:800;white-space:nowrap}
+    .bank-art{display:grid;place-items:center}
+    .bank-preview{width:min(88%,360px);padding:17px;border:1px solid rgba(196,181,253,.25);border-radius:14px;background:linear-gradient(145deg,#171c36,#0d1224);box-shadow:0 18px 38px rgba(0,0,0,.28)}
+    .bank-label{color:#c4b5fd;font-size:.62rem;font-weight:900;letter-spacing:.16em}
+    .bank-preview>strong{display:block;margin:10px 0;color:#f5f4ff;font-size:1.08rem}
+    .bank-balance{padding:13px;border-radius:9px;background:rgba(167,139,250,.12)}
+    .bank-balance small,.bank-balance b{display:block}.bank-balance small{color:#b8b8ce;font-size:.7rem}.bank-balance b{margin-top:4px;color:#ddd6fe;font-size:1.2rem}
+    .bank-actions{display:flex;gap:7px;margin-top:11px}.bank-actions i{flex:1;padding:7px 3px;border:1px solid rgba(196,181,253,.2);border-radius:7px;color:#d8d1f4;text-align:center;font-size:.68rem;font-style:normal}
+    .project-link-static{cursor:default;text-align:center;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.28);color:#ddd6fe}
+    .project-note{margin:22px auto 14px;max-width:780px;text-align:center;color:var(--muted);font-size:.83rem}
+    .extra-project{max-width:calc((100% - 24px)/2);margin:0 auto}
+    .contact-form input:focus,.contact-form textarea:focus{outline:2px solid #a78bfa;outline-offset:2px;border-color:#a78bfa}
+    a:focus-visible,button:focus-visible{outline:2px solid #c4b5fd;outline-offset:3px}
+    @media(max-width:900px){.proof-grid{grid-template-columns:repeat(2,1fr)}.mission-grid{grid-template-columns:1fr;gap:24px}.extra-project{max-width:calc((100% - 24px)/2)}}
+    @media(max-width:620px){.availability{font-size:.72rem}.proof-strip{padding-bottom:25px}.proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.proof-grid>div{padding:13px 11px}.proof-grid strong{font-size:.95rem}.proof-grid span{font-size:.7rem}.mission-section{padding:54px 0}.mission-actions{align-items:flex-start;flex-direction:column;gap:14px}.extra-project{max-width:100%}.skills-heading{align-items:center;flex-wrap:wrap}.navlinks{background:#11162a}}
+
   </style>
 </head>
 <body>
   <header class="nav" id="nav"><div class="wrap nav-inner">
     <a class="brand" href="#home" aria-label="Manit portfolio home">Portfolio<span>.</span></a>
     <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-      <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#mission">Mission</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
     </nav>
     <button class="menu" id="menu" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
   </div></header>
   <main>
     <section class="hero wrap" id="home">
       <div class="hero-copy">
-        <div class="hello">Hello, world!</div>
+        <div class="hello">Hello, world! · Welcome to my portfolio</div>
         <h1 class="reveal"><span>Manit Barabara</span><span>Tebligu</span></h1>
-        <div class="role">I’m a <span id="typedRole" aria-live="off">Full-Stack Developer</span></div>
-        <p>A fourth-year Computer Science and Engineering student building responsive websites and practical software solutions across front-end and back-end development.</p>
+        <div class="role">I’m a <span id="typedRole" aria-live="off">Full-Stack Developer</span></div><div class="availability"><span class="availability-dot"></span> Open to internships, mentorship &amp; collaboration</div>
+        <p>I’m a Computer Science and Engineering student and aspiring software engineer who builds responsive websites and practical full-stack solutions. I turn ideas into useful digital experiences with a focus on clean design, real-world problems, and continuous learning.</p>
         <div class="socials" aria-label="Social links">
           <a class="social" href="https://github.com/manitbarabara80-crypto" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
           <a class="social" href="https://wa.me/251902266498" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
           <a class="social" href="mailto:manitbarabara80@gmail.com" aria-label="Email">@</a>
         </div>
-        <a class="btn" href="#about">Explore More About Me</a> <a class="btn secondary" href="#projects">View My Projects</a>
+        <a class="btn" href="#projects">Explore My Work</a> <a class="btn secondary" href="#contact">Let’s Collaborate</a>
       </div>
       <div class="portrait-wrap reveal"><div class="portrait"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div></div>
     </section>
@@ -93,8 +150,20 @@
       <h2 class="section-title">About <span>Me</span></h2>
       <div class="about-grid">
         <div class="about-photo"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div>
-        <div class="about-copy"><span class="about-eyebrow">A little more about me</span><h3>Student, builder, and lifelong learner</h3><p>I’m Manit, a fourth-year Computer Science and Engineering student at Bule Hora University in Ethiopia. I’m building a strong foundation in software engineering while creating useful, responsive web experiences.</p><p>My work brings together front-end design, PHP and MySQL back-end development, and practical problem-solving. I’m especially interested in projects that share the stories, people, and opportunities of South Omo.</p><p>I learn by making real projects, improving them through feedback, and paying attention to the details that make a product easier to use.</p><div class="about-facts" aria-label="About Manit"><div><strong>Education</strong><span>Computer Science &amp; Engineering</span></div><div><strong>University</strong><span>Bule Hora University</span></div><div><strong>Interests</strong><span>Web apps · UI · South Omo</span></div></div><a class="btn" href="#contact">Let’s Work Together</a> <a class="btn secondary" href="#projects">Explore My Projects</a></div>
+        <div class="about-copy"><span class="about-eyebrow">A little more about me</span><h3>Student, builder, and lifelong learner</h3><p>I’m Manit, a fourth-year Computer Science and Engineering student at Bule Hora University, Ethiopia. I’m developing my skills in software engineering by designing and building practical web applications.</p><p>I work across front-end development, PHP and MySQL back-end development, and user-focused interface design. I enjoy turning ideas into working prototypes, learning from feedback, and improving the details that make digital products easier to use.</p><p>My connection to South Omo inspires me to explore how technology can help communities share their stories, access information, and create new opportunities.</p><div class="about-facts" aria-label="About Manit"><div><strong>Education</strong><span>Computer Science &amp; Engineering</span></div><div><strong>University</strong><span>Bule Hora University</span></div><div><strong>Interests</strong><span>Web apps · UI · South Omo</span></div></div><a class="btn" href="#contact">Let’s Work Together</a> <a class="btn secondary" href="#projects">Explore My Projects</a></div>
       </div>
+    </div></section>
+
+    <section class="proof-strip" aria-label="Professional snapshot"><div class="wrap proof-grid">
+      <div><strong>4th Year</strong><span>Computer Science &amp; Engineering</span></div>
+      <div><strong>Bule Hora</strong><span>University · Ethiopia</span></div>
+      <div><strong>8 Technologies</strong><span>Tools I’m actively learning and using</span></div>
+      <div><strong>Real-world Focus</strong><span>Useful, people-centered digital solutions</span></div>
+    </div></section>
+
+    <section id="mission" class="mission-section"><div class="wrap mission-grid">
+      <div><span class="mission-kicker">Purpose behind the code</span><h2 class="section-title">Talent is everywhere.<br><span>Opportunity should be, too.</span></h2></div>
+      <div class="mission-copy"><p>My journey is shaped by curiosity, education, and the strength of South Omo’s pastoralist communities. I believe technology should do more than look impressive—it should solve problems, connect people, and make opportunities easier to reach.</p><p>I’m working toward building digital products that bring local stories and ideas to wider audiences while helping communities benefit from useful technology.</p><div class="mission-actions"><a class="btn" href="#contact">Support or Collaborate</a><a class="mission-link" href="#projects">See what I’m building →</a></div></div>
     </div></section>
     <section id="services"><div class="wrap">
       <h2 class="section-title">My <span>Services</span></h2>
@@ -181,6 +250,13 @@
           <div class="project-copy"><div class="project-heading"><h3>💻 Developer Portfolio</h3></div><p>A responsive personal website that brings together my background, technical skills, selected projects, and contact links.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Accessible design</span></div><a class="project-link" href="https://github.com/manitbarabara80-crypto/manit-portfolio" target="_blank" rel="noopener noreferrer">↗ &nbsp; View Source on GitHub</a></div>
         </article>
       </div>
+      <p class="project-note">Project previews are illustrative where a live product link is not provided. Prototype labels distinguish work in progress from live websites.</p>
+      <div class="projects-grid extra-project">
+        <article class="project reveal">
+          <div class="project-art bank-art"><div class="bank-preview"><span class="bank-label">OMO BANK · DEMO</span><strong>Simple digital banking concept</strong><div class="bank-balance"><small>Available balance</small><b>•••••• ETB</b></div><div class="bank-actions"><i>Transfer</i><i>Pay</i><i>History</i></div></div></div>
+          <div class="project-copy"><div class="project-heading"><h3>Omo Bank Demo</h3><span class="status-tag">Prototype</span></div><p>A learning-focused banking interface concept exploring account views, transaction flows, and accessible digital services. This is a demo—not a live banking service.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP / MySQL</span></div><span class="project-link project-link-static">Concept prototype · In development</span></div>
+        </article>
+</div>
     </div></section>
     <section id="contact"><div class="wrap">
       <h2 class="section-title">Get In <span>Touch</span></h2>
@@ -190,7 +266,7 @@
       </div>
     </div></section>
   </main>
-  <footer><div class="wrap">© <span id="year"></span> Manit Barabara Tebligu</div></footer>
+  <footer><div class="wrap">© <span id="year"></span> Manit Barabara Tebligu · Building useful technology with purpose</div></footer>
   <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
   <script>
     const menu=document.getElementById('menu'),navlinks=document.getElementById('navlinks');
@@ -342,7 +418,7 @@
     document.querySelectorAll('.reveal').forEach(element=>revealObserver.observe(element));
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       const role=document.getElementById('typedRole');
-      const roles=['Full-Stack Developer','Web Developer','Software Engineering Student'];
+      const roles=['Full-Stack Developer','Software Engineer','Web Developer'];
       let roleIndex=0,character=roles[0].length,deleting=true;
       const typeNext=()=>{
         const current=roles[roleIndex];
