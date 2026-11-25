@@ -13,16 +13,13 @@ I am learning software engineering and web development, building practical digit
 
 ## Technical skills
 
-HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL
+HTML · CSS · JavaScript · PHP · Java · C++ · Python · MySQL · Git · GitHub · React Native · Android development
 
-## Selected projects
+## Featured project
 
-The project previews are locally built mockups, not captured screenshots of the deployed applications. The Manita Omo Valley card includes an interactive visitor walkthrough; its controls demonstrate the visitor journey and do not submit a real booking inquiry. Use the live website link to open the deployed tourism site.
+- **Manita Omo Valley Website** — a live tourism website introducing visitors to South Omo destinations, living cultures, heritage, local stories, and travel experiences. [Open the live website](https://manitaomovalley.infinityfreeapp.com/).
 
-- **Manita Omo Valley Tourism Ethiopia** — full-featured South Omo tourism platform with cultural storytelling, tours, tribes, guides, bookings, collaboration inquiries, social links, newsletter, responsive design, PHP/MySQL backend, XAMPP support, and a protected manager dashboard. [Open the live public demo](https://manitaomovalley.infinityfreeapp.com/).
-- **Jinka Airport Management System** — bilingual airline management platform with flight search, booking management, check-in, flight status, lost-property reporting, payment configuration, CMS controls, manager authorization, and audit logging. [Run the local XAMPP demo](http://localhost/xampp-jinka-airport/).
-- **South Omo Cultural Website** — an in-progress concept highlighting Bodi (Me’en), Mursi, Dime, and Bacha communities. A public demo link will be added when it is ready.
-- **Developer Portfolio Website** — this responsive portfolio, with project details, social links, and owner-only customization. [Open the source repository](https://github.com/manitbarabara80-crypto/manit-portfolio).
+The portfolio’s project section currently highlights this featured website. Additional projects can be added by the owner through the existing Supabase-powered customization dashboard.
 
 ## Search engines
 
