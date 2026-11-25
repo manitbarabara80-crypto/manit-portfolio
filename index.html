@@ -323,6 +323,41 @@
     @media(prefers-reduced-motion:reduce){.showcase-card{transition:none}}
 .admin-project-upload{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:10px;align-items:end}.admin-project-upload input{min-width:0}@media(max-width:650px){.admin-project-upload{grid-template-columns:88px minmax(0,1fr)}}
 .social-placeholder{opacity:.52;border-style:dashed;cursor:default;pointer-events:none}.social-placeholder img{filter:saturate(.8)}
+
+    /* Mobile hero portrait layout inspired by the owner's reference screenshot */
+    .profile-id-card{display:none}
+    @media(max-width:620px){
+      #home.hero{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-top:110px;padding-bottom:58px;min-height:0;text-align:center}
+      #home .portrait-wrap{order:0;width:100%;min-height:clamp(370px,112vw,470px);margin:0 auto 24px;display:flex;align-items:center;justify-content:center}
+      #home .portrait-wrap:before{width:min(88vw,390px);background:radial-gradient(circle,rgba(255,40,50,.17),transparent 70%);filter:blur(10px)}
+      #home .portrait-wrap:after{content:"";position:absolute;width:min(80vw,350px);aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,35,45,.34);box-shadow:0 0 0 13px rgba(255,20,35,.035),0 0 0 20px rgba(255,30,40,.10);pointer-events:none}
+      #home .portrait{width:min(72vw,310px);padding:7px;background:linear-gradient(135deg,#ff2638,#ff101d 48%,#ff6a30);box-shadow:0 0 0 6px rgba(255,25,38,.14),0 0 28px rgba(255,20,35,.3)}
+      #home .portrait img{border:5px solid #15120f;object-position:center 35%}
+      #home .profile-id-card{position:absolute;z-index:4;left:50%;bottom:3px;transform:translateX(-50%);display:flex;align-items:center;gap:13px;width:min(90%,500px);padding:12px 14px;text-align:left;border:1.5px solid #ff4a4e;border-radius:18px;background:linear-gradient(110deg,rgba(13,13,15,.97),rgba(65,29,15,.96));box-shadow:0 10px 30px #0007}
+      #home .profile-id-icon{display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:15px;background:#ff1725;color:#fff;font-size:28px;font-weight:900;box-shadow:0 0 18px #ff172533}
+      #home .profile-id-copy{display:flex;min-width:0;flex-direction:column;gap:2px}
+      #home .profile-id-copy strong{font-size:1.15rem;line-height:1.25;color:#fff}
+      #home .profile-id-copy small{font-size:.82rem;line-height:1.4;color:#e3dce0}
+      #home .hero-copy{order:1;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+      #home .hello{order:0;margin:0 0 18px;color:#ff303b;font-size:.9rem;letter-spacing:.22em;font-weight:900}
+      #home .hero-copy h1{order:2;margin:12px 0 14px;font-size:clamp(2.4rem,11vw,3.5rem);line-height:1.12}
+      #home .hero-copy h1 .name-prefix{display:none}
+      #home .hero-copy h1 .name-animated{display:block;color:#f5f3f6!important;-webkit-text-stroke:0!important;letter-spacing:-.045em}
+      #home .role{order:3;white-space:normal;font-size:1.08rem;line-height:1.5}
+      #home .availability{order:1;width:fit-content;max-width:100%;margin:0 auto 18px;padding:10px 16px;border:1px solid rgba(255,30,40,.22);border-radius:999px;background:rgba(20,18,25,.9);font-size:.88rem;line-height:1.5}
+      #home .hero-copy p{order:4;margin:18px auto 0;font-size:.94rem;line-height:1.7}
+      #home .socials{order:5;flex-wrap:wrap;justify-content:center;gap:9px;margin:22px 0}
+      #home .social{width:38px;height:38px}
+      #home .hero-copy>.btn{order:6;margin:5px 0}
+      #home .hero-copy>.btn.secondary{order:7}
+    }
+    @media(max-width:380px){
+      #home .profile-id-card{gap:10px;padding:10px}
+      #home .profile-id-icon{flex-basis:44px;width:44px;height:44px}
+      #home .profile-id-copy strong{font-size:1rem}
+      #home .profile-id-copy small{font-size:.73rem}
+      #home .portrait-wrap{min-height:350px}
+    }
 </style>
 </head>
 <body>
@@ -347,7 +382,7 @@
         </div>
         <a class="btn" href="#projects">Explore My Work</a> <a class="btn secondary" href="#contact">Let’s Collaborate</a>
       </div>
-      <div class="portrait-wrap reveal"><div class="portrait"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div></div>
+      <div class="portrait-wrap reveal"><div class="portrait"><img src="https://rufqfsrkvkgkssctqkte.supabase.co/storage/v1/object/public/portfolio-assets/profile/profile.jpg" alt="Manit Barabara Tebligu"></div><div class="profile-id-card"><span class="profile-id-icon">⌘</span><span class="profile-id-copy"><strong>Engineer Manit</strong><small>Software Engineer &amp; Web Developer</small></span></div>
     </section>
     <section id="about" class="about-section" aria-labelledby="aboutTitle"><div class="wrap">
       <div class="about-heading"><span class="section-kicker">THE PERSON BEHIND THE PROJECTS</span><h2 class="section-title" id="aboutTitle">About <span>Me</span></h2><p class="about-intro">Curiosity drives me. Purpose guides what I build.</p></div>
