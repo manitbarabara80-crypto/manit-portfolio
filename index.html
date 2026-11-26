@@ -358,6 +358,47 @@
       #home .profile-id-copy small{font-size:.73rem}
       #home .portrait-wrap{min-height:350px}
     }
+
+    /* Global readability improvements: stronger contrast, comfortable type and spacing */
+    body{font-size:16px;line-height:1.7;color:#f1f4f8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    p,li{line-height:1.75}
+    p{max-width:72ch}
+    :root{--muted:#c4ccda;--text:#f4f6fb}
+    .hero-copy p,.about-copy p,.about-copy-modern p,.project-copy p,.showcase-copy p,.service p,.portfolio-dynamic-card p,.admin-help,.about-intro,.mission-copy p{color:#d0d7e2;line-height:1.8;font-size:1rem}
+    .section-kicker,.about-eyebrow,.section-subtitle{color:#d2c5ff;font-weight:800;letter-spacing:.09em}
+    .section-title{line-height:1.2;text-wrap:balance}
+    .role,.availability{line-height:1.6}
+    .availability{color:#e5eaf2}
+    .navlinks a,.menu,.brand{font-size:1rem;font-weight:750}
+    .btn{font-size:1rem;line-height:1.45;min-height:48px}
+    .project-copy h3,.showcase-copy h3,.service h3,.portfolio-dynamic-card h3{line-height:1.35}
+    .project-copy p,.showcase-copy p{font-size:1rem}
+    .dynamic-tags span,.project-tag,.project-tech,.skill small{font-size:.85rem;line-height:1.5}
+    .about-facts-modern span,.about-highlights p,.about-photo-caption,.about-visual-note p{color:#d0d7e2;line-height:1.65}
+    .contact-card p,.contact-intro,.contact-item p{color:#d0d7e2;line-height:1.75}
+    input,textarea,select,button{font:inherit}
+    a:focus-visible,button:focus-visible{outline:3px solid #f0abfc;outline-offset:3px}
+    @media(max-width:620px){
+      body{font-size:16px;line-height:1.75}
+      section{scroll-margin-top:82px}
+      .hero-copy p,.about-copy p,.about-copy-modern p,.project-copy p,.showcase-copy p,.service p,.portfolio-dynamic-card p,.about-intro,.mission-copy p{font-size:1rem;line-height:1.8}
+      .section-title{font-size:clamp(2rem,8.5vw,3rem);line-height:1.2}
+      .section-kicker,.about-eyebrow{font-size:.82rem;line-height:1.55;letter-spacing:.08em}
+      .project-copy h3,.showcase-copy h3,.service h3{font-size:1.2rem;line-height:1.35}
+      .project-copy p,.showcase-copy p{font-size:1rem}
+      .project-tag,.project-tech,.dynamic-tags span{font-size:.82rem}
+      .btn{font-size:.98rem;padding:12px 17px;min-height:48px}
+      .navlinks a{font-size:1.05rem;padding:14px 0}
+      .profile-id-copy small{font-size:.9rem!important;line-height:1.5!important}
+      #home .hero-copy p{font-size:1rem;line-height:1.8}
+      #home .availability{font-size:.92rem;line-height:1.6}
+      .admin-help{font-size:.9rem;line-height:1.65}
+    }
+    @media(prefers-contrast:more){
+      body{color:#fff}
+      .hero-copy p,.about-copy p,.about-copy-modern p,.project-copy p,.showcase-copy p,.service p,.contact-card p{color:#f0f2f7}
+      .section-kicker,.about-eyebrow{color:#e3d8ff}
+    }
 </style>
 </head>
 <body>
